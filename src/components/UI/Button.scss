@@ -1,0 +1,46 @@
+.button {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  background-color: #3498db;
+  border: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+  &:hover,
+  &:focus {
+    background-color: #3498db;
+    color: #fff;
+  }
+
+  &--primary {
+    margin-top: 10px;
+    font-size: 10px;
+    color: #fff;
+
+    &:hover,
+    &:focus {
+      background-color: #2577ae;
+    }
+  }
+
+  &--secondary {
+    background-color: #2ecc71;
+    &:hover,
+    &:focus {
+      background-color: #2ecc71;
+      color: #fff;
+    }
+  }
+
+  &--third {
+    background-color: red;
+    &:hover,
+    &:focus {
+      background-color: #2ecc71;
+      color: #fff;
+    }
+  }
+}

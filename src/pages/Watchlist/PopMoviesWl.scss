@@ -1,0 +1,53 @@
+.pop-movies-wl {
+  &__title {
+    font-family: "Aboreto", sans-serif;
+    font-size: 20px;
+    margin-left: 5px;
+    text-align: center;
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__movie-item {
+    margin: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    position: relative;
+
+
+
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    transition: filter 0.3s ease;
+  }
+  &__item-button {
+    margin: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-family: "Kanit", sans-serif;
+
+    &--delete {
+      background-color: red;
+      color: white;
+    }
+
+
+    }
+  }
+
+
