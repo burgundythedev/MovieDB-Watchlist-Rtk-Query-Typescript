@@ -19,19 +19,13 @@ export type Movie = {
   poster_path: string;
   release_date: string;
   title: string;
-  video: boolean;
   vote_average: number;
   vote_count: number;
 };
 
 export type TVShow = {
   id: number;
-  backdrop_path: string;
-  first_air_date: string;
-  genre_ids: number[];
   name: string;
-  origin_country: string[];
-  original_language: string;
   original_name: string;
   overview: string;
   popularity: number;
@@ -39,9 +33,16 @@ export type TVShow = {
   vote_average: number;
   vote_count: number;
 };
-export type UpcomingMovies = Movie & {
-  adult: boolean;
+export type UpcomingMovies = {
+  id: number;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
   release_date: string;
+  title: string;
+  vote_average: number;
+  vote_count: number;
 };
 
 export const moviedbApi = createApi({
@@ -58,8 +59,7 @@ export const moviedbApi = createApi({
         `discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&without_genres=string&api_key=${apiKey}`,
     }),
     fetchUpcomingData: builder.query<UpcomingCineData, void>({
-      query: () =>
-        `movie/upcoming?language=en-US&page=2&api_key=${apiKey}`,
+      query: () => `movie/upcoming?language=en-US&page=2&api_key=${apiKey}`,
     }),
   }),
 });

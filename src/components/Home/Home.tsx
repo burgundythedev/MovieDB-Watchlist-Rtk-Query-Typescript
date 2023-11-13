@@ -30,8 +30,12 @@ const Home = () => {
     return <div>Error fetching upcoming movie data</div>;
   }
   const handleAddToWL = (movie: UpcomingMovies) => {
-    dispatch(addToWatchlist({ ...movie, source: 'UpcomingMovies' }));
-    console.log(movie)
+    dispatch(
+      addToWatchlist({
+        ...movie,
+        source: "UpcomingMovies",
+      })
+    );
   };
   return (
     <div className="home">

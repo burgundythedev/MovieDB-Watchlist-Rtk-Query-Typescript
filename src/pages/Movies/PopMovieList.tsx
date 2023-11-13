@@ -2,12 +2,15 @@ import {
   Movie,
   useFetchPopularMovieDataQuery,
 } from "../../components/Redux/fetchDataSlice";
+import { useNavigate } from "react-router-dom";
+
 import { useWatchListDispatch } from "../../components/Redux/hooks";
 import { addToWatchlist } from "../../components/Redux/watchlistSlice";
 import Button from "../../components/UI/Button";
 import "./PopMovieList.scss";
 
 const PopMovieList = () => {
+  const navigate = useNavigate();
   const dispatch = useWatchListDispatch();
   const { data: movieData, error } = useFetchPopularMovieDataQuery();
 
@@ -18,11 +21,17 @@ const PopMovieList = () => {
     return text;
   };
 
-
-const handleAddToWL = (movie: Movie) => {
-  dispatch(addToWatchlist({ ...movie, source: 'PopMovieList' }));
-};
-
+  const handleAddToWL = (movie: Movie) => {
+    dispatch(
+      addToWatchlist({
+        ...movie,
+        source: "PopMovieList",
+      })
+    );
+  };
+  const handleMovieClick = (movie: Movie) => {
+    navigate(`/movies/${movie.id}`);
+  };
 
   return (
     <div className="popular">
@@ -52,6 +61,9 @@ const handleAddToWL = (movie: Movie) => {
                 type="secondary"
                 children="Add To Watchlist"
               />
+              <Button onClick={() => handleMovieClick(movie)} type="primary">
+                View Details
+              </Button>
             </li>
           ))}
         </ul>

@@ -2,9 +2,9 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Movie, TVShow, UpcomingMovies } from "../Redux/fetchDataSlice";
 
 export type WatchlistItem =
-  | (Movie & { source: string; viewed: boolean })
-  | (TVShow & { source: string; viewed: boolean })
-  | (UpcomingMovies & { source: string; viewed: boolean });
+  | (Movie & { source: string })
+  | (TVShow & { source: string })
+  | (UpcomingMovies & { source: string });
 
 export interface WatchlistState {
   items: WatchlistItem[];
@@ -28,7 +28,7 @@ export const watchlistSlice = createSlice({
       );
 
       if (!exists) {
-        state.items.push({ ...action.payload, viewed: false });
+        state.items.push({ ...action.payload });
         localStorage.setItem("watchlist", JSON.stringify(state.items));
       }
     },
