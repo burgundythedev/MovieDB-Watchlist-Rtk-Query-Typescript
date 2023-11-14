@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { moviedbApi } from "../Redux/fetchDataSlice";
-import { watchlistSlice } from "../Redux/watchlistSlice";
+import { moviedbApi } from "./fetchDataSlice";
+import { watchlistSlice } from "./watchlistSlice";
 
 const store = configureStore({
   reducer: {

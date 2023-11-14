@@ -32,6 +32,7 @@ export type TVShow = {
   poster_path: string;
   vote_average: number;
   vote_count: number;
+  first_air_date: string;
 };
 export type UpcomingMovies = {
   id: number;
@@ -61,6 +62,19 @@ export const moviedbApi = createApi({
     fetchUpcomingData: builder.query<UpcomingCineData, void>({
       query: () => `movie/upcoming?language=en-US&page=2&api_key=${apiKey}`,
     }),
+
+    fetchMovieById: builder.query<Movie, number>({
+      query: (id) => `movie/${id}?language=en-US&api_key=${apiKey}`,
+    }),
+
+    fetchTVShowById: builder.query<TVShow, number>({
+      query: (id) => `tv/${id}?language=en-US&api_key=${apiKey}`,
+    }),
+
+    fetchUpcomingMovieById: builder.query<UpcomingMovies, number>({
+      query: (id) => `movie/${id}?language=en-US&api_key=${apiKey}`,
+    }),
+    
   }),
 });
 
@@ -68,4 +82,7 @@ export const {
   useFetchPopularMovieDataQuery,
   useFetchTVShowDataQuery,
   useFetchUpcomingDataQuery,
+  useFetchMovieByIdQuery,
+  useFetchTVShowByIdQuery,
+  useFetchUpcomingMovieByIdQuery,
 } = moviedbApi;

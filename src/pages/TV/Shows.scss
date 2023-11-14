@@ -23,7 +23,10 @@
       max-width: 100%;
       height: auto;
     }
-  
+    &__button-container {
+      display: flex;
+      justify-content: space-between;
+    }
     &__tv-show-title {
       font-size: 16px;
       font-weight: bold;

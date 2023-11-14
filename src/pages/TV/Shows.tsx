@@ -1,14 +1,17 @@
-import Button from "../../components/UI/Button"; 
+
+import Button from "../../components/UI/Button";
 import {
   useFetchTVShowDataQuery,
   TVShow,
-} from "../../components/Redux/fetchDataSlice";
+} from "../../components/store/fetchDataSlice";
+import { useNavigate } from "react-router-dom";
 import "./Shows.scss";
-import { useWatchListDispatch } from "../../components/Redux/hooks";
-import { addToWatchlist } from "../../components/Redux/watchlistSlice";
+import { useWatchListDispatch } from "../../components/hooks/hooks";
+import { addToWatchlist } from "../../components/store/watchlistSlice";
 
 const PopTVShowList = () => {
   const dispatch = useWatchListDispatch();
+  const navigate = useNavigate();
 
   const { data: tvShowData, error } = useFetchTVShowDataQuery();
 
@@ -21,7 +24,10 @@ const PopTVShowList = () => {
 
   const handleAddToWL = (tvShow: TVShow) => {
     dispatch(addToWatchlist({ ...tvShow, source: 'PopTVShowList' }));
-    console.log(tvShow);
+  };
+
+  const handleTvShowDetails = (tvShow: TVShow) => {
+    navigate(`/tvshows/${tvShow.id}`);
   };
 
   return (
@@ -42,15 +48,18 @@ const PopTVShowList = () => {
               <p className="shows__overview">
                 {truncateText(tvShow.overview, 80)}
               </p>
-              <p className="shows__release-date">
-                First Air Date: {tvShow.first_air_date}
-              </p>
-              <p className="shows__vote">Vote Average: {tvShow.vote_average}</p>
-              <Button
-                onClick={() => handleAddToWL(tvShow)} 
-                type="third"
-                children="Add To Watchlist"
-              />
+              <div className="shows__button-container">
+                <Button
+                  onClick={() => handleAddToWL(tvShow)}
+                  type="third"
+                  children="Add To Watchlist"
+                />
+                <Button
+                  onClick={() => handleTvShowDetails(tvShow)}
+                  type="third"
+                  children="View Details"
+                />
+              </div>
             </li>
           ))}
         </ul>

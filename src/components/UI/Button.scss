@@ -1,13 +1,27 @@
 .button {
-  display: inline-block;
-  padding: 5px 10px;
+  align-items: center;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: Inter, sans-serif;
   font-size: 16px;
+  font-weight: 600;
+  height: 48px;
+  justify-content: center;
+  letter-spacing: -0.8px;
+  line-height: 24px;
+  min-width: 30px;
+  outline: 0;
+  padding: 0 17px;
   text-align: center;
   text-decoration: none;
-  cursor: pointer;
-  background-color: #3498db;
-  border: 0;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: all 0.3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 
   &:hover,
   &:focus {
@@ -18,29 +32,60 @@
   &--primary {
     margin-top: 10px;
     font-size: 10px;
-    color: #fff;
-
-    &:hover,
+    width: 20px;
     &:focus {
-      background-color: #2577ae;
+      color: #171e29;
+    }
+
+    &:hover {
+      border-color: green;
+      color: green;
+      fill: green;
+    }
+
+    &:active {
+      border-color: green;
+      color: green;
+      fill: green;
     }
   }
 
   &--secondary {
-    background-color: #2ecc71;
-    &:hover,
+    background-color: #fff;
     &:focus {
-      background-color: #2ecc71;
-      color: #fff;
+      color: #171e29;
+    }
+
+    &:hover {
+      border-color: #06f;
+      color: #06f;
+      fill: #06f;
+    }
+
+    &:active {
+      border-color: #06f;
+      color: #06f;
+      fill: #06f;
     }
   }
 
   &--third {
     background-color: red;
-    &:hover,
+
     &:focus {
-      background-color: #2ecc71;
-      color: #fff;
+      color: #171e29;
+    }
+
+    &:hover {
+      border-color: red;
+      color: red;
+      fill: red;
+    }
+
+    &:active {
+      border-color: red;
+      color: red;
+      fill: red;
     }
   }
 }

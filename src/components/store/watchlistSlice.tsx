@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Movie, TVShow, UpcomingMovies } from "../Redux/fetchDataSlice";
+import { Movie, TVShow, UpcomingMovies } from "./fetchDataSlice";
 
 export type WatchlistItem =
   | (Movie & { source: string })
@@ -8,10 +8,12 @@ export type WatchlistItem =
 
 export interface WatchlistState {
   items: WatchlistItem[];
+  totalItems: number;
 }
 
 const initialState: WatchlistState = {
   items: JSON.parse(localStorage.getItem("watchlist") || "[]") || [],
+  totalItems: 0,
 };
 
 export const watchlistSlice = createSlice({
@@ -29,6 +31,7 @@ export const watchlistSlice = createSlice({
 
       if (!exists) {
         state.items.push({ ...action.payload });
+        state.totalItems = state.items.length; 
         localStorage.setItem("watchlist", JSON.stringify(state.items));
       }
     },
@@ -45,10 +48,13 @@ export const watchlistSlice = createSlice({
       );
 
       state.items = updatedItems;
+      state.totalItems = updatedItems.length; 
       localStorage.setItem("watchlist", JSON.stringify(updatedItems));
     },
   },
 });
 
 export const { addToWatchlist, deleteFromWatchlist } = watchlistSlice.actions;
-export default watchlistSlice;
+export const selectWatchlistTotalItems = (state: { watchlist: { totalItems: number; }; }) => state.watchlist.totalItems;
+
+

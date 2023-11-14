@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Aboreto&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap");
 .header {
   display: flex;
   justify-content: center;
@@ -23,7 +23,10 @@
     &:visited {
       color: black;
     }
-
+  }
+  &__item{
+ margin-left: 5px;
+   
   }
   @media only screen and (max-width: 400px) {
     &__logo-container {
@@ -46,22 +49,33 @@
       align-items: center;
       list-style: none;
       padding-left: 0;
-   
     }
 
     &__link {
       display: flex;
       align-items: center;
       padding: 0px 10px 0px 10px;
-      font-size: 16px;
+      font-size: 14px;
       text-decoration: none;
-      font-family: 'Kanit', sans-serif;
+      font-family: "Kanit", sans-serif;
 
       &:visited {
         color: black;
       }
 
- 
+      &--watchlist-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      &__item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      
+      }
+
+   
     }
   }
 

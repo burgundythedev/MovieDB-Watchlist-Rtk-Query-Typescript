@@ -1,11 +1,11 @@
 import {
   useWatchListDispatch,
   useWatchListSelector,
-} from "../../components/Redux/hooks";
+} from "../../components/hooks/hooks";
 import {
   WatchlistItem,
   deleteFromWatchlist,
-} from "../../components/Redux/watchlistSlice";
+} from "../../components/store/watchlistSlice";
 import "./PopMoviesWl.scss";
 
 const PopMoviesWL = () => {

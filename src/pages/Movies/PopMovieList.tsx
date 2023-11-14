@@ -1,12 +1,12 @@
 import {
   Movie,
   useFetchPopularMovieDataQuery,
-} from "../../components/Redux/fetchDataSlice";
+} from "../../components/store/fetchDataSlice";
 import { useNavigate } from "react-router-dom";
-
-import { useWatchListDispatch } from "../../components/Redux/hooks";
-import { addToWatchlist } from "../../components/Redux/watchlistSlice";
+import { useWatchListDispatch } from "../../components/hooks/hooks";
+import { addToWatchlist } from "../../components/store/watchlistSlice";
 import Button from "../../components/UI/Button";
+
 import "./PopMovieList.scss";
 
 const PopMovieList = () => {
@@ -29,7 +29,8 @@ const PopMovieList = () => {
       })
     );
   };
-  const handleMovieClick = (movie: Movie) => {
+
+  const handleMovieDetails = (movie: Movie) => {
     navigate(`/movies/${movie.id}`);
   };
 
@@ -47,23 +48,25 @@ const PopMovieList = () => {
                 alt={movie.title}
                 className="popular__img"
               />
-              <h2 className="popular__movie-title">{movie.title}</h2>
+              <h2 className="popular__movie-title">
+                {movie.title}
+                <span className="popular__vote">{movie.vote_average}</span>
+              </h2>
               <p className="popular__overview">
                 {truncateText(movie.overview, 80)}
               </p>
-              <p className="popular__release-date">
-                Release Date: {movie.release_date}
-              </p>
-              <p className="popular__vote">{movie.vote_average}</p>
-              <p className="popular__vote">{movie.popularity}</p>
-              <Button
-                onClick={() => handleAddToWL(movie)}
-                type="secondary"
-                children="Add To Watchlist"
-              />
-              <Button onClick={() => handleMovieClick(movie)} type="primary">
-                View Details
-              </Button>
+              <div className="popular__button-container">
+                <Button
+                  onClick={() => handleAddToWL(movie)}
+                  type="secondary"
+                  children="Add To Watchlist"
+                />
+                <Button
+                  onClick={() => handleMovieDetails(movie)}
+                  type="secondary"
+                  children="View Details"
+                ></Button>
+              </div>
             </li>
           ))}
         </ul>
