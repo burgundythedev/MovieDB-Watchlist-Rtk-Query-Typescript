@@ -1,13 +1,10 @@
-import {
-  Movie,
-  useFetchPopularMovieDataQuery,
-} from "../../components/store/fetchDataSlice";
+import { useFetchPopularMovieDataQuery } from "../../components/store/fetchDataSlice";
 import { useNavigate } from "react-router-dom";
 import { useWatchListDispatch } from "../../components/hooks/hooks";
 import { addToWatchlist } from "../../components/store/watchlistSlice";
 import Button from "../../components/UI/Button";
-
 import "./PopMovieList.scss";
+import { Movie } from "../../models";
 
 const PopMovieList = () => {
   const navigate = useNavigate();

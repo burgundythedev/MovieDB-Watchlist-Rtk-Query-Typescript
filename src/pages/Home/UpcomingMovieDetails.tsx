@@ -5,7 +5,7 @@ import "./UpcomingMovieDetails.scss";
 const UpcomingMovieDetails = () => {
   const { id } = useParams();
   const { data: upcomingMovieDetails, error } = useFetchUpcomingMovieByIdQuery(
-    Number(id) as number
+    Number(id) || 0
   );
 
   if (error) {

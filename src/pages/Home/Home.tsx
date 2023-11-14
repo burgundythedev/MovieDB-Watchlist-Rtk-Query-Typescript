@@ -1,13 +1,11 @@
 import Button from "../../components/UI/Button";
-import {
-  UpcomingMovies,
-  useFetchUpcomingDataQuery,
-} from "../../components/store/fetchDataSlice";
-import IMAGES from "../../components/UI/Images/Images";
+import { useFetchUpcomingDataQuery } from "../../components/store/fetchDataSlice";
 import { addToWatchlist } from "../../components/store/watchlistSlice";
 import { useWatchListDispatch } from "../../components/hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import "./Home.scss";
+import { UpcomingMovies } from "../../models";
+import wallpaper from "../../assets/cinema-wallpaper.jpg";
 
 const Home = () => {
   const dispatch = useWatchListDispatch();
@@ -48,7 +46,7 @@ const Home = () => {
 
   return (
     <div className="home">
-      <img className="home__wallpaper" src={IMAGES.image1} alt="Wallpaper" />
+      <img className="home__wallpaper" src={wallpaper} alt="Wallpaper" />
       <h1 className="home__title">Upcoming Movies</h1>
       <ul className="home__movie-list">
         {upcomingData?.results.slice(0, 4).map((upMovie: UpcomingMovies) => (

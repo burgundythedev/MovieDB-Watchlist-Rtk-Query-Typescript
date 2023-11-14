@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Movie, TVShow, UpcomingMovies } from "./fetchDataSlice";
+import { Movie, TVShow, UpcomingMovies } from "../../models";
+
 
 export type WatchlistItem =
   | (Movie & { source: string })
@@ -12,7 +13,7 @@ export interface WatchlistState {
 }
 
 const initialState: WatchlistState = {
-  items: JSON.parse(localStorage.getItem("watchlist") || "[]") || [],
+  items: JSON.parse(localStorage.getItem("watchlist") || "[]") as WatchlistItem[],
   totalItems: 0,
 };
 

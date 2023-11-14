@@ -5,7 +5,7 @@ import "./MovieDetails.scss";
 const MovieDetails = () => {
   const { id } = useParams();
   const { data: movieDetails, error } = useFetchMovieByIdQuery(
-    Number(id) as number
+    Number(id) || 0
   );
 
   if (error) {

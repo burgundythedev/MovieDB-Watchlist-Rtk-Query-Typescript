@@ -5,7 +5,7 @@ import "./TvShowDetails.scss";
 const TvShowDetails = () => {
   const { id } = useParams();
   const { data: tvShowDetails, error } = useFetchTVShowByIdQuery(
-    Number(id) as number
+    Number(id) || 0
   );
 
   if (error) {
