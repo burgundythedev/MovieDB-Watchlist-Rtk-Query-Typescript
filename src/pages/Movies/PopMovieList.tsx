@@ -51,6 +51,11 @@ const PopMovieList = () => {
               </h2>
               <p className="popular__overview">
                 {truncateText(movie.overview, 80)}
+                <Button
+                  onClick={() => handleMovieDetails(movie)}
+                  type="view"
+                  children="View Details"
+                />
               </p>
               <div className="popular__button-container">
                 <Button
@@ -58,11 +63,7 @@ const PopMovieList = () => {
                   type="secondary"
                   children="Add To Watchlist"
                 />
-                <Button
-                  onClick={() => handleMovieDetails(movie)}
-                  type="secondary"
-                  children="View Details"
-                ></Button>
+           
               </div>
             </li>
           ))}

@@ -52,12 +52,12 @@ const PopTVShowList = () => {
               <div className="shows__button-container">
                 <Button
                   onClick={() => handleAddToWL(tvShow)}
-                  type="third"
+                  type="view"
                   children="Add To Watchlist"
                 />
                 <Button
                   onClick={() => handleTvShowDetails(tvShow)}
-                  type="third"
+                  type="view"
                   children="View Details"
                 />
               </div>

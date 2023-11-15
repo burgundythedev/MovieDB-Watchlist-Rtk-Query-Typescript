@@ -3,7 +3,7 @@ import "./Button.scss";
 
 interface ButtonProps {
   className?: string;
-  type?: "primary" | "secondary" | "third";
+  type?: "primary" | "secondary" | "view";
   children: ReactNode;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }

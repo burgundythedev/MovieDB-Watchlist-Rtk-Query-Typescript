@@ -13,9 +13,9 @@
   justify-content: center;
   letter-spacing: -0.8px;
   line-height: 24px;
-  min-width: 30px;
+  min-width: 20px;
   outline: 0;
-  padding: 0 17px;
+  padding: 0 10px;
   text-align: center;
   text-decoration: none;
   transition: all 0.3s;
@@ -33,6 +33,14 @@
     margin-top: 10px;
     font-size: 10px;
     width: 20px;
+
+    @media only screen and (max-width: 400px) {
+      width: auto;
+      margin-top: 5px;
+      font-size: 10px;
+      height: 30px;
+    }
+
     &:focus {
       color: #171e29;
     }
@@ -52,6 +60,12 @@
 
   &--secondary {
     background-color: #fff;
+    @media only screen and (max-width: 400px) {
+      width: auto;
+      margin-top: 5px;
+      font-size: 10px;
+      height: 30px;
+    }
     &:focus {
       color: #171e29;
     }
@@ -69,23 +83,46 @@
     }
   }
 
-  &--third {
+  &--view {
     background-color: red;
+    width: 150px;
+    height: 76px;
+    line-height: 78px;
+    font-size: 20px;
+    font-family: "Bebas Neue", sans-serif;
+    background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
+    border: 0;
+    color: #fff;
+    letter-spacing: 3px;
+    box-shadow: 6px 0px 0px #00e6f6;
+    outline: transparent;
+    position: relative;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
 
+
+    @media only screen and (max-width: 400px) {
+      width: auto;
+      margin-top: 5px;
+      font-size: 10px;
+      height: 20px;
+      margin-left: 10px;
+    }
     &:focus {
       color: #171e29;
     }
 
     &:hover {
-      border-color: red;
-      color: red;
-      fill: red;
+      border-color: #06f;
+      color: #06f;
+      fill: #06f;
     }
 
     &:active {
-      border-color: red;
-      color: red;
-      fill: red;
+      border-color: #06f;
+      color: #06f;
+      fill: #06f;
     }
   }
 }
