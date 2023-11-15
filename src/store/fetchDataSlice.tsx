@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Movie, MovieData, TVShow, TVShowData, UpcomingCineData, UpcomingMovies } from "../../models";
+import { Movie, MovieData, TVShow, TVShowData, UpcomingCineData, UpcomingMovies } from "../models";
 
 const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
 

@@ -1,7 +1,7 @@
 import Button from "../../components/UI/Button";
-import { useFetchUpcomingDataQuery } from "../../components/store/fetchDataSlice";
-import { addToWatchlist } from "../../components/store/watchlistSlice";
-import { useWatchListDispatch } from "../../components/hooks/hooks";
+import { useFetchUpcomingDataQuery } from "../../store/fetchDataSlice";
+import { addToWatchlist } from "../../store/watchlistSlice";
+import { useWatchListDispatch } from "../../hooks/hooks";
 import { useNavigate } from "react-router-dom";
 import "./Home.scss";
 import { UpcomingMovies } from "../../models";

@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Movie, TVShow, UpcomingMovies } from "../../models";
+import { Movie, TVShow, UpcomingMovies } from "../models";
 
 
 export type WatchlistItem =

@@ -2,7 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./Header.scss";
 import logo from "../../assets/eye-logo.png";
-import { selectWatchlistTotalItems } from "../store/watchlistSlice";
+import { selectWatchlistTotalItems } from "../../store/watchlistSlice";
 
 const Header = () => {
   const watchlistTotalItems = useSelector(selectWatchlistTotalItems);

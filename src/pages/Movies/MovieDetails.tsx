@@ -1,4 +1,4 @@
-import { useFetchMovieByIdQuery } from "../../components/store/fetchDataSlice";
+import { useFetchMovieByIdQuery } from "../../store/fetchDataSlice";
 import { useParams } from "react-router-dom";
 import "./MovieDetails.scss";
 

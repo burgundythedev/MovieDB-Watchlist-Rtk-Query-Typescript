@@ -1,11 +1,5 @@
-import {
-  useWatchListDispatch,
-  useWatchListSelector,
-} from "../../components/hooks/hooks";
-import {
-  WatchlistItem,
-  deleteFromWatchlist,
-} from "../../components/store/watchlistSlice";
+import { useWatchListDispatch, useWatchListSelector } from "../../hooks/hooks";
+import { WatchlistItem, deleteFromWatchlist } from "../../store/watchlistSlice";
 import "./UpcomingWL.scss";
 
 const UpcomingWL = () => {

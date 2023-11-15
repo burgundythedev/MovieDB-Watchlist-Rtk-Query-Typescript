@@ -2,12 +2,13 @@
 import Button from "../../components/UI/Button";
 import {
   useFetchTVShowDataQuery,
-  TVShow,
-} from "../../components/store/fetchDataSlice";
+
+} from "../../store/fetchDataSlice";
 import { useNavigate } from "react-router-dom";
 import "./Shows.scss";
-import { useWatchListDispatch } from "../../components/hooks/hooks";
-import { addToWatchlist } from "../../components/store/watchlistSlice";
+import { useWatchListDispatch } from "../../hooks/hooks";
+import { addToWatchlist } from "../../store/watchlistSlice";
+import { TVShow } from "../../models";
 
 const PopTVShowList = () => {
   const dispatch = useWatchListDispatch();

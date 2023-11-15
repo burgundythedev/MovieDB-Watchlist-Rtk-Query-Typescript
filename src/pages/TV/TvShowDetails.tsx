@@ -1,4 +1,4 @@
-import { useFetchTVShowByIdQuery } from "../../components/store/fetchDataSlice";
+import { useFetchTVShowByIdQuery } from "../../store/fetchDataSlice";
 import { useParams } from "react-router-dom";
 import "./TvShowDetails.scss";
 

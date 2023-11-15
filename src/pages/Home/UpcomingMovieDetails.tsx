@@ -1,4 +1,4 @@
-import { useFetchUpcomingMovieByIdQuery } from "../../components/store/fetchDataSlice";
+import { useFetchUpcomingMovieByIdQuery } from "../../store/fetchDataSlice";
 import { useParams } from "react-router-dom";
 import "./UpcomingMovieDetails.scss";
 
