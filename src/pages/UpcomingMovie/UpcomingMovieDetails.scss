@@ -1,8 +1,7 @@
-// MovieDetails.scss
-.movie-details {
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8); 
-
+.upcoming-movie-details {
   font-family: "Aboreto", sans-serif;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+
   @media only screen and (max-width: 400px) {
     color: white;
     &__title {
@@ -16,27 +15,22 @@
       flex-direction: column;
       align-items: center;
     }
+
     &__title-box {
       display: flex;
       flex-direction: row;
       justify-content: center;
       color: black;
-
     }
-    &__button-box{
+
+    &__button-box {
+      margin: 0px 20px ;
       display: flex;
       flex-direction: row;
+      align-items: center;
       justify-content: space-between;
-      margin: 10px;
-
     }
-    &__button-container{
-      display: flex;
-     
-      justify-content: center;
-      margin: 10px;
 
-    }
     &__date {
       display: flex;
       align-items: end;
@@ -44,18 +38,21 @@
       margin-left: 5px;
       text-shadow: none;
     }
+
     &__text {
-      margin-right: 20px;
-    
+      margin-right: 10px;
     }
+
     &__icon {
       width: 20px;
       margin-right: 5px;
     }
+
     &__strong {
       margin-right: 5px;
       font-size: 8px;
     }
+
     &__backdrop {
       width: 100%;
       height: 100%;
@@ -67,24 +64,20 @@
     }
 
     &__poster {
-      width: 150px;
+      width: 250px;
       max-width: 500px;
-      height: 200px;
       margin-bottom: 20px;
-      margin-top: 50px;
+      margin-top: 20px;
       position: relative;
       z-index: 1;
       border-radius: 10px;
     }
 
     &__overview {
-      margin-bottom: 20px;
       text-align: justify;
       font-weight: bold;
-      margin-bottom: 10px;
-      font-size: 12px;
-      width: 280px;
-    
+      font-size: 10px;
+      width: 250px;
     }
 
     &__details {
@@ -92,12 +85,14 @@
       display: flex;
       flex-direction: row;
       justify-content: space-around;
-     
+      width: 100%;
     }
+
     &__details-items {
       display: flex;
       align-items: center;
     }
+
     &__error {
       color: red;
       font-size: 18px;

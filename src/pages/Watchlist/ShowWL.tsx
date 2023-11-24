@@ -1,15 +1,13 @@
-import {
-  useWatchListDispatch,
-  useWatchListSelector,
-} from "../../hooks/hooks";
-import {
-  WatchlistItem,
-  deleteFromWatchlist,
-} from "../../store/watchlistSlice";
+import { useNavigate } from "react-router-dom";
+import Button from "../../components/UI/Button";
+import { useWatchListDispatch, useWatchListSelector } from "../../hooks/hooks";
+import { WatchlistItem, deleteFromWatchlist } from "../../store/watchlistSlice";
 import "./ShowWL.scss";
+import { TVShow } from "../../models";
 
 const ShowWL = () => {
   const dispatch = useWatchListDispatch();
+  const navigate = useNavigate();
   const watchlistItems = useWatchListSelector((state) => state.watchlist.items);
 
   const tvShowItems = watchlistItems.filter(
@@ -20,28 +18,39 @@ const ShowWL = () => {
     dispatch(deleteFromWatchlist(item));
   };
 
+  const handleShowDetails = (item: TVShow) => {
+    navigate(`/tvshows/${item.id}/watchlist-details`);
+  };
+
   return (
     <div className="show-wl">
       <h1 className="show-wl__title">TV Shows Watchlist</h1>
       <ul className="show-wl__list">
         {tvShowItems.map((item: WatchlistItem) => (
           <li key={item.id} className="show-wl__item">
-            {"name" in item && (
-              <p className="show-wl__item-name">{item.name}</p>
-            )}
             {"poster_path" in item && (
               <img
-                src={`https://image.tmdb.org/t/p/w500/${item.poster_path}`}
-                alt="poster-movie"
+                src={`https://image.tmdb.org/t/p/original${item.poster_path}`}
+                alt="poster-show"
                 className="show-wl__item-image"
               />
             )}
-            <button
-              onClick={() => handleDelete(item)}
-              className="show-wl__item-button show-wl__item-button--delete"
-            >
-              Delete
-            </button>
+            <div className="show-wl__button-box">
+              <Button
+                onClick={() => handleDelete(item)}
+                type="primary"
+                children="Delete"
+              />
+              <Button
+                onClick={() => {
+                  if ("id" in item) {
+                    handleShowDetails(item as TVShow);
+                  }
+                }}
+                type="primary"
+                children="View Details"
+              />
+            </div>
           </li>
         ))}
       </ul>

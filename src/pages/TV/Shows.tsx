@@ -1,9 +1,5 @@
-
 import Button from "../../components/UI/Button";
-import {
-  useFetchTVShowDataQuery,
-
-} from "../../store/fetchDataSlice";
+import { useFetchTVShowDataQuery } from "../../store/fetchDataSlice";
 import { useNavigate } from "react-router-dom";
 import "./Shows.scss";
 import { useWatchListDispatch } from "../../hooks/hooks";
@@ -24,7 +20,7 @@ const PopTVShowList = () => {
   };
 
   const handleAddToWL = (tvShow: TVShow) => {
-    dispatch(addToWatchlist({ ...tvShow, source: 'PopTVShowList' }));
+    dispatch(addToWatchlist({ ...tvShow, source: "PopTVShowList" }));
   };
 
   const handleTvShowDetails = (tvShow: TVShow) => {
@@ -38,29 +34,27 @@ const PopTVShowList = () => {
         <div className="shows__error-message">Error fetching data</div>
       ) : tvShowData && tvShowData.results ? (
         <ul className="shows__tv-show-list">
-          {tvShowData.results.map((tvShow) => (
+          {tvShowData.results.slice(0, 10).map((tvShow) => (
             <li key={tvShow.id} className="shows__tv-show-item">
               <img
-                src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
+                src={`https://image.tmdb.org/t/p/original${tvShow.poster_path}`}
                 alt={tvShow.name}
                 className="shows__img"
               />
               <h2 className="shows__tv-show-title">{tvShow.name}</h2>
               <p className="shows__overview">
                 {truncateText(tvShow.overview, 80)}
-              </p>
-              <div className="shows__button-container">
-                <Button
-                  onClick={() => handleAddToWL(tvShow)}
-                  type="view"
-                  children="Add To Watchlist"
-                />
                 <Button
                   onClick={() => handleTvShowDetails(tvShow)}
                   type="view"
                   children="View Details"
                 />
-              </div>
+              </p>
+              <Button
+                type="secondary"
+                onClick={() => handleAddToWL(tvShow)}
+                children="Add to Watchlist"
+              />
             </li>
           ))}
         </ul>

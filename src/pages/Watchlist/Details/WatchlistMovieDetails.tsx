@@ -1,17 +1,14 @@
-import { useFetchMovieByIdQuery } from "../../store/fetchDataSlice";
+import { useFetchMovieByIdQuery } from "../../../store/fetchDataSlice";
 import { NavLink, useParams } from "react-router-dom";
-import "./MovieDetails.scss";
-import Button from "../../components/UI/Button";
-import rating from "../../assets/rating.png";
-import voteCount from "../../assets/vote-count.png";
-import { addToWatchlist } from "../../store/watchlistSlice";
-import { Movie } from "../../models";
-import { useWatchListDispatch } from "../../hooks/hooks";
+import "../../Movies/MovieDetails.scss";
+
+import rating from "../../../assets/rating.png";
+import voteCount from "../../../assets/vote-count.png";
+import Button from "../../../components/UI/Button";
 
 const MovieDetails = () => {
   const { id } = useParams<{ id: string }>();
   const { data: movieDetails, error } = useFetchMovieByIdQuery(Number(id) || 0);
-  const dispatch = useWatchListDispatch();
 
   if (error) {
     return (
@@ -22,14 +19,7 @@ const MovieDetails = () => {
   if (!movieDetails) {
     return <div className="movie-details__loading">Loading...</div>;
   }
-  const handleAddToWatchlist = (movie: Movie) => {
-    dispatch(
-      addToWatchlist({
-        ...movie,
-        source: "PopMovieList",
-      })
-    );
-  };
+
   return (
     <div className="movie-details">
       <div className="movie-details__title-box">
@@ -73,15 +63,10 @@ const MovieDetails = () => {
           <p className="movie-details__description">{movieDetails.overview}</p>
         </div>
       </div>
-      <div className="movie-details__button-box">
-        <NavLink to="/">
-          <Button type="primary" children="← Back to Home" />
+      <div className="movie-details__button-container">
+        <NavLink to="/watchlist">
+          <Button type="primary" children="← Back to Watchlist" />
         </NavLink>
-        <Button
-          onClick={() => handleAddToWatchlist(movieDetails)}
-          type="primary"
-          children="Add to Watchlist"
-        />
       </div>
     </div>
   );

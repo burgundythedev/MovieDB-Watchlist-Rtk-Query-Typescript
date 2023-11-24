@@ -1,29 +1,22 @@
 .pop-movies-wl {
   &__title {
     font-family: "Aboreto", sans-serif;
-    font-size: 20px;
-    margin-left: 5px;
-    text-align: center;
+    font-size: 10px;
+    text-align: start;
   }
 
   &__list {
     list-style: none;
     padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
   }
 
   &__movie-item {
-    margin: 10px;
-    border: 1px solid #ccc;
-    padding: 10px;
     box-sizing: border-box;
     text-align: center;
     position: relative;
-
-
-
   }
 
   &__img {
@@ -32,6 +25,7 @@
     height: auto;
     transition: filter 0.3s ease;
   }
+
   &__item-button {
     margin: 5px;
     padding: 8px 12px;
@@ -45,9 +39,51 @@
       background-color: red;
       color: white;
     }
+  }
+  @media only screen and (max-width: 400px) {
+    &__title {
+      font-family: "Aboreto", sans-serif;
+      font-size: 15px;
+      margin-left: 5px;
+      text-align: start;
+    }
 
+    &__list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
 
+    &__movie-item {
+      width: calc(50% - 10px);
+      box-sizing: border-box;
+      text-align: center;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    &__img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+    }
+
+    &__button-box {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__item-button {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      &--delete {
+        background-color: red;
+        color: white;
+      }
     }
   }
-
-
+}

@@ -1,16 +1,13 @@
-import { useFetchTVShowByIdQuery } from "../../store/fetchDataSlice";
+import { useFetchTVShowByIdQuery } from "../../../store/fetchDataSlice";
 import { NavLink, useParams } from "react-router-dom";
-import "./TvShowDetails.scss";
-import rating from "../../assets/rating.png";
-import voteCount from "../../assets/vote-count.png";
-import Button from "../../components/UI/Button";
-import { TVShow } from "../../models";
-import { useWatchListDispatch } from "../../hooks/hooks";
-import { addToWatchlist } from "../../store/watchlistSlice";
+import "../../TV/TvShowDetails.scss";
+import rating from "../../../assets/rating.png";
+import voteCount from "../../../assets/vote-count.png";
+import Button from "../../../components/UI/Button";
 
 const TvShowDetails = () => {
   const { id } = useParams<{ id: string }>();
-  const dispatch = useWatchListDispatch();
+
   const { data: tvShowDetails, error } = useFetchTVShowByIdQuery(
     Number(id) || 0
   );
@@ -26,14 +23,7 @@ const TvShowDetails = () => {
   if (!tvShowDetails) {
     return <div className="tv-show-details__loading">Loading...</div>;
   }
-  const handleAddToWatchlist = (movie: TVShow) => {
-    dispatch(
-      addToWatchlist({
-        ...movie,
-        source: "PopTVShowList",
-      })
-    );
-  };
+
   return (
     <div className="tv-show-details">
       <div className="tv-show-details__title-box">
@@ -83,15 +73,10 @@ const TvShowDetails = () => {
           </p>
         </div>
       </div>
-      <div className="tv-show-details__button-box">
-        <NavLink to="/">
-          <Button type="primary" children="← Back to Home" />
+      <div className="upcoming-movie-details__button-container">
+        <NavLink to="/watchlist">
+          <Button type="primary" children="← Back to Watchlist" />
         </NavLink>
-        <Button
-          onClick={() => handleAddToWatchlist(tvShowDetails)}
-          type="primary"
-          children="Add to Watchlist"
-        />
       </div>
     </div>
   );

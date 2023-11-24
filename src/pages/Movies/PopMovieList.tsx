@@ -38,17 +38,14 @@ const PopMovieList = () => {
         <div className="popular__error-message">Error fetching data</div>
       ) : movieData && movieData.results ? (
         <ul className="popular__movie-list">
-          {movieData.results.map((movie) => (
+          {movieData.results.slice(0, 10).map((movie) => (
             <li key={movie.id} className="popular__movie-item">
               <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
                 alt={movie.title}
                 className="popular__img"
               />
-              <h2 className="popular__movie-title">
-                {movie.title}
-                <span className="popular__vote">{movie.vote_average}</span>
-              </h2>
+              <h2 className="popular__movie-title">{movie.title}</h2>
               <p className="popular__overview">
                 {truncateText(movie.overview, 80)}
                 <Button
@@ -57,14 +54,11 @@ const PopMovieList = () => {
                   children="View Details"
                 />
               </p>
-              <div className="popular__button-container">
-                <Button
-                  onClick={() => handleAddToWL(movie)}
-                  type="secondary"
-                  children="Add To Watchlist"
-                />
-           
-              </div>
+              <Button
+                onClick={() => handleAddToWL(movie)}
+                type="secondary"
+                children="Add To Watchlist"
+              />
             </li>
           ))}
         </ul>

@@ -2,88 +2,62 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap");
 .header {
   display: flex;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: space-evenly;
+  flex-direction: row;
   &__title {
     font-family: "Aboreto", sans-serif;
     font-size: 35px;
     margin-left: 20px;
   }
-  &__logo {
-    width: 50px;
-    height: 50px;
+
+  &__item {
+    margin-left: 5px;
   }
+
+  &__logo-container {
+    display: flex;
+    justify-content: center;
+  }
+  &__logo {
+    width: 25px;
+    height: 25px;
+    padding: 10px;
+  }
+  &__title {
+    font-family: "Aboreto", sans-serif;
+    font-size: 20px;
+    margin-left: 5px;
+  }
+  &__menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
   &__link {
     display: flex;
     align-items: center;
     padding: 0px 10px 0px 10px;
-    font-size: 12px;
+    font-size: 14px;
     text-decoration: none;
+    font-family: "Kanit", sans-serif;
 
     &:visited {
       color: black;
     }
-  }
-  &__item{
- margin-left: 5px;
-   
-  }
-  @media only screen and (max-width: 400px) {
-    &__logo-container {
+
+    &--watchlist-container {
       display: flex;
-      justify-content: center;
-    }
-    &__logo {
-      width: 25px;
-      height: 25px;
-      padding: 10px;
-    }
-    &__title {
-      font-family: "Aboreto", sans-serif;
-      font-size: 20px;
-      margin-left: 5px;
-    }
-    &__menu {
-      display: flex;
-      justify-content: center;
+      flex-direction: row;
       align-items: center;
-      list-style: none;
-      padding-left: 0;
     }
-
-    &__link {
+    &__item {
       display: flex;
+      flex-direction: row;
       align-items: center;
-      padding: 0px 10px 0px 10px;
-      font-size: 14px;
-      text-decoration: none;
-      font-family: "Kanit", sans-serif;
-
-      &:visited {
-        color: black;
-      }
-
-      &--watchlist-container {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-      }
-      &__item {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-      
-      }
-
-   
-    }
-  }
-
-  // Media Query for small mobile devices (landscape)
-  @media only screen and (max-width: 480px) and (max-height: 320px) {
-    &__logo {
-      width: 100px;
-      height: 100px;
     }
   }
 }

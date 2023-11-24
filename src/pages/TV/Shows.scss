@@ -1,62 +1,69 @@
 .shows {
-    &__title {
-      font-family: "Aboreto", sans-serif;
-      font-size: 20px;
-      margin-left: 5px;
-      text-align: center;
-    }
-  
-    &__error-message {
-      color: red;
-    }
-  
-    &__tv-show-list {
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-    }
-
-    &__img {
-      width: 100%;
-      max-width: 100%;
-      height: auto;
-    }
-    &__button-container {
-      display: flex;
-      justify-content: space-between;
-    }
-    &__tv-show-title {
-      font-size: 16px;
-      font-weight: bold;
-      margin: 10px 0;
-      font-family: "Kanit", sans-serif;
-      text-align: center;
-    }
-  
-    &__overview {
-      font-size: 14px;
-      margin: 10px 0;
-      font-family: "Kanit", sans-serif;
-      text-align: justify;
-    }
-  
-    &__release-date {
-      font-size: 14px;
-      margin: 10px 0;
-      font-family: "Kanit", sans-serif;
-      text-align: center;
-    }
-    &__vote {
-      font-size: 14px;
-      margin: 10px 0;
-      font-family: "Kanit", sans-serif;
-      text-align: center;
-    }
-    &__loading-message {
-      font-size: 16px;
-      text-align: center;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__title {
+    font-family: "Aboreto", sans-serif;
+    font-size: 20px;
+    margin-left: 5px;
+    text-align: center;
   }
-  
+
+  &__error-message {
+    color: red;
+  }
+
+  &__tv-show-list {
+    margin-top: 50px;
+    width: 250px;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  &__button-container {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__tv-show-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+    font-family: "Kanit", sans-serif;
+    text-align: center;
+  }
+  &__tv-show-item {
+    margin-bottom: 30px;
+  }
+
+  &__overview {
+    font-size: 15px;
+    margin: 10px 0;
+    font-family: "Kanit", sans-serif;
+   text-align: justify;
+  }
+
+  &__release-date {
+    font-size: 14px;
+    margin: 10px 0;
+    font-family: "Kanit", sans-serif;
+    text-align: center;
+  }
+  &__vote {
+    font-size: 14px;
+    margin: 10px 0;
+    font-family: "Kanit", sans-serif;
+    text-align: center;
+  }
+  &__loading-message {
+    font-size: 16px;
+    text-align: center;
+  }
+}

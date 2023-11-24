@@ -1,6 +1,6 @@
 .button {
   align-items: center;
-  border: 2px solid #000;
+  border: 1px solid #000;
   box-sizing: border-box;
   color: #000;
   cursor: pointer;
@@ -22,6 +22,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  border-radius: 15px;
 
   &:hover,
   &:focus {
@@ -61,7 +62,7 @@
   &--secondary {
     background-color: #fff;
     @media only screen and (max-width: 400px) {
-      width: auto;
+      width: 100%;
       margin-top: 5px;
       font-size: 10px;
       height: 30px;
@@ -101,10 +102,8 @@
     -webkit-user-select: none;
     touch-action: manipulation;
 
-
     @media only screen and (max-width: 400px) {
       width: auto;
-      margin-top: 5px;
       font-size: 10px;
       height: 20px;
       margin-left: 10px;
@@ -123,6 +122,47 @@
       border-color: #06f;
       color: #06f;
       fill: #06f;
+    }
+
+    &--up {
+      background-color: red;
+      width: 150px;
+      height: 76px;
+      line-height: 78px;
+      font-size: 20px;
+      font-family: "Bebas Neue", sans-serif;
+      background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
+      border: 0;
+      color: #fff;
+      letter-spacing: 3px;
+      box-shadow: 6px 0px 0px #00e6f6;
+      outline: transparent;
+      position: relative;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+  
+      @media only screen and (max-width: 400px) {
+        width: auto;
+        font-size: 10px;
+        height: 20px;
+        margin-left: 10px;
+      }
+      &:focus {
+        color: #171e29;
+      }
+  
+      &:hover {
+        border-color: #06f;
+        color: #06f;
+        fill: #06f;
+      }
+  
+      &:active {
+        border-color: #06f;
+        color: #06f;
+        fill: #06f;
+      }
     }
   }
 }

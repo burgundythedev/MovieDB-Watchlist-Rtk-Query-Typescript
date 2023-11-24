@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Aboreto&display=swap");
+
+.upcoming {
+  position: relative;
+  font-family: "Aboreto", sans-serif;
+  height: 100vh;
+  overflow: hidden;
+
+  &__details-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start; /* Align text to start */
+    margin: 20px 20px 220px 20px; /* Adjust margin as needed, 220px top margin */
+    padding: 20px; /* Adjust padding as needed */
+  }
+
+  &__details {
+    width: 500px;
+    margin: 0px 0px 0px 250px; /* Updated margin */
+    padding: 20px;
+    text-align: start;
+    color: white;
+  }
+
+  &__vote-details {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px; /* Adjust as needed */
+  }
+
+  &__slider-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+  }
+
+  &__background {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+
+  &__title {
+    font-size: 20px;
+    margin-left: 5px;
+    text-align: start;
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4); /* Add text shadow here */
+  }
+  &__overview {
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4); /* Add text shadow here */
+  }
+  &__error-message {
+    color: red;
+    text-align: center;
+  }
+
+  &__img {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+  }
+
+  &__selected {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    width: 110px;
+
+    animation: bounce2 5s ease infinite;
+
+    @keyframes bounce2 {
+      0%,
+      20%,
+      50%,
+      80%,
+      100% {
+        transform: translateY(0);
+      }
+      40% {
+        transform: translateY(-30px);
+      }
+      60% {
+        transform: translateY(-15px);
+      }
+    }
+  }
+
+  &__movie-item {
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__vote {
+    flex: 1; /* This ensures each span takes equal width */
+    text-align: start; /* Center the content within each span */
+    padding: 5px; /* Adjust as needed for spacing */
+    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.9); /* Add text shadow here */
+  }
+
+  &__title-overlay {
+    width: 100%;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.2);
+  }
+
+  &__selected-title {
+    font-size: 15rem; /* Adjust as needed */
+  }
+}
