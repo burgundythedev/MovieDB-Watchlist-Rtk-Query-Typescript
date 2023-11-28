@@ -12,6 +12,7 @@ import WatchlistUpDetails from "./pages/Watchlist/Details/WatchlistUpDetails";
 import WatchlistTVDetails from "./pages/Watchlist/Details/WatchlistTVDetails";
 import WatchlistMovieDetails from "./pages/Watchlist/Details/WatchlistMovieDetails";
 
+
 const Router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +22,7 @@ const Router = createBrowserRouter([
         index: true,
         element: <UpcomingMovie />,
       },
+      { path: "upcoming-movies", element: <UpcomingMovie /> },
       { path: "movies", element: <PopMovieList /> },
       { path: "tvshows", element: <Shows /> },
       { path: "watchlist", element: <Watchlist /> },

@@ -1,13 +1,12 @@
 .button {
   align-items: center;
-  border: 1px solid #000;
+  border: none;
   box-sizing: border-box;
   color: #000;
   cursor: pointer;
   display: inline-flex;
-  fill: #000;
   font-family: Inter, sans-serif;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
   height: 48px;
   justify-content: center;
@@ -72,7 +71,7 @@
     }
 
     &:hover {
-      border-color: #06f;
+      border-color: black;
       color: #06f;
       fill: #06f;
     }
@@ -85,84 +84,31 @@
   }
 
   &--view {
-    background-color: red;
+    background-color: #d85b53;
     width: 150px;
-    height: 76px;
-    line-height: 78px;
-    font-size: 20px;
-    font-family: "Bebas Neue", sans-serif;
-    background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
+    height: 50px;
+    font-size: 15px;
+    background: linear-gradient(45deg, transparent 5%, rgba(216,91,83) 5%);
     border: 0;
     color: #fff;
-    letter-spacing: 3px;
-    box-shadow: 6px 0px 0px #00e6f6;
-    outline: transparent;
-    position: relative;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+    box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.3);
 
-    @media only screen and (max-width: 400px) {
-      width: auto;
-      font-size: 10px;
-      height: 20px;
-      margin-left: 10px;
-    }
+
     &:focus {
-      color: #171e29;
+      width: 175px;
     }
 
     &:hover {
-      border-color: #06f;
-      color: #06f;
-      fill: #06f;
+      color: white;
+      width: 160px;
     }
 
     &:active {
-      border-color: #06f;
-      color: #06f;
-      fill: #06f;
+
+      color: black;
+      fill: black;
     }
 
-    &--up {
-      background-color: red;
-      width: 150px;
-      height: 76px;
-      line-height: 78px;
-      font-size: 20px;
-      font-family: "Bebas Neue", sans-serif;
-      background: linear-gradient(45deg, transparent 5%, #ff013c 5%);
-      border: 0;
-      color: #fff;
-      letter-spacing: 3px;
-      box-shadow: 6px 0px 0px #00e6f6;
-      outline: transparent;
-      position: relative;
-      user-select: none;
-      -webkit-user-select: none;
-      touch-action: manipulation;
-  
-      @media only screen and (max-width: 400px) {
-        width: auto;
-        font-size: 10px;
-        height: 20px;
-        margin-left: 10px;
-      }
-      &:focus {
-        color: #171e29;
-      }
-  
-      &:hover {
-        border-color: #06f;
-        color: #06f;
-        fill: #06f;
-      }
-  
-      &:active {
-        border-color: #06f;
-        color: #06f;
-        fill: #06f;
-      }
-    }
+   
   }
 }

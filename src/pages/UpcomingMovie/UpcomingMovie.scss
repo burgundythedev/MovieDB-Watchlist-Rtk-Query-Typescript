@@ -1,36 +1,37 @@
-@import url("https://fonts.googleapis.com/css2?family=Aboreto&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Rubik&display=swap");
 .upcoming {
   position: relative;
-  font-family: "Aboreto", sans-serif;
+  font-family: "Rubik", sans-serif;
   height: 100vh;
   overflow: hidden;
 
   &__details-container {
     position: absolute;
+    max-width: 700px;
     bottom: 0;
     left: 0;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: start; /* Align text to start */
-    margin: 20px 20px 220px 20px; /* Adjust margin as needed, 220px top margin */
-    padding: 20px; /* Adjust padding as needed */
+    z-index: 2;
+    margin: 20px 20px 220px 350px;
+    padding: 20px;
+    background-color: rgb(0, 0, 0, 0.2);
+    border-radius: 15px;
   }
 
   &__details {
-    width: 500px;
-    margin: 0px 0px 0px 250px; /* Updated margin */
+    width: 100%;
+    margin: 0 auto;
     padding: 20px;
     text-align: start;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
   }
 
   &__vote-details {
     display: flex;
     justify-content: space-between;
-    margin-top: 10px; /* Adjust as needed */
+    margin-top: 10px;
   }
 
   &__slider-container {
@@ -38,8 +39,11 @@
     bottom: 0;
     right: 0;
     z-index: 2;
+    margin-right: 150px;
   }
-
+  &__button-container {
+    margin-top: 20px;
+  }
   &__background {
     position: absolute;
     top: 50%;
@@ -53,12 +57,11 @@
 
   &__title {
     font-size: 20px;
-    margin-left: 5px;
     text-align: start;
-    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4); /* Add text shadow here */
   }
   &__overview {
-    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.4); /* Add text shadow here */
+    width: 600px;
+    font-size: 17px;
   }
   &__error-message {
     color: red;
@@ -104,26 +107,50 @@
       transform: scale(1.1);
     }
   }
-
+  &__vote-details {
+    width: 500px;
+  }
   &__vote {
-    flex: 1; /* This ensures each span takes equal width */
-    text-align: start; /* Center the content within each span */
-    padding: 5px; /* Adjust as needed for spacing */
-    text-shadow: 10px 10px 10px rgba(0, 0, 0, 0.9); /* Add text shadow here */
+    flex: 1;
+    text-align: start;
+    padding: 5px;
   }
 
+  &__count {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+    flex: 1;
+    text-align: start;
+    padding: 5px 0px;
+  }
+  &__icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    &--genre {
+      margin-left: 0;
+      margin-right: 5px;
+    }
+  }
   &__title-overlay {
     width: 100%;
     position: absolute;
-    top: 70%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 2;
+    z-index: 1;
     text-align: center;
-    color: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.1);
   }
 
   &__selected-title {
-    font-size: 15rem; /* Adjust as needed */
+    font-size: 15rem;
+  }
+  &__filter {
+    position: absolute;
+    top: 10%;
+    z-index: 3;
+    margin-left: 150px;
   }
 }

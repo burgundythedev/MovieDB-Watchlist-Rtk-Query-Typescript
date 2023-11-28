@@ -1,18 +1,24 @@
 .arrow {
-    background: none;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    margin: 0px 10px;
-    width: 50px;
-  
-    &__img {
-      width: 30px; 
-      height: auto; 
-  
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin: 0px 10px;
+  width: 50px;
 
+  &__img {
+    width: 60px;
+    height: auto;
+    &:hover {
+      width: 80px;
     }
+
   }
-  
+  &__text {
+    color: white;
+    font-size: 20px;
+    font-family: "Aboreto", sans-serif;
+  }
+}

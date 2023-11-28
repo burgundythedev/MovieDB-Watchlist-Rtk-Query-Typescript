@@ -57,7 +57,7 @@ export enum MovieGenre {
   Music = 10402,
   Mystery = 9648,
   Romance = 10749,
-  ScienceFiction = 878,
+  SciFi = 878,
   TVMovie = 10770,
   Thriller = 53,
   War = 10752,
@@ -99,10 +99,11 @@ export const formatYear = (dateString: string): string => {
 export const formatFullDate = (dateString: string): string => {
   const date = new Date(dateString);
   const year = date.getFullYear();
-  const month = date.toLocaleString('default', { month: 'long' });
+  const month = date.toLocaleString('en-US', { month: 'long' });
   const day = date.getDate();
   return `${month} ${day}, ${year}`;
 };
+
 
 export const genreIdToName = {
   ...MovieGenre,

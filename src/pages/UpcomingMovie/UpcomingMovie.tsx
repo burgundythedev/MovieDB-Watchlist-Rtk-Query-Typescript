@@ -8,6 +8,12 @@ import {
   genreIdToName,
 } from "../../models";
 import "./UpcomingMovie.scss";
+import voteCount from "../../assets/vote-count.png";
+import star from "../../assets/star.png";
+import genreIcon from "../../assets/genre.png";
+import Header from "../../components/Header/Header";
+import Button from "../../components/UI/Button";
+import SliderGenre from "../../components/Slider/SliderGenre";
 
 const UpcomingMovie = () => {
   const {
@@ -16,9 +22,7 @@ const UpcomingMovie = () => {
     isError,
   } = useFetchUpcomingDataQuery();
 
-  const [selectedItem, setSelectedItem] = useState<UpcomingMovies | null>(
-    null
-  );
+  const [selectedItem, setSelectedItem] = useState<UpcomingMovies | null>(null);
 
   useEffect(() => {
     if (upcomingData && upcomingData.results.length > 0) {
@@ -41,14 +45,18 @@ const UpcomingMovie = () => {
   if (!upcomingData.results.length) {
     return <div>No upcoming movies available</div>;
   }
-
+console.log(upcomingData)
   return (
     <div className="upcoming">
+      <Header />
       <img
         className="upcoming__background"
         src={`https://image.tmdb.org/t/p/original${selectedItem?.backdrop_path}`}
         alt={selectedItem?.title}
       />
+      <div className="upcoming__filter">
+        <SliderGenre/>
+      </div>
       <div className="upcoming__details-container">
         {selectedItem && (
           <div className="upcoming__details">
@@ -60,6 +68,11 @@ const UpcomingMovie = () => {
             </h2>
             <p className="upcoming__overview">{selectedItem.overview}</p>
             <div className="upcoming__genres">
+              <img
+                className="upcoming__icon upcoming__icon--genre"
+                src={genreIcon}
+                alt="genre-icon"
+              />
               {selectedItem.genre_ids.map((genreId, index) => (
                 <span key={genreId}>
                   {genreIdToName[genreId]}
@@ -68,19 +81,32 @@ const UpcomingMovie = () => {
               ))}
             </div>
             <div className="upcoming__vote-details">
-              <span className="upcoming__vote">
-                {selectedItem.vote_average}/10
-              </span>
-              <span className="upcoming__vote">{selectedItem.popularity}</span>
+              <div className="upcoming__count">
+                <span>{selectedItem.vote_average}</span>
+                <img className="upcoming__icon" src={star} alt="polls-icon" />
+              </div>
+              <div className="upcoming__count">
+                <span>{selectedItem.vote_count}</span>
+                <img
+                  className="upcoming__icon"
+                  src={voteCount}
+                  alt="polls-icon"
+                />
+              </div>
               <span className="upcoming__vote">
                 {formatFullDate(selectedItem.release_date)}
               </span>
+            </div>
+            <div className="upcoming__button-container">
+              <Button type="view" children="Add to watchlist" />
             </div>
           </div>
         )}
       </div>
       <div className="upcoming__title-overlay">
-        {selectedItem && <h2 className="upcoming__selected-title">{selectedItem.title}</h2>}
+        {selectedItem && (
+          <h2 className="upcoming__selected-title">{selectedItem.title}</h2>
+        )}
       </div>
       <div className="upcoming__slider-container">
         <Slider
