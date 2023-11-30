@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Rubik&display=swap");
+
 .upcoming {
   position: relative;
   font-family: "Rubik", sans-serif;
@@ -10,11 +11,10 @@
     max-width: 700px;
     bottom: 0;
     left: 0;
-    z-index: 2;
     margin: 20px 20px 220px 350px;
     padding: 20px;
-    background-color: rgb(0, 0, 0, 0.2);
     border-radius: 15px;
+    z-index: 2;
   }
 
   &__details {
@@ -36,14 +36,29 @@
 
   &__slider-container {
     position: absolute;
-    bottom: 0;
+    bottom: 5%;
     right: 0;
     z-index: 2;
     margin-right: 150px;
   }
+
   &__button-container {
     margin-top: 20px;
   }
+
+  &__linear {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(
+      to right,
+      rgb(0, 0, 0, 0.5) 40%,
+      rgb(0, 0, 0, 0.05) 60%,
+      transparent 100%
+    );
+  }
+
   &__background {
     position: absolute;
     top: 50%;
@@ -59,12 +74,14 @@
     font-size: 20px;
     text-align: start;
   }
+
   &__overview {
     width: 600px;
     font-size: 17px;
   }
+
   &__error-message {
-    color: red;
+    color: #d85b53;
     text-align: center;
   }
 
@@ -79,7 +96,6 @@
       rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
       rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     width: 110px;
-
     animation: bounce2 5s ease infinite;
 
     @keyframes bounce2 {
@@ -107,9 +123,11 @@
       transform: scale(1.1);
     }
   }
+
   &__vote-details {
     width: 500px;
   }
+
   &__vote {
     flex: 1;
     text-align: start;
@@ -124,13 +142,25 @@
     text-align: start;
     padding: 5px 0px;
   }
+
+  &__icon-container {
+    position: absolute;
+    bottom: 10%;
+    margin-left: 150px;
+    z-index: 3;
+    width: 200px;
+    display: flex;
+    align-items: center;
+  }
+
   &__icon {
-    width: 20px;
-    height: 20px;
-    margin-left: 5px;
-    &--genre {
-      margin-left: 0;
-      margin-right: 5px;
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    &:hover {
+      background-color: #d85b53;
+      padding: 5px;
+      border-radius: 10px;
     }
   }
   &__title-overlay {
@@ -139,17 +169,18 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1;
     text-align: center;
-    color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.05);
+    z-index: 1;
   }
 
   &__selected-title {
-    font-size: 15rem;
+    font-size: 14rem;
   }
+
   &__filter {
     position: absolute;
-    top: 10%;
+    top: 50%;
     z-index: 3;
     margin-left: 150px;
   }

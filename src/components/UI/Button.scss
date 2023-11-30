@@ -87,12 +87,12 @@
     background-color: #d85b53;
     width: 150px;
     height: 50px;
-    font-size: 15px;
-    background: linear-gradient(45deg, transparent 5%, rgba(216,91,83) 5%);
+    font-size: 13px;
+    background: linear-gradient(45deg, transparent 5%, rgba(216, 91, 83) 5%);
     border: 0;
     color: #fff;
     box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.3);
-
+    margin-right: 40px;
 
     &:focus {
       width: 175px;
@@ -104,11 +104,12 @@
     }
 
     &:active {
-
       color: black;
       fill: black;
     }
-
-   
+  }
+  &__icon {
+    width: 30px;
+    margin-right: 10px;
   }
 }

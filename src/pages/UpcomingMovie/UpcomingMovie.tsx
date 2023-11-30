@@ -1,41 +1,61 @@
 import { useState, useEffect } from "react";
 import Slider from "../../components/Slider/Slider";
+import SliderGenre from "../../components/Slider/SliderGenre";
 import { useFetchUpcomingDataQuery } from "../../store/fetchDataSlice";
-import {
-  UpcomingMovies,
-  formatFullDate,
-  formatYear,
-  genreIdToName,
-} from "../../models";
+import { UpcomingMovies, formatFullDate, genreIdToName } from "../../models";
 import "./UpcomingMovie.scss";
-import voteCount from "../../assets/vote-count.png";
-import star from "../../assets/star.png";
-import genreIcon from "../../assets/genre.png";
 import Header from "../../components/Header/Header";
 import Button from "../../components/UI/Button";
-import SliderGenre from "../../components/Slider/SliderGenre";
-
+import { useDispatch } from "react-redux";
+import { addToWatchlist } from "../../store/watchlistSlice";
+import twitter from "../../assets/twitter.png";
+import instagram from "../../assets/instagram.png";
+import imdb from "../../assets/imdb.png";
+import videoPlay from "../../assets/video-play.png";
+import addIcon from "../../assets/add.png"
 const UpcomingMovie = () => {
   const {
     data: upcomingData,
     isLoading,
     isError,
   } = useFetchUpcomingDataQuery();
-
-  const [selectedItem, setSelectedItem] = useState<UpcomingMovies | null>(null);
+  const dispatch = useDispatch();
+  const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
+  const [filteredItems, setFilteredItems] = useState<UpcomingMovies[]>([]);
+  const [selectedItem, setSelectedItem] = useState<UpcomingMovies | null>(
+    filteredItems[0] || null
+  );
 
   useEffect(() => {
     if (upcomingData && upcomingData.results.length > 0) {
-      setSelectedItem(upcomingData.results[0]);
+      const filtered = upcomingData.results.filter(
+        (movie) => !selectedGenre || movie.genre_ids.includes(selectedGenre)
+      );
+      setFilteredItems(filtered);
+      setSelectedItem(filtered[0] || null);
     }
-  }, [upcomingData]);
+  }, [upcomingData, selectedGenre]);
 
   const handleSliderSelect = (index: number) => {
-    setSelectedItem(upcomingData?.results[index] || null);
+    setSelectedItem(filteredItems[index] || null);
+  };
+
+  const handleGenreSelect = (
+    genre: number | null,
+    firstMovie: UpcomingMovies | null
+  ) => {
+    setSelectedGenre(genre);
+
+    const filtered =
+      upcomingData?.results.filter(
+        (movie) => !genre || movie.genre_ids.includes(genre)
+      ) || [];
+    setFilteredItems(filtered);
+    setSelectedItem(firstMovie || filtered[0] || null);
   };
 
   if (isLoading) {
-    return <div>Loading upcoming movie data...</div>;
+    return <div>Loading</div>;
   }
 
   if (isError || !upcomingData) {
@@ -43,36 +63,52 @@ const UpcomingMovie = () => {
   }
 
   if (!upcomingData.results.length) {
-    return <div>No upcoming movies available</div>;
+    return <div>No data</div>;
   }
-console.log(upcomingData)
+
+  const handleAddToWL = (movie: UpcomingMovies) => {
+    dispatch(
+      addToWatchlist({
+        ...movie,
+        source: "UpcomingMovies",
+      })
+    );
+  };
+
   return (
     <div className="upcoming">
-      <Header />
+      <div className="upcoming__linear">
+        <Header />
+      </div>
       <img
         className="upcoming__background"
         src={`https://image.tmdb.org/t/p/original${selectedItem?.backdrop_path}`}
         alt={selectedItem?.title}
       />
       <div className="upcoming__filter">
-        <SliderGenre/>
+        <SliderGenre<UpcomingMovies>
+          items={upcomingData.results}
+          onSelectGenre={handleGenreSelect}
+        />
       </div>
+
+      <div className="upcoming__icon-container">
+        <img className="upcoming__icon" src={imdb} alt="icon-social" />
+        <img className="upcoming__icon" src={instagram} alt="icon-social" />
+        <img className="upcoming__icon" src={twitter} alt="icon-social" />
+      </div>
+
       <div className="upcoming__details-container">
         {selectedItem && (
           <div className="upcoming__details">
             <h2 className="upcoming__title">
               {selectedItem.title}{" "}
               <span className="upcoming__date">
-                ({formatYear(selectedItem.release_date)})
+                ({formatFullDate(selectedItem.release_date)})
               </span>
             </h2>
             <p className="upcoming__overview">{selectedItem.overview}</p>
             <div className="upcoming__genres">
-              <img
-                className="upcoming__icon upcoming__icon--genre"
-                src={genreIcon}
-                alt="genre-icon"
-              />
               {selectedItem.genre_ids.map((genreId, index) => (
                 <span key={genreId}>
                   {genreIdToName[genreId]}
@@ -81,24 +117,18 @@ console.log(upcomingData)
               ))}
             </div>
             <div className="upcoming__vote-details">
-              <div className="upcoming__count">
-                <span>{selectedItem.vote_average}</span>
-                <img className="upcoming__icon" src={star} alt="polls-icon" />
-              </div>
-              <div className="upcoming__count">
-                <span>{selectedItem.vote_count}</span>
-                <img
-                  className="upcoming__icon"
-                  src={voteCount}
-                  alt="polls-icon"
-                />
-              </div>
               <span className="upcoming__vote">
                 {formatFullDate(selectedItem.release_date)}
               </span>
             </div>
             <div className="upcoming__button-container">
-              <Button type="view" children="Add to watchlist" />
+              <Button
+                onClick={() => handleAddToWL(selectedItem)}
+                type="view"
+                icon={addIcon}
+                children="Add to watchlist"
+              />
+              <Button type="view" icon={videoPlay} children="Watch Trailer" />
             </div>
           </div>
         )}
@@ -110,7 +140,7 @@ console.log(upcomingData)
       </div>
       <div className="upcoming__slider-container">
         <Slider
-          slides={upcomingData.results}
+          slides={filteredItems}
           visibleItemsNumber={4}
           selectedSlide={selectedItem}
           onSelectItem={handleSliderSelect}

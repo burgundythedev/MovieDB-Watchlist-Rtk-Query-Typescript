@@ -17,6 +17,7 @@ export type Movie = {
   vote_average: number;
   vote_count: number;
   backdrop_path: string;
+  genre_ids: number[];
 };
 
 export type TVShow = {
@@ -29,6 +30,7 @@ export type TVShow = {
   vote_count: number;
   first_air_date: string;
   backdrop_path: string;
+  genre_ids: number[];
 };
 export type UpcomingMovies = {
   id: number;

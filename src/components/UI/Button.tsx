@@ -3,18 +3,20 @@ import "./Button.scss";
 
 interface ButtonProps {
   className?: string;
-  type?: "primary" | "secondary" | "view" ;
+  type?: "primary" | "secondary" | "view";
   children: ReactNode;
+  icon?: string | undefined; // Specify a more specific type
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
-const Button = ({ className, type, children, onClick }: ButtonProps) => {
+const Button = ({ className, type, children, onClick, icon }: ButtonProps) => {
   const buttonClassName = `button ${className || ""} ${
     type ? `button--${type}` : ""
   }`;
 
   return (
     <button className={buttonClassName} onClick={onClick}>
+      {icon && <img className="button__icon" src={icon} alt="icon" />}{" "}
       {children}
     </button>
   );
