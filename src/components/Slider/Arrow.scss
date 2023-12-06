@@ -6,19 +6,22 @@
   display: flex;
   align-items: center;
   margin: 0px 10px;
-  width: 50px;
 
   &__img {
     width: 60px;
     height: auto;
-    &:hover {
-      width: 80px;
-    }
 
+ 
   }
-  &__text {
-    color: white;
-    font-size: 20px;
-    font-family: "Aboreto", sans-serif;
+
+  @media only screen and (max-width: 320px) {
+    &__img {
+      width: 20px;
+      height: auto;
+
+ 
+    }
   }
+
+
 }

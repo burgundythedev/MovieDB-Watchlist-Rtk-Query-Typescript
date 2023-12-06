@@ -57,7 +57,7 @@ const Slider = <T extends object>({
             </li>
           ))}
         </ul>
-        {isControlsVisible && <NextButton onClick={onNextClick} />}
+        <NextButton onClick={onNextClick} />
       </div>
     </div>
   );

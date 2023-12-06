@@ -33,17 +33,37 @@ export type TVShow = {
   genre_ids: number[];
 };
 export type UpcomingMovies = {
+  adult: boolean;
+  backdrop_path: string;
   id: number;
+  original_language: string;
+  original_title: string;
   overview: string;
   popularity: number;
   poster_path: string;
   release_date: string;
   title: string;
+  video: boolean;
   vote_average: number;
   vote_count: number;
-  backdrop_path: string;
-  genre_ids: number[]; 
+  genre_ids: number[];
+
 };
+export type VideoData = {
+  results: Video[];
+};
+
+export type Video = {
+  id: string;
+  iso_639_1: string;
+  iso_3166_1: string;
+  key: string;
+  name: string;
+  site: string;
+  size: number;
+  type: string;
+};
+
 export enum MovieGenre {
   Action = 28,
   Adventure = 12,
@@ -88,8 +108,8 @@ export enum TVShowGenre {
 export const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
   const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, '0');
-  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
   return `${year}/${month}/${day}`;
 };
 
@@ -101,11 +121,10 @@ export const formatYear = (dateString: string): string => {
 export const formatFullDate = (dateString: string): string => {
   const date = new Date(dateString);
   const year = date.getFullYear();
-  const month = date.toLocaleString('en-US', { month: 'long' });
+  const month = date.toLocaleString("en-US", { month: "long" });
   const day = date.getDate();
   return `${month} ${day}, ${year}`;
 };
-
 
 export const genreIdToName = {
   ...MovieGenre,

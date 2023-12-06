@@ -8,6 +8,7 @@ import { useWatchListDispatch } from "../../hooks/hooks";
 import { addToWatchlist } from "../../store/watchlistSlice";
 import { UpcomingMovies } from "../../models";
 const UpcomingMovieDetails = () => {
+
   const { id } = useParams<{ id: string }>();
   const { data: upcomingMovieDetails, error } = useFetchUpcomingMovieByIdQuery(
     Number(id) || 0

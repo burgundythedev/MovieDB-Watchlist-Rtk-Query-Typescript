@@ -1,9 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Movie, MovieData, TVShow, TVShowData, UpcomingCineData, UpcomingMovies } from "../models";
+import { Movie, MovieData, TVShow, TVShowData, UpcomingCineData, UpcomingMovies, VideoData } from "../models";
 
-const apiKey = import.meta.env.VITE_REACT_APP_API_KEY;
-
-
+const apiKey: string = import.meta.env.VITE_REACT_APP_API_KEY;
 
 export const moviedbApi = createApi({
   reducerPath: "moviedbApi",
@@ -33,7 +31,9 @@ export const moviedbApi = createApi({
     fetchUpcomingMovieById: builder.query<UpcomingMovies, number>({
       query: (id) => `movie/${id}?language=en-US&api_key=${apiKey}`,
     }),
-    
+    fetchVideos: builder.query<VideoData, number>({
+      query: (movie_id) => `movie/${movie_id}/videos?api_key=${apiKey}`,
+    }),
   }),
 });
 
@@ -44,4 +44,5 @@ export const {
   useFetchMovieByIdQuery,
   useFetchTVShowByIdQuery,
   useFetchUpcomingMovieByIdQuery,
+  useFetchVideosQuery,
 } = moviedbApi;

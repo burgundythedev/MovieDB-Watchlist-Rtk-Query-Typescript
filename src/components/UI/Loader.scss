@@ -1,0 +1,25 @@
+.loader-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); /* semi-transparent black background */
+    z-index: 1000; /* Adjust the z-index based on your needs */
+  }
+  
+  .loader-modal__content {
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .loader__gif {
+    width: 50px; /* Set your desired width */
+    height: 50px; /* Set your desired height */
+    background-size: cover;
+
+  }
+  

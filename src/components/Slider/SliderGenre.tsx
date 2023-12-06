@@ -1,7 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { MovieGenre, TVShowGenre } from "../../models";
 import "./SliderGenre.scss";
-
 import arrowDown from "../../assets/arrow-down.png";
 import arrowUp from "../../assets/arrow-up.png";
 
@@ -25,15 +24,13 @@ const SliderGenre = <T extends SliderItem>({
     : Object.values(MovieGenre);
 
   const [start, setStart] = useState(0);
-  const [selectedGenre, setSelectedGenre] = useState<null | number>(null);
+  const [selectedGenre, setSelectedGenre] = useState<number>(-1);
 
-  // Extract unique genre IDs from the provided list of items
   const uniqueGenreIds = useMemo(
     () => Array.from(new Set(items.flatMap((item) => item.genre_ids))),
     [items]
   );
 
-  // Filter genres based on unique genre IDs
   const filteredGenres = useMemo(
     () => [
       -1,
@@ -43,7 +40,6 @@ const SliderGenre = <T extends SliderItem>({
   );
 
   useEffect(() => {
-    // Update start index when selectedGenre changes
     if (selectedGenre !== null) {
       const selectedIndex = filteredGenres.indexOf(selectedGenre);
       setStart(selectedIndex >= 0 ? selectedIndex : 0);
@@ -56,25 +52,33 @@ const SliderGenre = <T extends SliderItem>({
     const genreNumber = typeof genre === "string" ? parseInt(genre, 10) : genre;
 
     setSelectedGenre((prevSelectedGenre) =>
-      prevSelectedGenre === genreNumber ? null : genreNumber
+      prevSelectedGenre === genreNumber ? -1 : genreNumber
     );
 
     let firstItemWithGenre: T | null = null;
 
     if (genreNumber === -1) {
-      // If "No Filter" is selected, choose the first item
       firstItemWithGenre = items.length > 0 ? items[0] : null;
+      onSelectGenre(null, firstItemWithGenre);
     } else {
-      // Otherwise, find the first item with the selected genre
       firstItemWithGenre =
         items.find(
           (item) =>
             item.genre_ids.includes(genreNumber) &&
             typeof item.genre_ids[0] === "number"
         ) || null;
-    }
 
-    onSelectGenre(genreNumber === -1 ? null : genreNumber, firstItemWithGenre);
+      if (!firstItemWithGenre) {
+        firstItemWithGenre =
+          items.find(
+            (item) =>
+              item.genre_ids[0] === genreNumber &&
+              typeof item.genre_ids[0] === "number"
+          ) || null;
+      }
+
+      onSelectGenre(genreNumber, firstItemWithGenre);
+    }
   };
 
   const handleArrowClick = (isUpArrow: boolean) => {
@@ -83,11 +87,10 @@ const SliderGenre = <T extends SliderItem>({
 
     let nextIndex = isUpArrow ? currentIndex - 1 : currentIndex + 1;
 
-    // Handle circular navigation
     if (nextIndex < 0) {
-      nextIndex = filteredGenres.length - 1; // Go to the last item
+      nextIndex = filteredGenres.length - 1;
     } else if (nextIndex >= filteredGenres.length) {
-      nextIndex = 0; // Go to the first item
+      nextIndex = 0;
     }
 
     const nextGenre = filteredGenres[nextIndex];
@@ -107,14 +110,14 @@ const SliderGenre = <T extends SliderItem>({
       />
       <ul className="genre__list">
         <li
-          className={`genre__item no-filter`}
+          className={`genre__item ${selectedGenre === -1 ? "all-selected" : ""}`}
           onClick={() => handleGenreClick(-1)}
         >
           <span className={selectedGenre === -1 ? "selected-text" : ""}>
-            No Filter
+            All
           </span>
         </li>
-        {filteredGenres.slice(start, start + 2).map((genre) => (
+        {filteredGenres.slice(start, start + 1).map((genre) => (
           <li
             className={`genre__item ${
               selectedGenre === genre ? "selected" : ""
@@ -129,13 +132,13 @@ const SliderGenre = <T extends SliderItem>({
             </span>
           </li>
         ))}
-        <img
-          className="genre__arrow genre__arrow--down"
-          src={arrowDown}
-          alt="arrowdown"
-          onClick={() => handleArrowClick(false)}
-        />
       </ul>
+      <img
+        className="genre__arrow genre__arrow--down"
+        src={arrowDown}
+        alt="arrowdown"
+        onClick={() => handleArrowClick(false)}
+      />
     </div>
   );
 };
