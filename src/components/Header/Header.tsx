@@ -35,7 +35,7 @@ const Header = () => {
         </li>
       </ul>
       <div className="header__watchlist-container">
-        <NavLink className="header__link " to="/watchlist">
+        <NavLink className="header__link header__link--watchlist" to="/watchlist">
           <img className="header__logo header__logo--watch"src={watchLogo} alt="watchlist-icon"/>
           Watchlist
         </NavLink>

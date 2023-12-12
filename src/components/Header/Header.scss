@@ -6,8 +6,6 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-
-  z-index: 3;
   height: 10vh;
 
   &__item {
@@ -17,7 +15,6 @@
   &__logo-container {
     display: flex;
     justify-content: center;
-    z-index: 3;
     margin-left: 150px;
   }
 
@@ -29,7 +26,13 @@
     &--watch {
       width: 30px;
       height: 30px;
-      padding: 0px 10px;
+      margin: 10px;
+      transition: width 0.3s ease;
+
+      &:hover {
+        width: 40px;
+        height: auto;
+      }
     }
   }
 
@@ -39,7 +42,7 @@
     font-weight: bold;
     margin-left: 5px;
     z-index: 3;
-   
+
 
   }
 
@@ -54,18 +57,22 @@
   }
 
   &__link {
-
-
     display: flex;
     align-items: center;
     padding: 0px 20px 0px 20px;
-    font-size: 25px;
-  
+    font-size: 20px;
     text-decoration: none;
     font-family: "Kanit", sans-serif;
+
     &--logo {
       padding: 0px;
+
     }
+
+    &--watchlist {
+      font-size: 20px;
+    }
+
     &:visited {
       color: black;
     }
@@ -81,80 +88,211 @@
     flex-direction: row;
     align-items: center;
   }
-  @media only screen and (max-width: 320px) {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0px;
-    z-index: 3;
 
+
+
+  @media only screen and (min-width: 280px) and (max-width: 480px) {
     &__item {
       margin-left: 5px;
     }
 
     &__logo-container {
-      display: flex;
-      justify-content: center;
-      z-index: 3;
-      margin-left: 20px;
+      margin-left: 0px;
     }
 
     &__logo {
       width: 20px;
-      height: 20px;
-      margin: 10px 0;
+      height: auto;
+      margin: 5px 0;
 
       &--watch {
-        width: 15px;
-        height: 15px;
-        padding: 0px 10px;
+        width: 10px;
+        height: auto;
+        padding: 0px 5px;
       }
     }
 
     &__title {
-      font-family: "Aboreto", sans-serif;
       font-size: 5px;
-      font-weight: bold;
       margin-left: 5px;
-      z-index: 3;
-
     }
 
-    &__menu {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      list-style: none;
-      padding-left: 0;
-      margin: 0;
-      z-index: 3;
-    }
 
     &__link {
-
-      display: flex;
-      align-items: center;
-      padding: 0px 10px 0px 10px;
+      padding: 0px 5px 0px 5px;
       font-size: 5px;
-      font-weight: bold;
-      text-decoration: none;
-      font-family: "Kanit", sans-serif;
-      &--logo {
-        padding: 0px;
-      }
-   
     }
 
     &__watchlist-container {
-      margin-right: 20px;
-      z-index: 3;
+      margin-right: 0px;
     }
 
+  }
+
+
+
+
+  @media screen and (min-width: 481px) and (max-width: 767px) {
     &__item {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+      margin-left: 5px;
     }
+
+    &__logo-container {
+      margin-left: 0px;
+    }
+
+    &__logo {
+      width: 20px;
+      height: auto;
+      margin: 5px 0;
+
+      &--watch {
+        width: 10px;
+        height: auto;
+        padding: 0px 5px;
+      }
+    }
+
+    &__title {
+      font-size: 5px;
+      margin-left: 5px;
+    }
+
+
+    &__link {
+      padding: 0px 5px 0px 5px;
+      font-size: 5px;
+    }
+
+    &__watchlist-container {
+      margin-right: 0px;
+    }
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    &__item {
+      margin-left: 5px;
+    }
+
+    &__logo-container {
+      margin-left: 0px;
+    }
+
+    &__logo {
+      width: 20px;
+      height: auto;
+      margin: 5px 0;
+
+      &--watch {
+        width: 10px;
+        height: auto;
+        padding: 0px 5px;
+      }
+    }
+
+    &__title {
+      font-size: 5px;
+      margin-left: 5px;
+    }
+
+
+    &__link {
+      padding: 0px 5px 0px 5px;
+      font-size: 5px;
+    }
+
+    &__watchlist-container {
+      margin-right: 0px;
+    }
+  }
+
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    &__item {
+      margin-left: 5px;
+    }
+
+    &__logo-container {
+      margin-left: 0px;
+    }
+
+    &__logo {
+      width: 20px;
+      height: auto;
+      margin: 5px 0;
+
+      &--watch {
+        width: 10px;
+        height: auto;
+        padding: 0px 5px;
+      }
+    }
+
+    &__title {
+      font-size: 5px;
+      margin-left: 5px;
+    }
+
+
+    &__link {
+      padding: 0px 5px 0px 5px;
+      font-size: 5px;
+    }
+
+    &__watchlist-container {
+      margin-right: 0px;
+    }
+  }
+
+
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+    &__item {
+      margin-left: 5px;
+    }
+
+    &__logo-container {
+      margin-left: 0px;
+    }
+
+    &__logo {
+      width: 20px;
+      height: auto;
+      margin: 5px 0;
+
+      &--watch {
+        width: 10px;
+        height: auto;
+        padding: 0px 5px;
+      }
+    }
+
+    &__title {
+      font-size: 5px;
+      margin-left: 5px;
+    }
+
+
+    &__link {
+      padding: 0px 5px 0px 5px;
+      font-size: 5px;
+    }
+
+    &__watchlist-container {
+      margin-right: 0px;
+    }
+  }
+
+  @media screen and (min-width: 992px) and (max-width: 1199px) {}
+
+  /* Desktop Styles */
+  @media screen and (min-width: 1200px) and (max-width: 1439px) {
+    /* Styles for small desktops */
+  }
+
+  @media screen and (min-width: 1440px) and (max-width: 1919px) {
+    /* Styles for medium desktops */
+  }
+
+  @media screen and (min-width: 1920px) {
+    /* Styles for large desktops */
   }
 }

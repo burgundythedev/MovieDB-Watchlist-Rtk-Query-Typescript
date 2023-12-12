@@ -9,7 +9,6 @@
 
   &__details-container {
     position: absolute;
-    max-width: 700px;
     bottom: 0;
     left: 0;
     margin: 20px 20px 220px 350px;
@@ -25,10 +24,10 @@
   }
 
   &__details {
-    width: 100%;
+
     margin: 0 auto;
     padding: 20px;
-    text-align: start;
+
     color: white;
     display: flex;
     flex-direction: column;
@@ -40,6 +39,7 @@
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
+    width: 100%;
   }
 
   &__slider-container {
@@ -74,6 +74,7 @@
   &__title {
     font-size: 20px;
     text-align: start;
+    margin: 0;
   }
 
   &__overview {
@@ -137,9 +138,7 @@
     }
   }
 
-  &__vote-details {
-    width: 500px;
-  }
+
 
   &__vote {
     flex: 1;
@@ -204,71 +203,486 @@
     margin-left: 150px;
   }
 
-  @media only screen and (max-width: 320px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+
+
+
+
+
+
+
+  @media only screen and (min-width: 280px) and (max-width: 480px) {
+
 
     &__details-container {
-      max-width: 400px;
-      bottom: 36%;
-      margin: 10px;
-      padding: 10px;
+      position: absolute;
+      bottom: 40%;
+      left: 0;
+      margin: 0px 20px;
+      padding: 0px;
     }
 
     &__details {
-      text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.3);
+
+
       margin: 0 auto;
       padding: 10px;
+      text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.2);
     }
 
     &__vote-details {
-      justify-content: space-between;
-      margin-top: 10px;
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 0px;
+      font-size: 10px;
     }
 
     &__slider-container {
-      bottom: 12%;
-      margin-right: 10px;
+
+      bottom: 10%;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-right: 0px;
+      margin-top: 0;
     }
 
     &__button-container {
-      margin-top: 10px;
-    }
-
-    &__background {
-      filter: blur(5px);
-      backdrop-filter: blur(5px);
+      margin-top: 5px;
     }
 
     &__title {
       font-size: 12px;
     }
 
-    &__overview {
-      width: 270px;
-      font-size: 10px;
+    &__background {
+      filter: blur(5px);
+      -webkit-filter: blur(5px)
     }
 
-    &__genres {
-      display: flex;
-      align-items: center;
+    &__overview {
+      width: 100%;
+      font-size: 11px;
     }
 
     &__genre-item {
       font-size: 10px;
+
     }
 
+
+
     &__img {
-      width: 50px;
+      width: 45px;
+      height: auto;
+
     }
 
     &__selected {
-      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-        rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-        rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
       width: 60px;
-      animation: bounce2 6s ease infinite;
+
+
+
+      @keyframes bounce2 {
+
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+
+        40% {
+          transform: translateY(-10px);
+        }
+
+        60% {
+          transform: translateY(-10px);
+        }
+      }
+    }
+
+    &__movie-item {
+      cursor: pointer;
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    &__vote-details {
+      width: 100%;
+    }
+
+    &__vote {
+      width: 100%;
+      font-size: 10px;
+      padding: 5px 0px;
+    }
+
+    &__count {
+      font-size: 10px;
+    }
+
+    &__icon-container {
+      bottom: 5%;
+      margin-left: 0px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__icon {
+      width: 20px;
+      height: auto;
+
+      &--detail {
+        animation: none !important;
+        width: 15px;
+        height: auto;
+
+      }
+    }
+
+
+
+    &__filter {
+      top: 5%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-left: 0px;
+    }
+
+  }
+
+
+  @media screen and (min-width: 481px) and (max-width: 712px) {
+    &__details-container {
+      position: absolute;
+      bottom: 45%;
+      left: 0;
+      margin: 0px 40px;
+      padding: 0px;
+    }
+
+    &__details {
+      margin: 0 auto;
+      padding: 10px;
+      text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.2);
+    }
+
+    &__vote-details {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 0px;
+      font-size: 10px;
+    }
+
+    &__slider-container {
+      bottom: 20%;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-right: 0px;
+      margin-top: 0;
+    }
+
+    &__button-container {
+      margin-top: 0px;
+    }
+
+    &__title {
+      font-size: 16px;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    &__background {
+      filter: blur(5px);
+      -webkit-filter: blur(5px)
+    }
+
+    &__overview {
+      width: 100%;
+      font-size: 14px;
+    }
+
+    &__genre-item {
+      font-size: 14px;
+
+    }
+
+
+
+    &__img {
+      width: 60px;
+      height: auto;
+
+    }
+
+    &__selected {
+      width: 80px;
+
+
+
+      @keyframes bounce2 {
+
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+
+        40% {
+          transform: translateY(-10px);
+        }
+
+        60% {
+          transform: translateY(-10px);
+        }
+      }
+    }
+
+
+
+    &__vote-details {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &__vote {
+
+      font-size: 14px;
+      margin: 5px 0px;
+
+    }
+
+    &__count {
+      font-size: 14px;
+    }
+
+    &__icon-container {
+      bottom: 10%;
+      margin-left: 0px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__icon {
+      width: 20px;
+      height: auto;
+
+      &--detail {
+        animation: none !important;
+        width: 15px;
+        height: auto;
+
+      }
+    }
+
+
+
+    &__filter {
+      top: 5%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-left: 0px;
+    }
+  }
+
+
+  @media only screen and (min-width: 713px) and (max-width: 1024px) {
+    &__details-container {
+      position: absolute;
+      bottom: 45%;
+      left: 0;
+      margin: 0px 50px;
+      padding: 0px;
+    }
+
+    &__details {
+      margin: 0 auto;
+      padding: 10px;
+      text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.2);
+    }
+
+    &__vote-details {
+      display: flex;
+      justify-content: space-evenly;
+      margin-top: 0px;
+      font-size: 10px;
+    }
+
+    &__slider-container {
+      bottom: 10%;
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-right: 0px;
+      margin-top: 0;
+    }
+
+    &__button-container {
+      margin-top: 0px;
+    }
+
+    &__title {
+      font-size: 16px;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    &__background {
+      filter: blur(5px);
+      -webkit-filter: blur(5px)
+    }
+
+    &__overview {
+
+      font-size: 16px;
+    }
+
+    &__genre-item {
+      font-size: 16px;
+
+    }
+
+
+
+    &__img {
+      width: 80px;
+      height: auto;
+
+    }
+
+    &__selected {
+      width: 90px;
+
+
+
+      @keyframes bounce2 {
+
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+          transform: translateY(0);
+        }
+
+        40% {
+          transform: translateY(-10px);
+        }
+
+        60% {
+          transform: translateY(-10px);
+        }
+      }
+    }
+
+
+
+    &__vote-details {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    &__vote {
+
+      font-size: 16px;
+      margin: 5px 0px;
+
+    }
+
+    &__count {
+      font-size: 16px;
+    }
+
+    &__icon-container {
+      bottom: 5%;
+      margin-left: 0px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__icon {
+      width: 20px;
+      height: auto;
+
+      &--detail {
+        animation: none !important;
+        width: 15px;
+        height: auto;
+
+      }
+    }
+
+
+
+    &__filter {
+      top: 5%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-left: 0px;
+    }
+  }
+
+  @media only screen and (min-width: 1025px) and (max-width: 1424px) {
+
+    &__details-container {
+      margin: 20px 50px 320px 350px;
+    }
+
+    &__details {
+      padding: 10px;
+    }
+
+
+
+    &__slider-container {
+      margin-right: 50px;
+    }
+
+    &__button-container {
+      margin-top: 10px;
+    }
+
+
+    &__title {
+      font-size: 20px;
+      text-align: start;
+      margin: 0;
+    }
+
+    &__overview {
+      width: 600px;
+      font-size: 16px;
+    }
+
+    &__genre-item {
+      font-size: 15px;
+      margin-right: 5px;
+    }
+
+    &__img {
+      width: 90px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    &__selected {
+      width: 100px;
 
       @keyframes bounce2 {
 
@@ -290,72 +704,172 @@
       }
     }
 
-
-
     &__vote-details {
+      display: flex;
       justify-content: space-evenly;
-      width: auto;
-      font-size: 10px;
+      width: 500px;
     }
 
     &__vote {
-      padding: 5px 0px;
-      width: 70px;
+
+      font-size: 15px;
     }
 
 
+
     &__icon-container {
-      margin-left: 0px;
-      width: auto;
-      display: flex;
-      align-items: center;
-      bottom: 3%;
+
+      margin-left: 50px;
+
     }
 
     &__icon {
       width: 25px;
-      height: 25px;
-      margin-right: 0;
-      padding: 0 5px;
+      height: auto;
 
-      &--detail {
-        width: 12px;
-        height: 12px;
-      }
-    }
-
-    &__title-overlay {
-      display: none;
     }
 
 
+
+    &__selected-title {
+      font-size: 14rem;
+    }
 
     &__filter {
-      width: 100%;
-      top: 3%;
-      display: flex;
-      justify-content: center;
-      margin-left: 0;
+
+      margin-left: 50px;
     }
   }
 
-  @media only screen and (max-width: 450px) {
-    /* Styles for small screens (tablets) */
+
+  @media only screen and (min-width: 700px) and (max-width: 1020px) and (min-height: 1000px) and (max-height: 1400px) {
+
+
+    &__details-container {
+
+      bottom: 50%;
+
+      margin: 0px 50px 0px 50px;
+
+
+
+    }
+
+    &__details {
+
+      margin: 0 auto;
+      padding: 20px;
+
+    }
+
+    &__vote-details {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    &__slider-container {
+      position: absolute;
+      bottom: 30%;
+      right: 0;
+      z-index: 2;
+      margin-right: 0px;
+      margin-top: 0;
+    }
+
+    &__vote {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      text-align: start;
+      padding: 10px 0px;
+    }
+
+    &__count {
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+      flex: 1;
+      text-align: start;
+      padding: 5px 0px;
+    }
+
+    &__icon-container {
+
+      bottom: 27%;
+      width: 100%;
+
+    }
+
+    &__filter {
+      position: absolute;
+      top: 5%;
+      z-index: 3;
+      margin-left: 0px;
+    }
   }
 
-  @media only screen and (max-width: 800px) {
-    /* Styles for small screens (tablets) */
+  @media only screen and (width: 1024px) and (height: 1366px),
+  only screen and (width: 912px) and (height: 1366px) {
+
+    &__details-container {
+      bottom: 60%;
+      margin: 0px 50px 0px 50px;
+    }
+
+    &__details {
+      margin: 0 auto;
+      padding: 20px;
+
+    }
+
+    &__vote-details {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    &__slider-container {
+      position: absolute;
+      bottom: 40%;
+      right: 0;
+      z-index: 2;
+      margin-right: 0px;
+      margin-top: 0;
+    }
+
+    &__vote {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      text-align: start;
+      padding: 10px 0px;
+    }
+
+    &__count {
+      display: flex;
+      flex-direction: row;
+      align-items: start;
+      flex: 1;
+      text-align: start;
+      padding: 5px 0px;
+    }
+
+    &__icon-container {
+
+      bottom: 40%;
+      width: 100%;
+
+    }
+
+    &__filter {
+      position: absolute;
+      top: 1%;
+      z-index: 3;
+      margin-left: 0px;
+    }
   }
 
-  @media only screen and (max-width: 1000px) {
-    /* Styles for large screens (tablets) */
-  }
-
-  @media only screen and (max-width: 1200px) {
-    /* Styles for large screens (large desktops) */
-  }
-
-  @media only screen and (max-width: 1500px) {
-    /* Styles for large screens (large desktops) */
-  }
 }

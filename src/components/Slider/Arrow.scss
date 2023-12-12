@@ -11,17 +11,32 @@
     width: 60px;
     height: auto;
 
- 
-  }
 
-  @media only screen and (max-width: 320px) {
+  }
+  @media only screen and (min-width: 481px) and (max-width: 767px) {
+    padding: 0;
+    margin: 0px 5px;
+
     &__img {
-      width: 20px;
+      width: 40px;
       height: auto;
 
- 
+
     }
   }
+
+  @media only screen and (min-width: 280px) and (max-width: 480px) {
+    padding: 0;
+    margin: 0px 5px;
+
+    &__img {
+      width: 30px;
+      height: auto;
+
+
+    }
+  }
+
 
 
 }

@@ -221,7 +221,7 @@ const UpcomingMovie = () => {
       <div className="upcoming__slider-container">
         <Slider
           slides={filteredItems}
-          visibleItemsNumber={5}
+          visibleItemsNumber={4}
           selectedSlide={selectedItem}
           onSelectItem={handleSliderSelect}
         >

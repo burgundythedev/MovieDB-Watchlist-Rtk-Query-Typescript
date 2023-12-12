@@ -10,29 +10,24 @@
     padding: 0;
     list-style-type: none;
 
-    & > * {
+    &>* {
       margin-right: 20px;
     }
-    & > *:last-child {
+
+    &>*:last-child {
       margin-right: 0;
     }
   }
-  @media only screen and (max-width: 320px) {
+
+  @media only screen and (min-width: 280px) and (max-width: 480px) {
 
 
     &__list {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0;
-      list-style-type: none;
-
-      & > * {
-        margin-right: 12px;
-      }
-      & > *:last-child {
-        margin-right: 0;
+      &>* {
+        margin-right: 7px;
       }
     }
   }
+
+
 }
