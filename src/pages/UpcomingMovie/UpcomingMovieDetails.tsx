@@ -92,11 +92,11 @@ const UpcomingMovieDetails = () => {
       </div>
       <div className="upcoming-movie-details__button-box">
         <NavLink to="/">
-          <Button type="primary" children="← Back to Home" />
+          <Button type="view" children="← Back to Home" />
         </NavLink>
         <Button
           onClick={() => handleAddToWatchlist(upcomingMovieDetails)}
-          type="primary"
+          type="view"
           children="Add to Watchlist"
         />
       </div>

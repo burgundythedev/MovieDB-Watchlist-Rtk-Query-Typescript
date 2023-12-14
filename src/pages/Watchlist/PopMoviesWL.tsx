@@ -42,7 +42,7 @@ const PopMoviesWL = () => {
               <div className="pop-movies-wl__button-box">
                 <Button
                   onClick={() => handleDelete(item)}
-                  type="primary"
+                  type="view"
                   children="Delete"
                 />
                 <Button
@@ -51,7 +51,7 @@ const PopMoviesWL = () => {
                       handleMovieDetails(item as Movie);
                     }
                   }}
-                  type="primary"
+                  type="view"
                   children="View Details"
                 />
               </div>

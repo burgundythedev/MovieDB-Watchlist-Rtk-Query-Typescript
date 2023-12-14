@@ -15,7 +15,12 @@ import download from "../../assets/download.png";
 import camera from "../../assets/camera.png";
 import screen from "../../assets/screen.png";
 import started from "../../assets/wallpaper-trial.jpg";
+import Footer from "../Footer/Footer";
+import { useState } from "react";
 const Home = () => {
+
+  const [isHovered, setIsHovered] = useState(false);
+
   const {
     data: popularMoviesData,
     error: popularMoviesError,
@@ -41,50 +46,48 @@ const Home = () => {
         <div className="movielist__title-box">
           <div className="movielist__sub-title">
             <h6 className="movielist__title movielist__title--all">
-              Online Streaming
+              Most Popular Movies
             </h6>
             <h2 className="movielist__title movielist__title--section">
               {title}
             </h2>
           </div>
           <NavLink to="/movies">
-            <Button type="view-all" children="View All" />
+            <Button type="view-all" children="View All Movies" />
           </NavLink>
         </div>
         <div className="movielist__items">
-          {slicedMovies.map((movie: Movie) => (
-            <div key={movie.id} className="movielist__item">
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                className="movielist__img"
-                loading="lazy"
-              />
-              <div className="movielist__details-box">
-                <p className="movielist__details movielist__details--title">
-                  {movie.title}
-                </p>
-                <p className="movielist__details movielist__details--date">
-                  {formatYear(movie.release_date)}
-                </p>
+        {slicedMovies.map((movie: Movie) => (
+          <NavLink
+            to="/movies"
+            key={movie.id}
+            className={`movielist__item ${isHovered ? 'hovered' : ''}`} 
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <img
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+              alt={movie.title}
+              className="movielist__img"
+              loading="lazy"
+            />
+            <div className="movielist__details-box">
+              <p className="movielist__details movielist__details--title">{movie.title}</p>
+              <p className="movielist__details movielist__details--date">{formatYear(movie.release_date)}</p>
+            </div>
+            <div className="movielist__details-box">
+              <div className="movielist__vote">
+                <img src={pop} className="movielist__star" alt="star icon" />
+                <p className="movielist__details movielist__details--pop">{movie.popularity}</p>
               </div>
-              <div className="movielist__details-box">
-                <div className="movielist__vote">
-                  <img src={pop} className="movielist__star" alt="star icon" />
-                  <p className="movielist__details movielist__details--pop">
-                    {movie.popularity}
-                  </p>
-                </div>
-                <div className="movielist__vote">
-                  <img src={star} className="movielist__star" alt="star icon" />
-                  <p className="movielist__details movielist__details--vote">
-                    {movie.vote_average}
-                  </p>
-                </div>
+              <div className="movielist__vote">
+                <img src={star} className="movielist__star" alt="star icon" />
+                <p className="movielist__details movielist__details--vote">{movie.vote_average}</p>
               </div>
             </div>
-          ))}
-        </div>
+          </NavLink>
+        ))}
+      </div>
       </div>
     );
   };
@@ -172,7 +175,7 @@ const Home = () => {
             </h2>
           </div>
           <NavLink to="/tvshows">
-            <Button type="view-all" children="View All" />
+            <Button type="view-all" children="View All Series" />
           </NavLink>
         </div>
         <div className="tvshowlist__items">
@@ -249,8 +252,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-
-     
       <div className="home__list">
         {upcomingMoviesData &&
           renderUpcomingMovieList(
@@ -329,33 +330,34 @@ const Home = () => {
           renderMovieList(popularMoviesData.results, "Popular Movies")}
         {tvShowData &&
           renderTVShowList(tvShowData.results, "Popular TV Series")}
-           <div className="home__trial">
-        <img
-          className="home__trial-background"
-          src={started}
-          alt="wallpaper-started"
-        />
-        <div className="home__trial-container">
-          <div className="home__trial-title-wrapper">
-            <h2 className="home__trial-title">Trial start first 30 days.</h2>
-            <p className="home__trial-text">
-              Enter your email to create or restart your membership.
-            </p>
-          </div>
+        <div className="home__trial">
+          <img
+            className="home__trial-background"
+            src={started}
+            alt="wallpaper-started"
+          />
+          <div className="home__trial-container">
+            <div className="home__trial-title-wrapper">
+              <h2 className="home__trial-title">Trial start first 30 days.</h2>
+              <p className="home__trial-text">
+                Enter your email to create or restart your membership.
+              </p>
+            </div>
 
-          <form action="" className="home__trial-form">
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="Enter your email"
-              className="home__email-field"
-            />
-            <Button children="Get Started" />
-          </form>
+            <form action="" className="home__trial-form">
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="Enter your email"
+                className="home__email-field"
+              />
+              <Button children="Get Started" />
+            </form>
+          </div>
         </div>
       </div>
-      </div>
+      <Footer />
     </div>
   );
 };

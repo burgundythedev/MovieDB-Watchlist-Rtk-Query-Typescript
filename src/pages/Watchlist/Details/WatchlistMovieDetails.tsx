@@ -65,7 +65,7 @@ const MovieDetails = () => {
       </div>
       <div className="movie-details__button-container">
         <NavLink to="/watchlist">
-          <Button type="primary" children="← Back to Watchlist" />
+          <Button type="view" children="← Back to Watchlist" />
         </NavLink>
       </div>
     </div>

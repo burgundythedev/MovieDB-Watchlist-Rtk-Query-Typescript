@@ -38,7 +38,7 @@ const ShowWL = () => {
             <div className="show-wl__button-box">
               <Button
                 onClick={() => handleDelete(item)}
-                type="primary"
+                type="view"
                 children="Delete"
               />
               <Button
@@ -47,7 +47,7 @@ const ShowWL = () => {
                     handleShowDetails(item as TVShow);
                   }
                 }}
-                type="primary"
+                type="view"
                 children="View Details"
               />
             </div>

@@ -1,0 +1,74 @@
+.footer {
+ 
+    background-color: black;
+    font-family: "Aboreto", sans-serif;
+    color: white;
+
+    &__wrapper {
+        margin: 0px 150px;
+    }
+
+    &__logo-box {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+    }
+
+    &__dev {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+     
+    }
+    &__span{
+        color: rgb(216, 91, 83);
+        margin-right: 5px;
+    }
+    &__logo {
+        width: 50px;
+        margin-right: 20px;
+    }
+
+    &__title {
+        font-size: 30px;
+        margin-right: 20px;
+    }
+
+    &__text {
+        margin: 0;
+        font-size: 15px;
+        text-align: start;
+    }
+
+    &__link {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        color: white;
+
+        &:focus {
+            color: white;
+        }
+
+        &:active {
+            color: white;
+        }
+    }
+
+    &__icon-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__icon {
+        width: 30px;
+        padding: 20px;
+    }
+    
+}

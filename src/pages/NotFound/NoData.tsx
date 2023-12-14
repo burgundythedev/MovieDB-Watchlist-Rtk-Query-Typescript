@@ -12,7 +12,7 @@ const NoData: React.FC<NoDataProps> = ({ onBack }) => {
       <h1 className="nodata__text">
         No flicks found in this collection. Retreat and uncover your destiny. 😎
       </h1>
-      <Button type="primary" children="Back" onClick={onBack} />
+      <Button type="view" children="Back" onClick={onBack} />
     </div>
   );
 };

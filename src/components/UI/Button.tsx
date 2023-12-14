@@ -3,9 +3,9 @@ import "./Button.scss";
 
 interface ButtonProps {
   className?: string;
-  type?: "back" | "view-all" | "view";
+  type?: "view-all" | "view";
   children: ReactNode;
-  icon?: string | undefined; // Specify a more specific type
+  icon?: string | undefined;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -16,7 +16,7 @@ const Button = ({ className, type, children, onClick, icon }: ButtonProps) => {
 
   return (
     <button className={buttonClassName} onClick={onClick}>
-      {icon && <img className="button__icon" src={icon} alt="icon" />}{" "}
+      {icon && <img className="button__icon" src={icon} alt="icon" />}
       {children}
     </button>
   );

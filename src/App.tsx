@@ -12,6 +12,7 @@ import WatchlistMovieDetails from "./pages/Watchlist/Details/WatchlistMovieDetai
 import NotFound from "./pages/NotFound/NotFound";
 import Home from "./components/Home/Home";
 
+
 const App: React.FC = () => {
   return (
     <Router>
@@ -23,12 +24,22 @@ const App: React.FC = () => {
         <Route path="tvshows" element={<Shows />} />
         <Route path="watchlist" element={<Watchlist />} />
 
-        <Route path="upcoming-movies/:id/watchlist-details" element={<WatchlistUpDetails />} />
-        <Route path="tvshows/:id/watchlist-details" element={<WatchlistTVDetails />} />
-        <Route path="movies/:id/watchlist-details" element={<WatchlistMovieDetails />} />
+        <Route
+          path="upcoming-movies/:id/watchlist-details"
+          element={<WatchlistUpDetails />}
+        />
+        <Route
+          path="tvshows/:id/watchlist-details"
+          element={<WatchlistTVDetails />}
+        />
+        <Route
+          path="movies/:id/watchlist-details"
+          element={<WatchlistMovieDetails />}
+        />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+    
     </Router>
   );
 };

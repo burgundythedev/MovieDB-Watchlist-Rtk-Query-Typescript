@@ -40,12 +40,12 @@ const UpcomingWL = () => {
                       handleUpMovieDetails(item as UpcomingMovies);
                     }
                   }}
-                  type="primary"
+                  type="view"
                   children="View Details"
                 />
                 <Button
                   onClick={() => handleDelete(item)}
-                  type="primary"
+                  type="view"
                   children="Delete"
                 />
               </div>
