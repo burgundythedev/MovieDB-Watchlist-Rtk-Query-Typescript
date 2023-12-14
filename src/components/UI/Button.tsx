@@ -3,7 +3,7 @@ import "./Button.scss";
 
 interface ButtonProps {
   className?: string;
-  type?: "primary" | "secondary" | "view";
+  type?: "back" | "view-all" | "view";
   children: ReactNode;
   icon?: string | undefined; // Specify a more specific type
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;

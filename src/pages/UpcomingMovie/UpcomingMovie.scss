@@ -170,8 +170,13 @@
   &__icon {
     width: 30px;
     height: 30px;
-    margin-right: 15px;
     cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: rgb(216, 91, 83, 0.5);
+    }
 
     &--detail {
       animation: none !important;

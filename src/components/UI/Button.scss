@@ -29,7 +29,31 @@
     color: #fff;
   }
 
+  &--view-all {
+    color: #fff;
+    background: rgba(66, 65, 65, 0.2);
+    font-size: 15px;
+    width: 150px;
+    border: 1px solid rgba(88, 86, 86);
+    padding: 12px 26px;
+    border-radius: 50px;
 
+    &:focus {
+      width: 175px;
+      background-color: rgb(51, 152, 219, 0.5)
+    }
+
+    &:hover {
+
+
+      box-shadow: 6px 0px 0px rgb(216, 91, 83, 0.5);
+    }
+
+    &:active {
+      color: black;
+      fill: black;
+    }
+  }
 
   &--view {
     background-color: #d85b53;
@@ -63,9 +87,10 @@
     width: 30px;
     margin-right: 10px;
   }
+
   @media only screen and (min-width: 712px) and (max-width: 1020px) {
     &--view {
-      
+
       width: 140px;
       height: 35px;
       font-size: 13px;
@@ -81,12 +106,13 @@
 
     &__icon {
       width: 20px;
-     
+
     }
   }
+
   @media only screen and (min-width: 481px) and (max-width: 712px) {
     &--view {
-      
+
       width: 140px;
       height: 35px;
       font-size: 13px;
@@ -102,16 +128,17 @@
 
     &__icon {
       width: 20px;
-     
+
     }
   }
+
   @media only screen and (min-width: 280px) and (max-width: 480px) {
     &--view {
       background-color: #d85b53;
       width: 110px;
       height: 30px;
       font-size: 9px;
-   
+
       color: #fff;
       margin-right: 5px;
 
