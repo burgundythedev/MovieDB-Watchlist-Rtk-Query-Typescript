@@ -1,7 +1,20 @@
 .watchlist {
+  background-color: #d85b53;
+  height: 90vh;
+
+  &__container {
+    margin: 0px 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
+
   &__title {
-    font-size: 25px;
+    margin-top: 100px;
+    color: white;
+    font-size: 30px;
     font-family: "Aboreto", sans-serif;
-    text-align: center;
+    text-align: start;
   }
 }

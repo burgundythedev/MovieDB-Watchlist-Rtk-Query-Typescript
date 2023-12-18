@@ -1,5 +1,5 @@
 .button {
-  background-color: rgb(216, 91, 83,0.7);
+  background-color: rgb(216, 91, 83, 0.7);
   align-items: center;
   border: none;
   box-sizing: border-box;
@@ -90,25 +90,58 @@
     margin-right: 10px;
   }
 
-  @media only screen and (min-width: 712px) and (max-width: 1020px) {
-    &--view {
 
-      width: 140px;
-      height: 35px;
-      font-size: 13px;
+  @media only screen and (min-width: 280px) and (max-width: 480px) {
+    &--get-started {
+      width: 70px;
+      height: 30px;
+      font-size: 9px;
+      margin-top: 10px;
+    }
 
-      color: #fff;
-      margin-right: 20px;
+    &--view-all {
+      margin-top: 20px;
+      font-size: 10px;
+      width: 100px;
+      height: 30px;
+      padding: 8px 13px;
+      border-radius: 50px;
 
       &:focus {
-        width: 145px;
+        width: 65px;
+        background-color: rgb(51, 152, 219, 0.5)
+      }
+
+      &:hover {
+
+
+        box-shadow: 6px 0px 0px rgb(216, 91, 83, 0.5);
+      }
+
+      &:active {
+        color: black;
+        fill: black;
+      }
+    }
+
+    &--view {
+      background-color: #d85b53;
+      width: 110px;
+      height: 30px;
+      font-size: 9px;
+
+      color: #fff;
+      margin-right: 5px;
+
+      &:focus {
+        width: 115px;
         background-color: rgb(51, 152, 219, 0.5)
       }
     }
 
     &__icon {
-      width: 20px;
-
+      width: 10px;
+      margin-right: 5px;
     }
   }
 
@@ -134,26 +167,56 @@
     }
   }
 
-  @media only screen and (min-width: 280px) and (max-width: 480px) {
-    &--view {
-      background-color: #d85b53;
-      width: 110px;
-      height: 30px;
-      font-size: 9px;
-
-      color: #fff;
-      margin-right: 5px;
+  @media screen and (min-width: 481px) and (max-width: 1012px) {
+    &--view-all {
+      margin-top: 10px;
+      font-size: 10px;
+      width: 130px;
+      height: 40px;
+      padding: 8px 13px;
+      border-radius: 50px;
 
       &:focus {
-        width: 115px;
+        width: 65px;
+        background-color: rgb(51, 152, 219, 0.5)
+      }
+
+      &:hover {
+
+
+        box-shadow: 6px 0px 0px rgb(216, 91, 83, 0.5);
+      }
+
+      &:active {
+        color: black;
+        fill: black;
+      }
+    }
+
+  }
+
+  @media only screen and (min-width: 712px) and (max-width: 1020px) {
+    &--view {
+
+      width: 140px;
+      height: 35px;
+      font-size: 13px;
+
+      color: #fff;
+      margin-right: 20px;
+
+      &:focus {
+        width: 145px;
         background-color: rgb(51, 152, 219, 0.5)
       }
     }
 
     &__icon {
-      width: 10px;
-      margin-right: 5px;
+      width: 20px;
+
     }
   }
+
+
 
 }

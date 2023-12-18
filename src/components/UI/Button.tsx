@@ -3,7 +3,7 @@ import "./Button.scss";
 
 interface ButtonProps {
   className?: string;
-  type?: "view-all" | "view";
+  type?: "get-started"|"view-all" | "view";
   children: ReactNode;
   icon?: string | undefined;
   onClick?: (event: MouseEvent<HTMLButtonElement>) => void;

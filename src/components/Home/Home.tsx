@@ -16,10 +16,9 @@ import camera from "../../assets/camera.png";
 import screen from "../../assets/screen.png";
 import started from "../../assets/wallpaper-trial.jpg";
 import Footer from "../Footer/Footer";
-import { useState } from "react";
+// import { useState } from "react";
 const Home = () => {
-
-  const [isHovered, setIsHovered] = useState(false);
+  // const [isHovered, setIsHovered] = useState(false);
 
   const {
     data: popularMoviesData,
@@ -57,37 +56,39 @@ const Home = () => {
           </NavLink>
         </div>
         <div className="movielist__items">
-        {slicedMovies.map((movie: Movie) => (
-          <NavLink
-            to="/movies"
-            key={movie.id}
-            className={`movielist__item ${isHovered ? 'hovered' : ''}`} 
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-              className="movielist__img"
-              loading="lazy"
-            />
-            <div className="movielist__details-box">
-              <p className="movielist__details movielist__details--title">{movie.title}</p>
-              <p className="movielist__details movielist__details--date">{formatYear(movie.release_date)}</p>
-            </div>
-            <div className="movielist__details-box">
-              <div className="movielist__vote">
-                <img src={pop} className="movielist__star" alt="star icon" />
-                <p className="movielist__details movielist__details--pop">{movie.popularity}</p>
+          {slicedMovies.map((movie: Movie) => (
+            <div key={movie.id}>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                className="movielist__img"
+                loading="lazy"
+              />
+              <div className="movielist__details-box">
+                <p className="movielist__details movielist__details--title">
+                  {movie.title}
+                </p>
+                <p className="movielist__details movielist__details--date">
+                  {formatYear(movie.release_date)}
+                </p>
               </div>
-              <div className="movielist__vote">
-                <img src={star} className="movielist__star" alt="star icon" />
-                <p className="movielist__details movielist__details--vote">{movie.vote_average}</p>
+              <div className="movielist__details-box">
+                <div className="movielist__vote">
+                  <img src={pop} className="movielist__star" alt="star icon" />
+                  <p className="movielist__details movielist__details--pop">
+                    {movie.popularity}
+                  </p>
+                </div>
+                <div className="movielist__vote">
+                  <img src={star} className="movielist__star" alt="star icon" />
+                  <p className="movielist__details movielist__details--vote">
+                    {movie.vote_average}
+                  </p>
+                </div>
               </div>
             </div>
-          </NavLink>
-        ))}
-      </div>
+          ))}
+        </div>
       </div>
     );
   };
@@ -166,7 +167,7 @@ const Home = () => {
     return (
       <div className="tvshowlist">
         <div className="tvshowlist__title-box">
-          <div className="movielist__sub-title">
+          <div className="tvshowlist__sub-title">
             <h6 className="tvshowlist__title tvshowlist__title--all">
               Online Streaming
             </h6>
@@ -352,7 +353,7 @@ const Home = () => {
                 placeholder="Enter your email"
                 className="home__email-field"
               />
-              <Button children="Get Started" />
+              <Button type="get-started" children="Get Started" />
             </form>
           </div>
         </div>

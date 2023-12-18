@@ -1,5 +1,5 @@
 .footer {
- 
+
     background-color: black;
     font-family: "Aboreto", sans-serif;
     color: white;
@@ -21,12 +21,14 @@
         flex-direction: row;
         align-items: center;
         width: 100%;
-     
+
     }
-    &__span{
+
+    &__span {
         color: rgb(216, 91, 83);
         margin-right: 5px;
     }
+
     &__logo {
         width: 50px;
         margin-right: 20px;
@@ -70,5 +72,200 @@
         width: 30px;
         padding: 20px;
     }
-    
+
+    @media only screen and (min-width: 280px) and (max-width: 480px) {
+        padding: 10px 50px;
+
+        &__wrapper {
+            margin: 0px 50px;
+        }
+
+        &__logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        &__dev {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+        }
+
+        &__span {
+            color: rgb(216, 91, 83);
+            margin-right: 5px;
+        }
+
+        &__logo {
+            display: none;
+        }
+
+        &__title {
+            font-size: 15px;
+            margin-right: 10px;
+        }
+
+        &__text {
+            margin: 0;
+            font-size: 7px;
+            text-align: center;
+        }
+
+
+
+        &__icon {
+            width: 20px;
+            padding: 10px;
+        }
+
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 712px) {
+        padding: 10px 50px;
+
+        &__wrapper {
+            margin: 0px 50px;
+        }
+
+        &__logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        &__dev {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+        }
+
+        &__span {
+            color: rgb(216, 91, 83);
+            margin-right: 5px;
+        }
+
+        &__logo {
+            display: none;
+        }
+
+        &__title {
+            font-size: 15px;
+            margin-right: 10px;
+        }
+
+        &__text {
+            margin: 0;
+            font-size: 7px;
+            text-align: center;
+        }
+
+
+
+        &__icon {
+            width: 20px;
+            padding: 10px;
+        }
+    }
+
+    @media screen and (min-width: 481px) and (max-width: 1012px) {
+        padding: 10px 50px;
+
+        &__wrapper {
+            margin: 0px 50px;
+        }
+
+        &__logo-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+        }
+
+        &__dev {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+
+        }
+
+        &__span {
+            color: rgb(216, 91, 83);
+            margin-right: 5px;
+        }
+
+        &__logo {
+            display: none;
+        }
+
+        &__title {
+            font-size: 15px;
+            margin-right: 10px;
+        }
+
+        &__text {
+            margin: 0;
+            font-size: 7px;
+            text-align: center;
+        }
+
+
+
+        &__icon {
+            width: 20px;
+            padding: 10px;
+        }
+    }
+
+    @media screen and (min-width: 1013px) and (max-width: 1512px) {
+        &__wrapper {
+            margin: 0px 100px;
+        }
+
+
+
+        &__dev {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            width: 100%;
+
+        }
+
+  
+
+        &__logo {
+            width: 50px;
+            margin-right: 10px;
+        }
+
+        &__title {
+            font-size: 20px;
+      
+        }
+
+        &__text {
+
+            font-size: 10px;
+            text-align: start;
+        }
+
+
+   
+
+        &__icon {
+            width: 25px;
+            padding: 20px;
+        }
+    }
 }

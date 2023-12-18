@@ -1,14 +1,12 @@
-import PopMoviesWL from "./PopMoviesWL";
-import ShowWL from "./ShowWL";
-import UpcomingWL from "./UpcomingWL";
 import "./Watchlist.scss";
 
 const Watchlist = () => {
   return (
     <div className="watchlist">
-      <PopMoviesWL />
-      <UpcomingWL />
-      <ShowWL />
+      <div className="watchlist__container">
+        <h1 className="watchlist__title">Watchlist</h1>
+    
+      </div>
     </div>
   );
 };
