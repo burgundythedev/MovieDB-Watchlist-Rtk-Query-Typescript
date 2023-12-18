@@ -57,6 +57,11 @@
         border-radius: 15px;
         font-family: "Aboreto", sans-serif;
         font-size: 10px;
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgb(216, 91, 83, 0.2);
+        }
     }
 
 

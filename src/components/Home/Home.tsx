@@ -16,10 +16,8 @@ import camera from "../../assets/camera.png";
 import screen from "../../assets/screen.png";
 import started from "../../assets/wallpaper-trial.jpg";
 import Footer from "../Footer/Footer";
-// import { useState } from "react";
-const Home = () => {
-  // const [isHovered, setIsHovered] = useState(false);
 
+const Home = () => {
   const {
     data: popularMoviesData,
     error: popularMoviesError,
@@ -58,12 +56,14 @@ const Home = () => {
         <div className="movielist__items">
           {slicedMovies.map((movie: Movie) => (
             <div key={movie.id}>
-              <img
-                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                alt={movie.title}
-                className="movielist__img"
-                loading="lazy"
-              />
+              <NavLink to={`/movies/${movie.id}`} className="movie-link">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  alt={movie.title}
+                  className="movielist__img"
+                  loading="lazy"
+                />
+              </NavLink>
               <div className="movielist__details-box">
                 <p className="movielist__details movielist__details--title">
                   {movie.title}

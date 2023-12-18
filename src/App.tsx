@@ -7,7 +7,7 @@ import Shows from "./pages/TV/Shows";
 import Watchlist from "./pages/Watchlist/Watchlist";
 import NotFound from "./pages/NotFound/NotFound";
 import Home from "./components/Home/Home";
-
+import MovieDetails from "./pages/Details/MovieDetails";
 
 const App: React.FC = () => {
   return (
@@ -17,11 +17,11 @@ const App: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="upcoming-movies" element={<UpcomingMovie />} />
         <Route path="movies" element={<PopMovieList />} />
+        <Route path="movies/:id" element={<MovieDetails />} />
         <Route path="tvshows" element={<Shows />} />
         <Route path="watchlist" element={<Watchlist />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    
     </Router>
   );
 };
