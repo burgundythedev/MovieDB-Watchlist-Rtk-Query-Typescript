@@ -1,20 +1,106 @@
 .watchlist {
   background-color: #d85b53;
-  height: 90vh;
+  width: 100%;
+
+  &__empty {
+    margin-top: 50px;
+    color: white;
+    font-size: 20px;
+    font-family: "Aboreto", sans-serif;
+    text-align: start;
+  }
+
+  &__button-title {
+    padding: 20px;
+    background-color: rgb(5, 4, 4, 0.5);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: end;
+    margin: 100px 0px;
+    border-radius: 15px;
+  }
 
   &__container {
     margin: 0px 150px;
+    padding: 0;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: start;
   }
 
   &__title {
-    margin-top: 100px;
+    margin: 0;
+    margin-right: 15px;
     color: white;
-    font-size: 30px;
+    font-size: 45px;
     font-family: "Aboreto", sans-serif;
+  }
+
+  &__list {
+    margin-bottom: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__list-items {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__poster {
+    width: 200px;
+    height: auto;
+    border-radius: 5%;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+
+  &__name {
     text-align: start;
+    color: white;
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    font-family: "Aboreto", sans-serif;
+  }
+
+  @media only screen and (min-width: 280px) and (max-width: 480px) {
+    &__container {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__title {
+      width: 100%;
+      margin-top: 100px;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    &__poster {
+      width: 130px
+    }
   }
 }

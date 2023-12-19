@@ -82,6 +82,11 @@
     z-index: 3;
   }
 
+  &__total {
+    margin-right: 5px;
+    font-weight: bold;
+  }
+
   &__item {
     display: flex;
     flex-direction: row;

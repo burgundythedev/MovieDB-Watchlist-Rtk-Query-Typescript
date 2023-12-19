@@ -14,8 +14,13 @@ import {
 } from "../../models";
 import "./Shows.scss";
 import VideoModal from "../../components/UI/VideoModal";
-import { useDispatch } from "react-redux";
-import { addToWatchlist } from "../../store/watchlistSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  WatchlistItem,
+  addToWatchlist,
+  deleteFromWatchlist,
+  selectWatchlistItems,
+} from "../../store/watchlistSlice";
 import twitter from "../../assets/twitter.png";
 import instagram from "../../assets/instagram.png";
 import github from "../../assets/github.png";
@@ -28,8 +33,15 @@ import Loader from "../../components/UI/Loader";
 
 const PopTVShowList = () => {
   const dispatch = useDispatch();
+  const watchlistItems: WatchlistItem[] = useSelector(selectWatchlistItems);
+
+  const watchlistTotalItems = useSelector(
+    (state: { watchlist: { totalItems: number } }) => state.watchlist.totalItems
+  );
+  
 
   const [isVideoVisible, setIsVideoVisible] = useState(false);
+  const [isInWatchlist, setIsInWatchlist] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
   const [filteredItems, setFilteredItems] = useState<TVShow[]>([]);
   const [selectedItem, setSelectedItem] = useState<TVShow | null>(
@@ -68,6 +80,14 @@ const PopTVShowList = () => {
     }
   }, [tvShowData, selectedGenre]);
 
+  useEffect(() => {
+    const isInWatchlist =
+      watchlistTotalItems > 0 && selectedItem
+        ? watchlistItems.some((item) => item.id === selectedItem.id)
+        : false;
+  
+    setIsInWatchlist(isInWatchlist);
+  }, [watchlistTotalItems, selectedItem, watchlistItems]);
   const handleSliderSelect = (index: number) => {
     setSelectedItem(filteredItems[index] || null);
   };
@@ -87,12 +107,13 @@ const PopTVShowList = () => {
   };
 
   const handleAddToWL = (tvShow: TVShow) => {
-    dispatch(
-      addToWatchlist({
-        ...tvShow,
-        source: "PopTVShowList",
-      })
-    );
+    setIsInWatchlist(!isInWatchlist);
+
+    if (isInWatchlist) {
+      dispatch(deleteFromWatchlist(tvShow));
+    } else {
+      dispatch(addToWatchlist(tvShow));
+    }
   };
 
   const handleWatchTrailer = () => {
@@ -197,7 +218,9 @@ const PopTVShowList = () => {
                 onClick={() => handleAddToWL(selectedItem)}
                 type="view"
                 icon={addIcon}
-                children="Add to watchlist"
+                children={
+                  isInWatchlist ? "Remove from Watchlist" : "Add to Watchlist"
+                }
               />
               <Button
                 type="view"

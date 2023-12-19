@@ -14,8 +14,8 @@ import {
 import "./UpcomingMovie.scss";
 import Button from "../../components/UI/Button";
 import VideoModal from "../../components/UI/VideoModal";
-import { useDispatch } from "react-redux";
-import { addToWatchlist } from "../../store/watchlistSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { WatchlistItem, addToWatchlist, selectWatchlistItems } from "../../store/watchlistSlice";
 import twitter from "../../assets/twitter.png";
 import instagram from "../../assets/instagram.png";
 import github from "../../assets/github.png";
@@ -34,12 +34,21 @@ const UpcomingMovie = () => {
   } = useFetchUpcomingDataQuery();
   const dispatch = useDispatch();
   const [isVideoVisible, setIsVideoVisible] = useState(false);
+  const [isInWatchlist, setIsInWatchlist] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
   const [filteredItems, setFilteredItems] = useState<UpcomingMovies[]>([]);
   const [selectedItem, setSelectedItem] = useState<UpcomingMovies | null>(
     filteredItems[0] || null
   );
 
+  const watchlistItems: WatchlistItem[] = useSelector(selectWatchlistItems);
+
+
+  const watchlistTotalItems = useSelector(
+    (state: { watchlist: { totalItems: number } }) =>
+      state.watchlist.totalItems
+  );
+  
   const { data: videoData } = useFetchVideosQuery(selectedItem?.id || 0);
 
   const videoModalRef = useRef<HTMLDivElement | null>(null);
@@ -64,7 +73,7 @@ const UpcomingMovie = () => {
   useEffect(() => {
     if (upcomingData && upcomingData.results.length > 0) {
       const filtered = upcomingData.results.filter(
-        (movie) => !selectedGenre || movie.genre_ids.includes(selectedGenre)
+        (movie: { genre_ids: number[]; }) => !selectedGenre || movie.genre_ids.includes(selectedGenre)
       );
       setFilteredItems(filtered);
       setSelectedItem(filtered[0] || null);
@@ -74,7 +83,14 @@ const UpcomingMovie = () => {
   const handleSliderSelect = (index: number) => {
     setSelectedItem(filteredItems[index] || null);
   };
-
+  useEffect(() => {
+    const isInWatchlist =
+      watchlistTotalItems > 0 && selectedItem
+        ? watchlistItems.some((item) => item.id === selectedItem.id)
+        : false;
+  
+    setIsInWatchlist(isInWatchlist);
+  }, [watchlistTotalItems, selectedItem, watchlistItems]);
   const handleGenreSelect = (
     genre: number | null,
     firstMovie: UpcomingMovies | null
@@ -83,17 +99,18 @@ const UpcomingMovie = () => {
 
     const filtered =
       upcomingData?.results.filter(
-        (movie) => !genre || movie.genre_ids.includes(genre)
+        (movie: { genre_ids: number[]; }) => !genre || movie.genre_ids.includes(genre)
       ) || [];
     setFilteredItems(filtered);
     setSelectedItem(firstMovie || filtered[0] || null);
   };
 
   const handleAddToWL = (movie: UpcomingMovies) => {
+    setIsInWatchlist(!isInWatchlist);
     dispatch(
       addToWatchlist({
         ...movie,
-        source: "UpcomingMovies",
+   
       })
     );
   };
@@ -201,7 +218,9 @@ const UpcomingMovie = () => {
                 onClick={() => handleAddToWL(selectedItem)}
                 type="view"
                 icon={addIcon}
-                children="Add to watchlist"
+                children={
+                  isInWatchlist ? "Remove from Watchlist" : "Add to Watchlist"
+                }
               />
               <Button
                 type="view"

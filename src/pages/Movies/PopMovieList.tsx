@@ -9,8 +9,12 @@ import { Movie, formatFullDate, genreIdToName } from "../../models";
 import "./PopMovieList.scss";
 import Button from "../../components/UI/Button";
 import VideoModal from "../../components/UI/VideoModal";
-import { useDispatch } from "react-redux";
-import { addToWatchlist } from "../../store/watchlistSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  WatchlistItem,
+  addToWatchlist,
+  selectWatchlistItems,
+} from "../../store/watchlistSlice";
 import twitter from "../../assets/twitter.png";
 import instagram from "../../assets/instagram.png";
 import github from "../../assets/github.png";
@@ -29,6 +33,7 @@ const PopMovieList = () => {
   } = useFetchPopularMovieDataQuery();
   const dispatch = useDispatch();
   const [isVideoVisible, setIsVideoVisible] = useState(false);
+  const [isInWatchlist, setIsInWatchlist] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
   const [filteredItems, setFilteredItems] = useState<Movie[]>([]);
   const [selectedItem, setSelectedItem] = useState<Movie | null>(
@@ -38,7 +43,11 @@ const PopMovieList = () => {
   const { data: videoData } = useFetchVideosQuery(selectedItem?.id || 0);
 
   const videoModalRef = useRef<HTMLDivElement | null>(null);
+  const watchlistItems: WatchlistItem[] = useSelector(selectWatchlistItems);
 
+  const watchlistTotalItems = useSelector(
+    (state: { watchlist: { totalItems: number } }) => state.watchlist.totalItems
+  );
   const handleClickOutside = (event: MouseEvent) => {
     if (
       videoModalRef.current &&
@@ -65,7 +74,14 @@ const PopMovieList = () => {
       setSelectedItem(filtered[0] || null);
     }
   }, [movieData, selectedGenre]);
+  useEffect(() => {
+    const isInWatchlist =
+      watchlistTotalItems > 0 && selectedItem
+        ? watchlistItems.some((item) => item.id === selectedItem.id)
+        : false;
 
+    setIsInWatchlist(isInWatchlist);
+  }, [watchlistTotalItems, selectedItem, watchlistItems]);
   const handleSliderSelect = (index: number) => {
     setSelectedItem(filteredItems[index] || null);
   };
@@ -85,10 +101,10 @@ const PopMovieList = () => {
   };
 
   const handleAddToWL = (movie: Movie) => {
+    setIsInWatchlist(!isInWatchlist);
     dispatch(
       addToWatchlist({
         ...movie,
-        source: "PopMovieList",
       })
     );
   };
@@ -190,7 +206,9 @@ const PopMovieList = () => {
                 onClick={() => handleAddToWL(selectedItem)}
                 type="view"
                 icon={addIcon}
-                children="Add to watchlist"
+                children={
+                  isInWatchlist ? "Remove from Watchlist" : "Add to Watchlist"
+                }
               />
               <Button
                 type="view"

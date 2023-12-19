@@ -4,7 +4,7 @@ export type MovieData = {
 export type TVShowData = {
   results: TVShow[];
 };
-export type UpcomingCineData = {
+export type UpcomingMoviesData = {
   results: UpcomingMovies[];
 };
 export type Movie = {
@@ -18,6 +18,8 @@ export type Movie = {
   vote_count: number;
   backdrop_path: string;
   genre_ids: number[];
+  genres: { id: number; name: string }[];
+
 };
 
 export type TVShow = {
@@ -31,6 +33,8 @@ export type TVShow = {
   first_air_date: string;
   backdrop_path: string;
   genre_ids: number[];
+  genres: { id: number; name: string }[];
+
 };
 export type UpcomingMovies = {
   adult: boolean;
@@ -47,6 +51,7 @@ export type UpcomingMovies = {
   vote_average: number;
   vote_count: number;
   genre_ids: number[];
+  genres: { id: number; name: string }[];
 
 };
 export type VideoData = {
@@ -104,7 +109,9 @@ export enum TVShowGenre {
   WarPolitics = 10768,
   Western = 37,
 }
-
+export const genreIdToName = {
+  ...MovieGenre,
+};
 export const formatDate = (dateString: string): string => {
   const date = new Date(dateString);
   const year = date.getFullYear();
@@ -124,8 +131,4 @@ export const formatFullDate = (dateString: string): string => {
   const month = date.toLocaleString("en-US", { month: "long" });
   const day = date.getDate();
   return `${month} ${day}, ${year}`;
-};
-
-export const genreIdToName = {
-  ...MovieGenre,
 };

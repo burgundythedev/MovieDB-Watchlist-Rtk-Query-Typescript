@@ -3,7 +3,8 @@ import { useParams } from "react-router-dom";
 import Button from "../../components/UI/Button";
 import VideoModal from "../../components/UI/VideoModal";
 import {
-  useFetchMovieByIdQuery,
+    useFetchTVShowByIdQuery,
+
   useFetchVideosQuery,
 } from "../../store/fetchDataSlice";
 import twitter from "../../assets/twitter.png";
@@ -15,21 +16,21 @@ import watchlist from "../../assets/add.png";
 import count from "../../assets/vote-count.png";
 import genre from "../../assets/genre.png";
 import "./Details.scss";
-import { Movie, formatFullDate } from "../../models";
+import {  TVShow,  formatFullDate } from "../../models";
 import {
   addToWatchlist,
   selectWatchlistTotalItems,
 } from "../../store/watchlistSlice";
 import { useDispatch, useSelector } from "react-redux";
-const MovieDetails = () => {
+const ShowDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const watchlistTotalItems = useSelector(selectWatchlistTotalItems);
 
-  const { data: movie } = useFetchMovieByIdQuery(Number(id));
+  const { data: tvShow } = useFetchTVShowByIdQuery(Number(id));
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   const [isInWatchlist, setIsInWatchlist] = useState(false);
-  const { data: videoData } = useFetchVideosQuery(movie?.id || 0);
+  const { data: videoData } = useFetchVideosQuery(tvShow?.id || 0);
   const videoModalRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -51,29 +52,29 @@ const MovieDetails = () => {
   useEffect(() => {
 
     const isInWatchlist =
-      watchlistTotalItems > 0 && movie
-        ? localStorage.getItem("watchlist")?.includes(movie.id.toString())
+      watchlistTotalItems > 0 && tvShow
+        ? localStorage.getItem("watchlist")?.includes(tvShow.id.toString())
         : false;
 
     setIsInWatchlist(isInWatchlist!);
-  }, [watchlistTotalItems, movie]);
+  }, [watchlistTotalItems, tvShow]);
   const handleWatchTrailer = () => {
     setIsVideoVisible(!isVideoVisible);
   };
 
-  if (!movie) {
+  if (!tvShow) {
     return <div>Loading...</div>;
   }
-  const handleAddToWatchlist = (movie: Movie) => {
+  const handleAddToWatchlist = (tvShow: TVShow) => {
     setIsInWatchlist(!isInWatchlist);
-    dispatch(addToWatchlist({ ...movie }));
+    dispatch(addToWatchlist({ ...tvShow }));
   };
   return (
     <div className="details">
       <img
         className="details__background"
-        src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-        alt={movie.title}
+        src={`https://image.tmdb.org/t/p/original${tvShow.backdrop_path}`}
+        alt={tvShow.name}
       />
 
       <div className="details__icon-container">
@@ -102,18 +103,18 @@ const MovieDetails = () => {
 
       <div className="details__details-container">
         <div className="details__details">
-          <h2 className="details__title">{movie.title}</h2>
-          <p className="details__overview">{movie.overview}</p>
+          <h2 className="details__title">{tvShow.name}</h2>
+          <p className="details__overview">{tvShow.overview}</p>
           <div className="details__genres">
             <img
               className="details__icon details__icon--detail"
               src={genre}
               alt="icon-details"
             />
-            {movie.genres.map((genre, index) => (
+            {tvShow.genres.map((genre, index) => (
               <span className="details__genre-item" key={genre.id}>
                 {genre.name}
-                {index < movie.genres.length - 1 && ", "}
+                {index < tvShow.genres.length - 1 && ", "}
               </span>
             ))}
           </div>
@@ -124,7 +125,7 @@ const MovieDetails = () => {
                 src={star}
                 alt="icon-details"
               />
-              {movie.vote_average}
+              {tvShow.vote_average}
             </span>
             <span className="details__vote">
               <img
@@ -132,10 +133,10 @@ const MovieDetails = () => {
                 src={count}
                 alt="icon-details"
               />
-              {movie.vote_count}
+              {tvShow.vote_count}
             </span>
             <span className="details__vote">
-              {formatFullDate(movie.release_date)}
+              {formatFullDate(tvShow.first_air_date)}
             </span>
           </div>
           <div className="details__button-container">
@@ -145,7 +146,7 @@ const MovieDetails = () => {
               children={
                 isInWatchlist ? "Remove from Watchlist" : "Add to Watchlist"
               }
-              onClick={() => handleAddToWatchlist(movie)}
+              onClick={() => handleAddToWatchlist(tvShow)}
             />
             <Button
               type="view"
@@ -157,7 +158,7 @@ const MovieDetails = () => {
         </div>
       </div>
       <div className="details__title-overlay">
-        {movie && <h2 className="details__selected-title">{movie.title}</h2>}
+        {tvShow && <h2 className="details__selected-title">{tvShow.name}</h2>}
       </div>
 
       {isVideoVisible && videoData && (
@@ -172,4 +173,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default ShowDetails;

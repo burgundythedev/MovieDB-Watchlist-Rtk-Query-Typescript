@@ -117,13 +117,17 @@ const Home = () => {
         <div className="upcominglist__items">
           {slicedUpcomingMovies.map((upcomingMovie: UpcomingMovies) => (
             <div key={upcomingMovie.id} className="upcominglist__item">
-              <img
-                src={`https://image.tmdb.org/t/p/w500${upcomingMovie.poster_path}`}
-                alt={upcomingMovie.title}
-                className="upcominglist__img"
-                loading="lazy"
-              />
-
+              <NavLink
+                to={`/upcoming-movies/${upcomingMovie.id}`}
+                className="movie-link"
+              >
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${upcomingMovie.poster_path}`}
+                  alt={upcomingMovie.title}
+                  className="upcominglist__img"
+                  loading="lazy"
+                />
+              </NavLink>
               <div className="upcominglist__details-box">
                 <p className="upcominglist__details movielist__details--title">
                   {upcomingMovie.title}
@@ -182,12 +186,14 @@ const Home = () => {
         <div className="tvshowlist__items">
           {slicedTVShows.map((tvShow: TVShow) => (
             <div key={tvShow.id} className="tvshowlist__item">
-              <img
-                src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
-                alt={tvShow.name}
-                className="tvshowlist__img"
-                loading="lazy"
-              />
+              <NavLink to={`/tvshows/${tvShow.id}`} className="movie-link">
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
+                  alt={tvShow.name}
+                  className="tvshowlist__img"
+                  loading="lazy"
+                />
+              </NavLink>
               <div className="tvshowlist__details-box">
                 <p className="tvshowlist__details tvshowlist__details--title">
                   {tvShow.name}

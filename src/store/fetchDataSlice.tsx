@@ -1,5 +1,13 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Movie, MovieData, TVShow, TVShowData, UpcomingCineData, UpcomingMovies, VideoData } from "../models";
+import {
+  Movie,
+  MovieData,
+  TVShow,
+  TVShowData,
+  UpcomingMovies,
+  UpcomingMoviesData,
+  VideoData,
+} from "../models";
 
 const apiKey: string = import.meta.env.VITE_REACT_APP_API_KEY;
 
@@ -16,7 +24,7 @@ export const moviedbApi = createApi({
       query: () =>
         `discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&without_genres=string&api_key=${apiKey}`,
     }),
-    fetchUpcomingData: builder.query<UpcomingCineData, void>({
+    fetchUpcomingData: builder.query<UpcomingMoviesData, void>({
       query: () => `movie/upcoming?language=en-US&page=2&api_key=${apiKey}`,
     }),
 

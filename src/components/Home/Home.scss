@@ -1064,9 +1064,16 @@
 
 
     &__img {
+        margin-top: 20px;
         width: 300px;
         height: auto;
         border-radius: 5px;
+        transition: transform 0.3s ease; 
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.1);
+        }
     }
 
 
@@ -1358,9 +1365,16 @@
 
 
     &__img {
+        margin-top: 20px;
         width: 300px;
         height: auto;
         border-radius: 5px;
+        transition: transform 0.3s ease; 
+        cursor: pointer;
+
+        &:hover {
+            transform: scale(1.1);
+        }
     }
 
 
@@ -1657,11 +1671,17 @@
 
 
     &__img {
+        margin-top: 20px;
         width: 300px;
         height: auto;
         border-radius: 5px;
-    }
+        transition: transform 0.3s ease; 
+        cursor: pointer;
 
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
 
     &__details-box {
         display: flex;

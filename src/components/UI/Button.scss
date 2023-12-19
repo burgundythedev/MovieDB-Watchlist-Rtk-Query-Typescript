@@ -30,6 +30,32 @@
     color: #fff;
   }
 
+  &--remove {
+    color: #fff;
+    background: rgba(66, 65, 65, 0.2);
+    font-size: 15px;
+    width: 200px;
+
+    padding: 25px 26px;
+    border-radius: 0px 15px 15px 0px;
+
+    &:focus {
+      width: 125px;
+
+    }
+
+    &:hover {
+      color: white;
+      background-color: rgb(51, 152, 219, 0.7);
+      box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
+    }
+
+    &:active {
+      color: black;
+      fill: black;
+    }
+  }
+
   &--view-all {
     color: #fff;
     background: rgba(66, 65, 65, 0.2);
@@ -85,6 +111,33 @@
     }
   }
 
+  &--back {
+    background-color:  rgb(51, 152, 219, 0.6);
+    width: 170px;
+    height: 40px;
+    font-size: 15px;
+    background: linear-gradient(45deg, rgba(216, 91, 83) 5%);
+    border-radius: 15px;
+    color: #fff;
+
+
+    &:focus {
+      width: 175px;
+      
+    }
+
+    &:hover {
+      color: white;
+      background-color: rgb(51, 152, 219, 0.9);
+      box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
+    }
+
+    &:active {
+      color: black;
+      fill: black;
+    }
+  }
+
   &__icon {
     width: 30px;
     margin-right: 10px;
@@ -128,7 +181,7 @@
       background-color: #d85b53;
       width: 110px;
       height: 30px;
-      font-size: 9px;
+      font-size: 8px;
 
       color: #fff;
       margin-right: 5px;
@@ -143,14 +196,42 @@
       width: 10px;
       margin-right: 5px;
     }
+
+    &--back {
+      background: rgba(66, 65, 65, 0.7);
+      width: 110px;
+      height: 30px;
+      font-size: 10px;
+      background: linear-gradient(45deg, rgba(216, 91, 83) 5%);
+      border-radius: 15px;
+      color: #fff;
+
+
+      &:focus {
+        width: 115px;
+        background-color: rgb(51, 152, 219, 0.5)
+      }
+
+      &:hover {
+        color: white;
+
+        box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
+      }
+
+      &:active {
+        color: black;
+        fill: black;
+      }
+    }
   }
 
-  @media only screen and (min-width: 481px) and (max-width: 712px) {
+
+  @media screen and (min-width: 481px) and (max-width: 1012px) {
     &--view {
 
-      width: 140px;
+      width: 150px;
       height: 35px;
-      font-size: 13px;
+      font-size: 10px;
 
       color: #fff;
       margin-right: 20px;
@@ -165,9 +246,7 @@
       width: 20px;
 
     }
-  }
 
-  @media screen and (min-width: 481px) and (max-width: 1012px) {
     &--view-all {
       margin-top: 10px;
       font-size: 10px;
@@ -193,29 +272,36 @@
       }
     }
 
-  }
-
-  @media only screen and (min-width: 712px) and (max-width: 1020px) {
-    &--view {
-
-      width: 140px;
-      height: 35px;
-      font-size: 13px;
-
+    &--back {
+      background: rgba(66, 65, 65, 0.7);
+      width: 110px;
+      height: 30px;
+      font-size: 10px;
+      background: linear-gradient(45deg, rgba(216, 91, 83) 5%);
+      border-radius: 15px;
       color: #fff;
-      margin-right: 20px;
+
 
       &:focus {
-        width: 145px;
+        width: 115px;
         background-color: rgb(51, 152, 219, 0.5)
+      }
+
+      &:hover {
+        color: white;
+
+        box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
+      }
+
+      &:active {
+        color: black;
+        fill: black;
       }
     }
 
-    &__icon {
-      width: 20px;
-
-    }
   }
+
+
 
 
 

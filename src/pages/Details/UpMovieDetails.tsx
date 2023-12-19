@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Button from "../../components/UI/Button";
 import VideoModal from "../../components/UI/VideoModal";
 import {
-  useFetchMovieByIdQuery,
+  useFetchUpcomingMovieByIdQuery,
   useFetchVideosQuery,
 } from "../../store/fetchDataSlice";
 import twitter from "../../assets/twitter.png";
@@ -15,21 +15,21 @@ import watchlist from "../../assets/add.png";
 import count from "../../assets/vote-count.png";
 import genre from "../../assets/genre.png";
 import "./Details.scss";
-import { Movie, formatFullDate } from "../../models";
+import {  UpcomingMovies, formatFullDate } from "../../models";
 import {
   addToWatchlist,
   selectWatchlistTotalItems,
 } from "../../store/watchlistSlice";
 import { useDispatch, useSelector } from "react-redux";
-const MovieDetails = () => {
+const UpMovieDetails = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const watchlistTotalItems = useSelector(selectWatchlistTotalItems);
 
-  const { data: movie } = useFetchMovieByIdQuery(Number(id));
+  const { data: UpMovie } = useFetchUpcomingMovieByIdQuery(Number(id));
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   const [isInWatchlist, setIsInWatchlist] = useState(false);
-  const { data: videoData } = useFetchVideosQuery(movie?.id || 0);
+  const { data: videoData } = useFetchVideosQuery(UpMovie?.id || 0);
   const videoModalRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -51,29 +51,29 @@ const MovieDetails = () => {
   useEffect(() => {
 
     const isInWatchlist =
-      watchlistTotalItems > 0 && movie
-        ? localStorage.getItem("watchlist")?.includes(movie.id.toString())
+      watchlistTotalItems > 0 && UpMovie
+        ? localStorage.getItem("watchlist")?.includes(UpMovie.id.toString())
         : false;
 
     setIsInWatchlist(isInWatchlist!);
-  }, [watchlistTotalItems, movie]);
+  }, [watchlistTotalItems, UpMovie]);
   const handleWatchTrailer = () => {
     setIsVideoVisible(!isVideoVisible);
   };
 
-  if (!movie) {
+  if (!UpMovie) {
     return <div>Loading...</div>;
   }
-  const handleAddToWatchlist = (movie: Movie) => {
+  const handleAddToWatchlist = (upMovie: UpcomingMovies) => {
     setIsInWatchlist(!isInWatchlist);
-    dispatch(addToWatchlist({ ...movie }));
+    dispatch(addToWatchlist({ ...upMovie }));
   };
   return (
     <div className="details">
       <img
         className="details__background"
-        src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-        alt={movie.title}
+        src={`https://image.tmdb.org/t/p/original${UpMovie.backdrop_path}`}
+        alt={UpMovie.title}
       />
 
       <div className="details__icon-container">
@@ -102,18 +102,18 @@ const MovieDetails = () => {
 
       <div className="details__details-container">
         <div className="details__details">
-          <h2 className="details__title">{movie.title}</h2>
-          <p className="details__overview">{movie.overview}</p>
+          <h2 className="details__title">{UpMovie.title}</h2>
+          <p className="details__overview">{UpMovie.overview}</p>
           <div className="details__genres">
             <img
               className="details__icon details__icon--detail"
               src={genre}
               alt="icon-details"
             />
-            {movie.genres.map((genre, index) => (
+            {UpMovie.genres.map((genre, index) => (
               <span className="details__genre-item" key={genre.id}>
                 {genre.name}
-                {index < movie.genres.length - 1 && ", "}
+                {index < UpMovie.genres.length - 1 && ", "}
               </span>
             ))}
           </div>
@@ -124,7 +124,7 @@ const MovieDetails = () => {
                 src={star}
                 alt="icon-details"
               />
-              {movie.vote_average}
+              {UpMovie.vote_average}
             </span>
             <span className="details__vote">
               <img
@@ -132,10 +132,10 @@ const MovieDetails = () => {
                 src={count}
                 alt="icon-details"
               />
-              {movie.vote_count}
+              {UpMovie.vote_count}
             </span>
             <span className="details__vote">
-              {formatFullDate(movie.release_date)}
+              {formatFullDate(UpMovie.release_date)}
             </span>
           </div>
           <div className="details__button-container">
@@ -145,7 +145,7 @@ const MovieDetails = () => {
               children={
                 isInWatchlist ? "Remove from Watchlist" : "Add to Watchlist"
               }
-              onClick={() => handleAddToWatchlist(movie)}
+              onClick={() => handleAddToWatchlist(UpMovie)}
             />
             <Button
               type="view"
@@ -157,7 +157,7 @@ const MovieDetails = () => {
         </div>
       </div>
       <div className="details__title-overlay">
-        {movie && <h2 className="details__selected-title">{movie.title}</h2>}
+        {UpMovie && <h2 className="details__selected-title">{UpMovie.title}</h2>}
       </div>
 
       {isVideoVisible && videoData && (
@@ -172,4 +172,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default UpMovieDetails;
