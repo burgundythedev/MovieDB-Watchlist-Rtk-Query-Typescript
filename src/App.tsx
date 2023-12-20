@@ -11,15 +11,17 @@ import MovieDetails from "./pages/Details/MovieDetails";
 import UpMovieDetails from "./pages/Details/UpMovieDetails";
 import ShowDetails from "./pages/Details/ShowDetails";
 
-
 const App: React.FC = () => {
   return (
-    <Router basename="/olivierbourgogne.com/">
+    <Router>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="upcoming-movies" element={<UpcomingMovie />} />
-        <Route path="upcoming-movies/details/:id" element={<UpMovieDetails />} />
+        <Route
+          path="upcoming-movies/details/:id"
+          element={<UpMovieDetails />}
+        />
         <Route path="movies" element={<PopMovieList />} />
         <Route path="movies/details/:id" element={<MovieDetails />} />
         <Route path="tvshows" element={<Shows />} />
