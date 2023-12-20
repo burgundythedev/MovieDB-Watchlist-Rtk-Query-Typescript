@@ -14,16 +14,16 @@ import ShowDetails from "./pages/Details/ShowDetails";
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <Router basename="/olivierbourgogne.com/">
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="upcoming-movies" element={<UpcomingMovie />} />
-        <Route path="upcoming-movies/:id" element={<UpMovieDetails />} />
+        <Route path="upcoming-movies/details/:id" element={<UpMovieDetails />} />
         <Route path="movies" element={<PopMovieList />} />
-        <Route path="movies/:id" element={<MovieDetails />} />
+        <Route path="movies/details/:id" element={<MovieDetails />} />
         <Route path="tvshows" element={<Shows />} />
-        <Route path="tvshows/:id" element={<ShowDetails />} />
+        <Route path="tvshows/details/:id" element={<ShowDetails />} />
         <Route path="watchlist" element={<Watchlist />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

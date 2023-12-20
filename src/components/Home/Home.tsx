@@ -56,7 +56,7 @@ const Home = () => {
         <div className="movielist__items">
           {slicedMovies.map((movie: Movie) => (
             <div key={movie.id}>
-              <NavLink to={`/movies/${movie.id}`} className="movie-link">
+              <NavLink to={`/movies/details/${movie.id}`} className="movie-link">
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={movie.title}
@@ -118,7 +118,7 @@ const Home = () => {
           {slicedUpcomingMovies.map((upcomingMovie: UpcomingMovies) => (
             <div key={upcomingMovie.id} className="upcominglist__item">
               <NavLink
-                to={`/upcoming-movies/${upcomingMovie.id}`}
+                to={`/upcoming-movies/details/${upcomingMovie.id}`}
                 className="movie-link"
               >
                 <img
@@ -186,7 +186,7 @@ const Home = () => {
         <div className="tvshowlist__items">
           {slicedTVShows.map((tvShow: TVShow) => (
             <div key={tvShow.id} className="tvshowlist__item">
-              <NavLink to={`/tvshows/${tvShow.id}`} className="movie-link">
+              <NavLink to={`/tvshows/details/${tvShow.id}`} className="movie-link">
                 <img
                   src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
                   alt={tvShow.name}

@@ -12,13 +12,26 @@
 
   &__button-title {
     padding: 20px;
-    background-color: rgb(5, 4, 4, 0.5);
+    background-color: rgb(5, 4, 4, 0.1);
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: end;
+    width: 600px;
+    justify-content: space-between;
+    align-items: center;
     margin: 100px 0px;
     border-radius: 15px;
+  }
+
+  &__icon {
+    width: 30px;
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    padding: 20px;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &__container {
@@ -51,7 +64,7 @@
     padding: 0;
     margin: 20px 0px;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     gap: 30px;
     justify-content: center;
     align-items: center;
@@ -80,27 +93,131 @@
     color: white;
     margin-top: 25px;
     margin-bottom: 10px;
-    font-size: 12px;
+    font-size: 10px;
     font-family: "Aboreto", sans-serif;
   }
 
-  @media only screen and (min-width: 280px) and (max-width: 480px) {
-    &__container {
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+  @media only screen and (min-width: 1081px) and (max-width: 1680px) {
+    &__poster {
+      width: 150px;
+    }
+
+    &__list-items {
+      gap: 10px;
+    }
+
+    &__icon {
+      width: 25px;
     }
 
     &__title {
-      width: 100%;
-      margin-top: 100px;
-      font-size: 20px;
-      text-align: center;
+      font-size: 30px;
     }
 
+    &__name {
+      font-size: 9px;
+    }
+  }
+
+  @media only screen and (min-width: 481px) and (max-width: 1080px) {
     &__poster {
-      width: 130px
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    &__title {
+      font-size: 30px;
+    }
+
+    &__name {
+        font-size: 9px;
+
+    }
+
+    &__icon-box {
+      display: flex;
+    }
+
+    &__list-items {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+
+    }
+
+    &__empty {
+      font-size: 10px;
+    }
+
+    &__button-title {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin: 50px 0px;
+      width: 400px;
+    }
+
+    &__icon {
+      width: 20px;
+      padding: 5px;
+    }
+
+    &__container {
+      margin: 0px 0px;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  @media only screen and (min-width: 280px) and (max-width: 490px) {
+    &__poster {
+      width: 110px;
+      margin-bottom: 10px;
+    }
+
+    &__title {
+      font-size: 30px;
+    }
+
+    &__name {
+      display: none;
+
+    }
+
+    &__icon-box {
+      display: flex;
+    }
+
+    &__list-items {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+
+    }
+
+    &__empty {
+      font-size: 10px;
+    }
+
+    &__button-title {
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      margin: 50px 0px;
+      width: 260px;
+    }
+
+    &__icon {
+      width: 20px;
+      padding: 5px;
+    }
+
+    &__container {
+      margin: 0px 0px;
+      justify-content: center;
+      align-items: center;
     }
   }
 }

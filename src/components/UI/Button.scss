@@ -35,8 +35,8 @@
     background: rgba(66, 65, 65, 0.2);
     font-size: 15px;
     width: 200px;
-
-    padding: 25px 26px;
+    height: auto;
+    padding: 10px 5px;
     border-radius: 0px 15px 15px 0px;
 
     &:focus {
@@ -112,7 +112,7 @@
   }
 
   &--back {
-    background-color:  rgb(51, 152, 219, 0.6);
+    background-color: rgb(51, 152, 219, 0.6);
     width: 170px;
     height: 40px;
     font-size: 15px;
@@ -123,7 +123,7 @@
 
     &:focus {
       width: 175px;
-      
+
     }
 
     &:hover {
@@ -145,6 +145,13 @@
 
 
   @media only screen and (min-width: 280px) and (max-width: 480px) {
+    &--remove {
+      width: 110px;
+      height: auto;
+      padding: 0px 5px;
+      font-size: 10px;
+    }
+
     &--get-started {
       width: 70px;
       height: 30px;
@@ -226,7 +233,14 @@
   }
 
 
-  @media screen and (min-width: 481px) and (max-width: 1012px) {
+  @media screen and (min-width: 481px) and (max-width: 1080px) {
+    &--remove {
+      width: 120px;
+      height: auto;
+      padding: 2px 2px;
+      font-size: 10px;
+    }
+
     &--view {
 
       width: 150px;
@@ -302,7 +316,11 @@
   }
 
 
-
-
-
+  @media only screen and (min-width: 1081px) and (max-width: 1680px) {
+    &--remove {
+      width: 150px;
+      height: auto;
+      padding: 5px 5px;
+    }
+  }
 }

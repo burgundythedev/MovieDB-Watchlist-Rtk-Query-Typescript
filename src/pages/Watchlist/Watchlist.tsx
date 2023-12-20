@@ -4,9 +4,12 @@ import { RootState } from "../../store/store";
 import { WatchlistItem, deleteFromWatchlist } from "../../store/watchlistSlice";
 import Button from "../../components/UI/Button";
 import { Movie, TVShow } from "../../models";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
-
+import screen from "../../assets/screen.png";
+import camera from "../../assets/camera.png";
+import eye from "../../assets/eye.png";
+import popcorn from "../../assets/popcorn.png";
 const isMovie = (item: WatchlistItem): item is Movie => {
   return "title" in item;
 };
@@ -16,7 +19,6 @@ const isTVShow = (item: WatchlistItem): item is TVShow => {
 };
 
 const Watchlist = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const watchlistItems = useSelector(
     (state: RootState) => state.watchlist.items
@@ -24,16 +26,24 @@ const Watchlist = () => {
   const handleRemove = (item: WatchlistItem) => {
     dispatch(deleteFromWatchlist(item));
   };
-
-  const navigateTo = () => {
-    navigate("/");
+  const truncateText = (text: string, maxLength: number): string => {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return text.substring(0, maxLength - 3) + "...";
+    }
   };
   return (
     <div className="watchlist">
       <div className="watchlist__container">
         <div className="watchlist__button-title">
           <h1 className="watchlist__title">Watchlist</h1>
-          <Button onClick={navigateTo} type="back" children="Back To Home" />
+          <div className="watchlist__icon-box">
+            <img src={screen} alt="poster" className="watchlist__icon" />
+            <img src={camera} alt="poster" className="watchlist__icon" />
+            <img src={eye} alt="poster" className="watchlist__icon" />
+            <img src={popcorn} alt="poster" className="watchlist__icon" />
+          </div>
         </div>
         <div className="watchlist__list">
           {watchlistItems.length > 0 ? (
@@ -43,8 +53,8 @@ const Watchlist = () => {
                   <NavLink
                     to={
                       isMovie(item)
-                        ? `/movies/${item.id}`
-                        : `/tvshows/${item.id}`
+                        ? `/movies/details/${item.id}`
+                        : `/tvshows/details/${item.id}`
                     }
                   >
                     {item.poster_path && (
@@ -56,11 +66,14 @@ const Watchlist = () => {
                     )}
                   </NavLink>
                   <span className="watchlist__name">
-                    {isMovie(item)
-                      ? (item as Movie).title
-                      : isTVShow(item)
-                      ? (item as TVShow).name
-                      : ""}
+                  {truncateText(
+                      isMovie(item)
+                        ? (item as Movie).title
+                        : isTVShow(item)
+                        ? (item as TVShow).name
+                        : "",
+                      25
+                    )}
                   </span>
                   <Button
                     type="remove"
@@ -75,7 +88,7 @@ const Watchlist = () => {
           )}
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
