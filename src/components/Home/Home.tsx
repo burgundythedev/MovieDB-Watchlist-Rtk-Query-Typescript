@@ -15,7 +15,6 @@ import download from "../../assets/download.png";
 import camera from "../../assets/camera.png";
 import screen from "../../assets/screen.png";
 import started from "../../assets/wallpaper-trial.jpg";
-import Footer from "../Footer/Footer";
 
 const Home = () => {
   const {
@@ -56,7 +55,10 @@ const Home = () => {
         <div className="movielist__items">
           {slicedMovies.map((movie: Movie) => (
             <div key={movie.id}>
-              <NavLink to={`/movies/details/${movie.id}`} className="movie-link">
+              <NavLink
+                to={`/movies/details/${movie.id}`}
+                className="movie-link"
+              >
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
                   alt={movie.title}
@@ -186,7 +188,10 @@ const Home = () => {
         <div className="tvshowlist__items">
           {slicedTVShows.map((tvShow: TVShow) => (
             <div key={tvShow.id} className="tvshowlist__item">
-              <NavLink to={`/tvshows/details/${tvShow.id}`} className="movie-link">
+              <NavLink
+                to={`/tvshows/details/${tvShow.id}`}
+                className="movie-link"
+              >
                 <img
                   src={`https://image.tmdb.org/t/p/w500${tvShow.poster_path}`}
                   alt={tvShow.name}
@@ -364,7 +369,6 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

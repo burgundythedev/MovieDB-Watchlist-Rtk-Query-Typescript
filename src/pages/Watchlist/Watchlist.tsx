@@ -5,7 +5,6 @@ import { WatchlistItem, deleteFromWatchlist } from "../../store/watchlistSlice";
 import Button from "../../components/UI/Button";
 import { Movie, TVShow } from "../../models";
 import { NavLink } from "react-router-dom";
-import Footer from "../../components/Footer/Footer";
 import screen from "../../assets/screen.png";
 import camera from "../../assets/camera.png";
 import eye from "../../assets/eye.png";
@@ -88,7 +87,7 @@ const Watchlist = () => {
           )}
         </div>
       </div>
-      <Footer />
+
     </div>
   );
 };

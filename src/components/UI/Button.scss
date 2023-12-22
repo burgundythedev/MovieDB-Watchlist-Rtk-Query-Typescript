@@ -32,7 +32,7 @@
 
   &--remove {
     color: #fff;
-    background: rgba(66, 65, 65, 0.2);
+    background-color: rgba(216, 91, 83, 0.7) ;
     font-size: 15px;
     width: 200px;
     height: auto;
@@ -40,13 +40,13 @@
     border-radius: 0px 15px 15px 0px;
 
     &:focus {
-      width: 125px;
+      width: 210px;
 
     }
 
     &:hover {
       color: white;
-      background-color: rgb(51, 152, 219, 0.7);
+      background-color: rgba(216, 91, 83, 0.9) ;
       box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
     }
 
@@ -88,7 +88,7 @@
     width: 170px;
     height: 50px;
     font-size: 15px;
-    background: linear-gradient(45deg, rgba(216, 91, 83) 5%);
+    background-color: rgba(216, 91, 83, 0.9) ;
     border: 0;
     color: #fff;
 
@@ -96,7 +96,7 @@
 
     &:focus {
       width: 175px;
-      background-color: rgb(51, 152, 219, 0.5)
+      background-color: rgba(216, 91, 83, 0.7) ;
     }
 
     &:hover {

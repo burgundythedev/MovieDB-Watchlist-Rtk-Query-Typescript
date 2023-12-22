@@ -19,7 +19,6 @@ export type Movie = {
   backdrop_path: string;
   genre_ids: number[];
   genres: { id: number; name: string }[];
-
 };
 
 export type TVShow = {
@@ -34,7 +33,6 @@ export type TVShow = {
   backdrop_path: string;
   genre_ids: number[];
   genres: { id: number; name: string }[];
-
 };
 export type UpcomingMovies = {
   adult: boolean;
@@ -52,7 +50,6 @@ export type UpcomingMovies = {
   vote_count: number;
   genre_ids: number[];
   genres: { id: number; name: string }[];
-
 };
 export type VideoData = {
   results: Video[];

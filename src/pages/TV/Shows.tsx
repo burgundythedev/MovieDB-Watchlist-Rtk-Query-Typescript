@@ -1,7 +1,7 @@
 import Button from "../../components/UI/Button";
 import { useState, useEffect, useRef } from "react";
 import Slider from "../../components/Slider/Slider";
-import SliderGenre from "../../components/Slider/SliderGenre";
+import SliderGenre from "../../components/Filter/FilterGenre";
 import {
   useFetchTVShowDataQuery,
   useFetchVideosQuery,

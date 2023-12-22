@@ -520,7 +520,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            z-index: 1;
+            z-index: 0;
 
         }
 
@@ -791,6 +791,7 @@
             justify-content: center;
             width: 100%;
             font-family: "Kanit", sans-serif;
+            z-index: 0;
 
         }
 
@@ -801,7 +802,7 @@
             position: absolute;
             top: 0;
             left: 0;
-            z-index: 1;
+            z-index: -1;
 
         }
 

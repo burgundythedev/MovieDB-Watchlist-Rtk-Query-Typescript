@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200&family=Rubik&display=swap");
+
+
+.genre {
+  display: flex;
+  align-items: center;
+
+  &__select {
+    font-family: "Rubik", sans-serif;
+    background: transparent;
+    border: 1px solid rgb(216, 91, 83, 0.5);
+    padding: 10px 15px;
+    margin: 50px 0px;
+    border-radius: 14px;
+    cursor: pointer;
+    color: white;
+    width: 170px;
+    font-size: 20px;
+
+    &:focus {
+      outline: none;
+      border-color: rgba(216, 91, 83, 0.5);
+    }
+  }
+
+  &__icon {
+    width: 30px;
+    height: auto;
+    margin-right: 10px;
+  }
+
+  &__option {
+    color: black;
+
+  }
+
+  &__option--selected {
+    color: black;
+
+  }
+
+  &__option-text {}
+
+}

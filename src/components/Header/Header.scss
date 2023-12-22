@@ -7,7 +7,13 @@
   justify-content: space-between;
   align-items: center;
   height: 10vh;
+  position: fixed;
+  top: 0;
+  z-index: 3;
+  text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.8);
 
+  width: 100%;
+  
   &__item {
     margin-left: 5px;
   }
@@ -16,6 +22,7 @@
     display: flex;
     justify-content: center;
     margin-left: 150px;
+    
   }
 
   &__logo {
@@ -40,6 +47,7 @@
     font-size: 20px;
     font-weight: bold;
     margin-left: 5px;
+    color: white;
 
 
 
@@ -62,7 +70,8 @@
     font-size: 20px;
     text-decoration: none;
     font-family: "Kanit", sans-serif;
-
+    color: white;
+    font-weight: bold;
     &--logo {
       padding: 0px;
 
@@ -74,7 +83,7 @@
     }
 
     &:visited {
-      color: black;
+      color: white;
     }
 
 

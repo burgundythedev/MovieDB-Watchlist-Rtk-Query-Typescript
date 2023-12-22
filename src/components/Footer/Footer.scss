@@ -1,9 +1,6 @@
 .footer {
-
-    background-color: black;
+    background-color: rgb(0, 0, 0);
     font-family: "Aboreto", sans-serif;
-    color: white;
-
     &__wrapper {
         margin: 0px 150px;
     }
@@ -30,13 +27,13 @@
     }
 
     &__logo {
-        width: 50px;
+        width: 20px;
         margin-right: 20px;
     }
 
     &__title {
-        font-size: 30px;
-        margin-right: 20px;
+        font-size: 20px;
+        margin-right: 5px;
     }
 
     &__text {
@@ -69,144 +66,73 @@
     }
 
     &__icon {
-        width: 30px;
+        width: 25px;
         padding: 20px;
     }
 
     @media only screen and (min-width: 280px) and (max-width: 480px) {
-        padding: 10px 50px;
+        padding: 5px 0px;
 
         &__wrapper {
-            margin: 0px 50px;
+            margin: 0px 30px;
         }
 
-        &__logo-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
 
-        }
 
-        &__dev {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
 
-        }
 
         &__span {
             color: rgb(216, 91, 83);
             margin-right: 5px;
         }
 
+
+
         &__logo {
-            display: none;
-        }
-
-        &__title {
-            font-size: 15px;
-            margin-right: 10px;
-        }
-
-        &__text {
-            margin: 0;
-            font-size: 7px;
-            text-align: center;
-        }
-
-
-
-        &__icon {
             width: 20px;
-            padding: 10px;
-        }
-
-    }
-
-    @media screen and (min-width: 481px) and (max-width: 712px) {
-        padding: 10px 50px;
-
-        &__wrapper {
-            margin: 0px 50px;
-        }
-
-        &__logo-box {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-between;
-
-        }
-
-        &__dev {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
-
-        }
-
-        &__span {
-            color: rgb(216, 91, 83);
             margin-right: 5px;
         }
 
-        &__logo {
-            display: none;
-        }
-
-        &__title {
-            font-size: 15px;
-            margin-right: 10px;
-        }
-
         &__text {
             margin: 0;
-            font-size: 7px;
+            font-size: 8px;
             text-align: center;
         }
 
 
 
         &__icon {
-            width: 20px;
-            padding: 10px;
+            width: 15px;
+            padding: 5px;
         }
+
     }
+
+
 
     @media screen and (min-width: 481px) and (max-width: 1012px) {
-        padding: 10px 50px;
+        padding: 10px 0px;
 
         &__wrapper {
-            margin: 0px 50px;
+            margin: 0px 30px;
         }
 
         &__logo-box {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
             align-items: center;
             justify-content: space-between;
 
         }
 
-        &__dev {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100%;
 
-        }
 
         &__span {
             color: rgb(216, 91, 83);
             margin-right: 5px;
         }
 
-        &__logo {
-            display: none;
-        }
+
 
         &__title {
             font-size: 15px;
@@ -228,6 +154,8 @@
     }
 
     @media screen and (min-width: 1013px) and (max-width: 1512px) {
+        padding: 10px 0px;
+
         &__wrapper {
             margin: 0px 100px;
         }

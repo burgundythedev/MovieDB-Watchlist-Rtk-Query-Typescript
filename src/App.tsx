@@ -10,6 +10,7 @@ import Home from "./components/Home/Home";
 import MovieDetails from "./pages/Details/MovieDetails";
 import UpMovieDetails from "./pages/Details/UpMovieDetails";
 import ShowDetails from "./pages/Details/ShowDetails";
+import Footer from "./components/Footer/Footer";
 
 const App: React.FC = () => {
   return (
@@ -29,6 +30,7 @@ const App: React.FC = () => {
         <Route path="watchlist" element={<Watchlist />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
