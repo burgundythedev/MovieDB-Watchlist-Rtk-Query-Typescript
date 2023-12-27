@@ -1,6 +1,7 @@
 .footer {
     background-color: rgb(0, 0, 0);
     font-family: "Aboreto", sans-serif;
+
     &__wrapper {
         margin: 0px 150px;
     }
@@ -110,11 +111,11 @@
 
 
 
-    @media screen and (min-width: 481px) and (max-width: 1012px) {
-        padding: 10px 0px;
+    @media screen and (min-width: 481px) and (max-width: 1060px) {
+
 
         &__wrapper {
-            margin: 0px 30px;
+            margin: 0px 75px;
         }
 
         &__logo-box {
@@ -153,14 +154,12 @@
         }
     }
 
-    @media screen and (min-width: 1013px) and (max-width: 1512px) {
-        padding: 10px 0px;
+    @media screen and (min-width: 1060px) and (max-width: 1512px) {
+
 
         &__wrapper {
-            margin: 0px 100px;
+            margin: 0px 150px;
         }
-
-
 
         &__dev {
             display: flex;
@@ -173,18 +172,19 @@
 
 
         &__logo {
-            width: 40px;
-            margin-right: 10px;
+            width: 25px;
+            height: auto;
+            margin-right: 5px;
         }
 
         &__title {
-            font-size: 20px;
+            font-size: 25px;
 
         }
 
         &__text {
 
-            font-size: 10px;
+            font-size: 15px;
             text-align: start;
         }
 
@@ -192,7 +192,7 @@
 
 
         &__icon {
-            width: 25px;
+            width: 20px;
             padding: 20px;
         }
     }

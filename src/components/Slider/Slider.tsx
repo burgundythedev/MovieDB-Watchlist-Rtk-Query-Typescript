@@ -10,7 +10,7 @@ type SliderProps<T> = {
   children: (slide: T, isSelected: boolean) => ReactNode;
   selectedSlide?: T | null;
   onSelectItem: (index: number) => void;
-  isGrid: boolean; 
+  isGrid: boolean;
 };
 
 const Slider = <T extends object>({
@@ -19,7 +19,7 @@ const Slider = <T extends object>({
   visibleItemsNumber = 3,
   selectedSlide = null,
   onSelectItem,
-  isGrid, 
+  isGrid,
 }: SliderProps<T>) => {
   const [start, setStart] = useState(0);
 
@@ -55,18 +55,19 @@ const Slider = <T extends object>({
   };
 
   const toggleGrid = () => {
-   
-    onSelectItem(-1); 
+    onSelectItem(-1);
   };
 
   return (
     <div className="slider">
-        <Button className="slider__toggle-button" onClick={toggleGrid}>
-          {isGrid ? 'Minimize List' : 'View All'}
+      <div className="slider__button-container">
+        <Button type="view" onClick={toggleGrid}>
+          {isGrid ? "Minimize List" : "View All"}
         </Button>
+      </div>
       <div className="slider__slides">
         {!isGrid && <PrevButton onClick={onPrevClick} />}
-        <ul className={`slider__list${isGrid ? '--grid' : ''}`}>
+        <ul className={`slider__list${isGrid ? "--grid" : ""}`}>
           {visibleItems.map((slide: T, index: number) => (
             <li
               key={index}
@@ -78,7 +79,6 @@ const Slider = <T extends object>({
         </ul>
         {!isGrid && <NextButton onClick={onNextClick} />}
       </div>
-      
     </div>
   );
 };

@@ -20,7 +20,6 @@ const Header = () => {
         <NavLink
           className="header__link header__link--logo "
           to="/"
-     
         >
           <img className="header__logo" src={logo} alt="logo-pic" />
           <p className="header__title">eyeforaScreen</p>

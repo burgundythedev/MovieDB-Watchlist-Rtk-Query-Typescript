@@ -7,7 +7,9 @@ const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <Provider store={store}>
-    <App />
-  </Provider>
+  <div style={{ height: '100vh' }}>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </div>
 );

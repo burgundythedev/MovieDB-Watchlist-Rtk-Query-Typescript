@@ -28,8 +28,6 @@ import star from "../../assets/star.png";
 import calendar from "../../assets/calendar.png";
 import Loader from "../../components/UI/Loader";
 
-// ... (imports and existing code)
-
 const UpcomingMovie = () => {
   const {
     data: upcomingData,
@@ -44,7 +42,7 @@ const UpcomingMovie = () => {
   const [selectedItem, setSelectedItem] = useState<UpcomingMovies | null>(
     filteredItems[0] || null
   );
-  const [isGrid, setIsGrid] = useState(false); // Step 1
+  const [isGrid, setIsGrid] = useState(false); 
 
   const watchlistItems: WatchlistItem[] = useSelector(selectWatchlistItems);
 
@@ -168,42 +166,45 @@ const UpcomingMovie = () => {
                   </h2>
                   <p className="upcoming__overview">{selectedItem.overview}</p>
                   <div className="upcoming__details-divers">
-                    <img
-                      className="upcoming__icon "
-                      src={genre}
-                      alt="icon-details"
-                    />
-                    {selectedItem.genre_ids.map((genreId, index) => (
-                      <span className="upcoming__genre-item" key={genreId}>
-                        {genreIdToName[genreId]}
-                        {index < selectedItem.genre_ids.length - 1 && ", "}
+                    <div className="upcoming__genres">
+                      <img
+                        className="upcoming__icon "
+                        src={genre}
+                        alt="icon-details"
+                      />
+                      {selectedItem.genre_ids.map((genreId, index) => (
+                        <span className="upcoming__genre-item" key={genreId}>
+                          &nbsp; {genreIdToName[genreId]}
+                          {index < selectedItem.genre_ids.length - 1 && ", "}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="upcoming__vote-details">
+                      <span className="upcoming__vote">
+                        <img
+                          className="upcoming__icon "
+                          src={star}
+                          alt="icon-details"
+                        />
+                        {selectedItem.vote_average}
                       </span>
-                    ))}
-
-                    <span className="upcoming__vote">
-                      <img
-                        className="upcoming__icon "
-                        src={star}
-                        alt="icon-details"
-                      />
-                      {selectedItem.vote_average}
-                    </span>
-                    <span className="upcoming__vote">
-                      <img
-                        className="upcoming__icon "
-                        src={count}
-                        alt="icon-details"
-                      />
-                      {selectedItem.vote_count}
-                    </span>
-                    <span className="upcoming__vote">
-                      <img
-                        className="upcoming__icon "
-                        src={calendar}
-                        alt="icon-details"
-                      />
-                      {formatFullDate(selectedItem.release_date)}
-                    </span>
+                      <span className="upcoming__vote">
+                        <img
+                          className="upcoming__icon "
+                          src={count}
+                          alt="icon-details"
+                        />
+                        {selectedItem.vote_count}
+                      </span>
+                      <span className="upcoming__vote">
+                        <img
+                          className="upcoming__icon "
+                          src={calendar}
+                          alt="icon-details"
+                        />
+                        {formatFullDate(selectedItem.release_date)}
+                      </span>
+                    </div>
                   </div>
                   <div className="upcoming__button-container">
                     <Button
@@ -228,7 +229,6 @@ const UpcomingMovie = () => {
             </div>
           </div>
         </div>
-
         <div className="upcoming__slider-container">
           <Slider
             slides={filteredItems}

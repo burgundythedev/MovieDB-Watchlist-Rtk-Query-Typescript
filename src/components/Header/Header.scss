@@ -11,9 +11,8 @@
   top: 0;
   z-index: 3;
   text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.8);
-
   width: 100%;
-  
+
   &__item {
     margin-left: 5px;
   }
@@ -22,7 +21,7 @@
     display: flex;
     justify-content: center;
     margin-left: 150px;
-    
+
   }
 
   &__logo {
@@ -72,6 +71,7 @@
     font-family: "Kanit", sans-serif;
     color: white;
     font-weight: bold;
+
     &--logo {
       padding: 0px;
 
@@ -113,7 +113,7 @@
     align-items: center;
   }
 
-  @media only screen and (min-width: 740px) and (max-width: 1120px) {
+  @media only screen and (min-width: 740px) and (max-width: 1060px) {
 
 
     &__logo-container {
@@ -159,7 +159,9 @@
       text-decoration: none;
       font-family: "Kanit", sans-serif;
 
-
+      &--logo {
+        padding: 0px 0px;
+      }
     }
 
     &__watchlist-container {
@@ -181,7 +183,7 @@
 
   @media only screen and (min-width: 491px) and (max-width: 741px) {
     &__logo-container {
-      margin-left: 25px;
+      margin-left: 75px;
     }
 
     &__logo {
@@ -197,7 +199,7 @@
 
     &__title {
       font-family: "Aboreto", sans-serif;
-      font-size: 10px;
+      font-size: 15px;
       font-weight: bold;
       margin-left: 5px;
 
@@ -219,15 +221,18 @@
       display: flex;
       align-items: center;
       padding: 0px 10px;
-      font-size: 10px;
+      font-size: 13px;
       text-decoration: none;
       font-family: "Kanit", sans-serif;
 
+      &--logo {
+        padding: 0px 0px;
+      }
 
     }
 
     &__watchlist-container {
-      margin-right: 25px;
+      margin-right: 75px;
 
     }
 
@@ -297,7 +302,7 @@
       font-family: "Kanit", sans-serif;
 
       &--logo {
-        padding: 0px 5px;
+        padding: 0px 0px;
       }
     }
 

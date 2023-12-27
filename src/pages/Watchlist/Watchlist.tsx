@@ -9,6 +9,7 @@ import screen from "../../assets/screen.png";
 import camera from "../../assets/camera.png";
 import eye from "../../assets/eye.png";
 import popcorn from "../../assets/popcorn.png";
+import started from "../../assets/wallpaper-trial.jpg"
 const isMovie = (item: WatchlistItem): item is Movie => {
   return "title" in item;
 };
@@ -85,6 +86,32 @@ const Watchlist = () => {
           ) : (
             <p className="watchlist__empty">Your watchlist is empty.</p>
           )}
+        </div>
+        <div className="home__trial">
+          <img
+            className="home__trial-background"
+            src={started}
+            alt="wallpaper-started"
+          />
+          <div className="home__trial-container">
+            <div className="home__trial-title-wrapper">
+              <h2 className="home__trial-title">Trial start first 30 days.</h2>
+              <p className="home__trial-text">
+                Enter your email to create or restart your membership.
+              </p>
+            </div>
+
+            <form action="" className="home__trial-form">
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="Enter your email"
+                className="home__email-field"
+              />
+              <Button type="get-started" children="Get Started" />
+            </form>
+          </div>
         </div>
       </div>
 
