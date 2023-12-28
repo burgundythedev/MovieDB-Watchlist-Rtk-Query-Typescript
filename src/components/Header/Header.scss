@@ -10,7 +10,7 @@
   position: fixed;
   top: 0;
   z-index: 3;
-  text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.8);
+  text-shadow: 1px 1px 2px rgb(0, 0, 0, 0.9);
   width: 100%;
 
   &__item {
@@ -181,9 +181,17 @@
     }
   }
 
-  @media only screen and (min-width: 491px) and (max-width: 741px) {
+  @media screen and (min-width: 500px) and (max-width: 712px) {
+
     &__logo-container {
-      margin-left: 75px;
+      margin-left: 50px;
+    }
+
+    &__title {
+      display: none;
+
+
+
     }
 
     &__logo {
@@ -194,17 +202,6 @@
         width: 20px;
         height: auto;
       }
-    }
-
-
-    &__title {
-      font-family: "Aboreto", sans-serif;
-      font-size: 15px;
-      font-weight: bold;
-      margin-left: 5px;
-
-
-
     }
 
     &__menu {
@@ -232,7 +229,7 @@
     }
 
     &__watchlist-container {
-      margin-right: 75px;
+      margin-right: 50px;
 
     }
 

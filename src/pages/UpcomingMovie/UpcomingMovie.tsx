@@ -35,6 +35,7 @@ const UpcomingMovie = () => {
     isError,
   } = useFetchUpcomingDataQuery();
   const dispatch = useDispatch();
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   const [isInWatchlist, setIsInWatchlist] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
@@ -42,7 +43,7 @@ const UpcomingMovie = () => {
   const [selectedItem, setSelectedItem] = useState<UpcomingMovies | null>(
     filteredItems[0] || null
   );
-  const [isGrid, setIsGrid] = useState(false); 
+  const [isGrid, setIsGrid] = useState(false);
 
   const watchlistItems: WatchlistItem[] = useSelector(selectWatchlistItems);
 
@@ -127,6 +128,17 @@ const UpcomingMovie = () => {
     setIsVideoVisible(!isVideoVisible);
   };
 
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   if (isLoading || !upcomingData) {
     return <Loader />;
   }
@@ -141,11 +153,13 @@ const UpcomingMovie = () => {
 
   return (
     <div className="upcoming">
-      <img
-        className="upcoming__background"
-        src={`https://image.tmdb.org/t/p/original${selectedItem?.backdrop_path}`}
-        alt={selectedItem?.title}
-      />
+      {windowWidth >= 712 && selectedItem && selectedItem.backdrop_path && (
+        <img
+          className="upcoming__background"
+          src={`https://image.tmdb.org/t/p/original${selectedItem.backdrop_path}`}
+          alt={selectedItem.title as string}
+        />
+      )}
       <div className="upcoming__gen-container">
         <div className="upcoming__f-d-container">
           <div className="upcoming__f-d-box">
@@ -230,9 +244,16 @@ const UpcomingMovie = () => {
           </div>
         </div>
         <div className="upcoming__slider-container">
+          {windowWidth < 712 && selectedItem && selectedItem.backdrop_path && (
+            <img
+              className="upcoming__background-responsive"
+              src={`https://image.tmdb.org/t/p/original${selectedItem.backdrop_path}`}
+              alt={selectedItem.title as string}
+            />
+          )}
           <Slider
             slides={filteredItems}
-            visibleItemsNumber={isGrid ? 20 : 5}
+            visibleItemsNumber={windowWidth < 712 ? 1 : isGrid ? 20 : 5}
             selectedSlide={selectedItem}
             onSelectItem={handleSliderSelect}
             isGrid={isGrid}

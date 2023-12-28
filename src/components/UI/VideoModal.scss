@@ -1,10 +1,10 @@
 .video-modal {
   position: fixed;
-  top: 40%;
+  top: 50%;
   left: 75%;
   transform: translate(-50%, -50%);
   border-radius: 8px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0  );
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -17,7 +17,7 @@
   }
 
   &__cross {
-    width: 25px;
+    width: 17px;
     height: auto;
     padding: 5px;
     border-radius: 50%;
@@ -43,7 +43,7 @@
 
 
     &__cross {
-      width: 25px;
+      width: 15px;
       height: auto;
       padding: 5px;
 
@@ -57,7 +57,7 @@
 
 
     &__cross {
-      width: 25px;
+      width: 15px;
       height: auto;
       padding: 5px;
 
@@ -73,7 +73,7 @@
     }
 
     &__cross {
-      width: 20px;
+      width: 14px;
       height: auto;
       padding: 0px;
 
@@ -82,8 +82,8 @@
 }
 
 iframe {
-  padding: 10px;
-  width: 500px;
+  padding: 5px;
+  width: 700px;
   height: 300px;
   border: none;
   border-radius: 10px;
