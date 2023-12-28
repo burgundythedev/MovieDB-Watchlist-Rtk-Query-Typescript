@@ -39,6 +39,27 @@
 
   }
 
+  @media screen and (min-width: 280px) and (max-width: 499px) {
+    &__icon {
+      width: 20px;
+
+    }
+
+    &__select {
+      padding: 10px 15px;
+      margin: 15px 0px;
+      border-radius: 14px;
+      cursor: pointer;
+      color: white;
+      width: 110px;
+      font-size: 10px;
+
+      &:focus {
+        outline: none;
+        border-color: rgba(216, 91, 83, 0.5);
+      }
+    }
+  }
 
   @media screen and (min-width: 481px) and (max-width: 712px) {
     &__icon {

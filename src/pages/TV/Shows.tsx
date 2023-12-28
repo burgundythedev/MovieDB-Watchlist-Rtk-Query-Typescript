@@ -1,7 +1,6 @@
 import Button from "../../components/UI/Button";
 import { useState, useEffect, useRef } from "react";
 import Slider from "../../components/Slider/Slider";
-import SliderGenre from "../../components/Filter/FilterGenre";
 import {
   useFetchTVShowDataQuery,
   useFetchVideosQuery,
@@ -21,15 +20,14 @@ import {
   deleteFromWatchlist,
   selectWatchlistItems,
 } from "../../store/watchlistSlice";
-import twitter from "../../assets/twitter.png";
-import instagram from "../../assets/instagram.png";
-import github from "../../assets/github.png";
 import videoPlay from "../../assets/video-play.png";
 import addIcon from "../../assets/add.png";
 import count from "../../assets/vote-count.png";
 import genre from "../../assets/genre.png";
 import star from "../../assets/star.png";
+import calendar from "../../assets/calendar.png";
 import Loader from "../../components/UI/Loader";
+import FilterGenre from "../../components/Filter/FilterGenre";
 
 const PopTVShowList = () => {
   const dispatch = useDispatch();
@@ -47,7 +45,8 @@ const PopTVShowList = () => {
   const [selectedItem, setSelectedItem] = useState<TVShow | null>(
     filteredItems[0] || null
   );
-
+  const [isGrid, setIsGrid] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { data: tvShowData, isLoading, isError } = useFetchTVShowDataQuery();
   const { data: videoData } = useFetchVideosQuery(selectedItem?.id || 0);
 
@@ -88,10 +87,14 @@ const PopTVShowList = () => {
   
     setIsInWatchlist(isInWatchlist);
   }, [watchlistTotalItems, selectedItem, watchlistItems]);
-  const handleSliderSelect = (index: number) => {
-    setSelectedItem(filteredItems[index] || null);
-  };
 
+  const handleSliderSelect = (index: number) => {
+    if (index >= 0) {
+      setSelectedItem(filteredItems[index] || null);
+    } else {
+      setIsGrid(!isGrid);
+    }
+  };
   const handleGenreSelect = (
     genre: number | null,
     firstTVShow: TVShow | null
@@ -119,13 +122,25 @@ const PopTVShowList = () => {
   const handleWatchTrailer = () => {
     setIsVideoVisible(!isVideoVisible);
   };
+  const handleResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
 
+
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   if (isLoading || !tvShowData) {
     return <Loader />;
   }
 
   if (isError) {
-    return <div>Error fetching popular TV show data</div>;
+    return <div>Error fetching TV show data</div>;
   }
 
   if (!tvShowData.results.length) {
@@ -133,133 +148,128 @@ const PopTVShowList = () => {
   }
 
   return (
-    <div className="shows">
-      <img
-        className="shows__background"
-        src={`https://image.tmdb.org/t/p/original${selectedItem?.backdrop_path}`}
-        alt={selectedItem?.name}
-      />
-      <div className="shows__filter">
-        <SliderGenre<TVShow>
-          items={tvShowData.results}
-          onSelectGenre={handleGenreSelect}
+    <div className="show">
+      {windowWidth >= 712 && selectedItem && selectedItem.backdrop_path && (
+        <img
+          className="show__background"
+          src={`https://image.tmdb.org/t/p/original${selectedItem.backdrop_path}`}
+          alt={selectedItem.name as string}
         />
-      </div>
-      <div className="shows__icon-container">
-        <a
-          href="https://github.com/burgundythedev?tab=repositories"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img className="popular__icon" src={github} alt="icon-social" />
-        </a>
-        <a
-          href="https://www.instagram.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img className="popular__icon" src={instagram} alt="icon-social" />
-        </a>
-        <a
-          href="https://twitter.com/KeusKulte"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img className="popular__icon" src={twitter} alt="icon-social" />
-        </a>
-      </div>
-
-      <div className="shows__details-container">
-        {selectedItem && (
-          <div className="shows__details">
-            <h2 className="shows__title">
-              {selectedItem.name}{" "}
-              <span className="shows__date">
-                ({formatYear(selectedItem.first_air_date)})
-              </span>
-            </h2>
-            <p className="shows__overview">{selectedItem.overview}</p>
-            <div className="shows__genres">
-              <img
-                className="popular__icon popular__icon--detail"
-                src={genre}
-                alt="icon-details"
+      )}
+      <div className="show__gen-container">
+        <div className="show__f-d-container">
+          <div className="show__f-d-box">
+            <div className="show__filter">
+              <FilterGenre<TVShow>
+                items={tvShowData.results}
+                onSelectGenre={handleGenreSelect}
               />
-              {selectedItem.genre_ids.map((genreId, index) => (
-                <span className="popular__genre-item" key={genreId}>
-                  {genreIdToName[genreId]}
-                  {index < selectedItem.genre_ids.length - 1 && ", "}
-                </span>
-              ))}
             </div>
-            <div className="shows__vote-details">
-              <span className="popular__vote">
-                <img
-                  className="popular__icon popular__icon--detail"
-                  src={star}
-                  alt="icon-details"
-                />
-                {selectedItem.vote_average}
-              </span>
-              <span className="popular__vote">
-                <img
-                  className="popular__icon popular__icon--detail"
-                  src={count}
-                  alt="icon-details"
-                />
-                {selectedItem.vote_count}
-              </span>
-              <span className="popular__vote">
-                {formatFullDate(selectedItem.first_air_date)}
-              </span>{" "}
-            </div>
-            <div className="shows__button-container">
-              <Button
-                onClick={() => handleAddToWL(selectedItem)}
-                type="view"
-                icon={addIcon}
-                children={
-                  isInWatchlist ? "Remove from Watchlist" : "Add to Watchlist"
-                }
-              />
-              <Button
-                type="view"
-                icon={videoPlay}
-                children="Watch Trailer"
-                onClick={handleWatchTrailer}
-              />
+            <div className="show__details-container">
+              {selectedItem && (
+                <div className="show__details">
+                  <h2 className="show__title">
+                    {selectedItem.name}{" "}
+                    <span className="show__date">
+                      ({formatYear(selectedItem.first_air_date)})
+                    </span>
+                  </h2>
+                  <p className="show__overview">{selectedItem.overview}</p>
+                  <div className="show__details-divers">
+                    <div className="show__genres">
+                      <img
+                        className="show__icon "
+                        src={genre}
+                        alt="icon-details"
+                      />
+                      {selectedItem.genre_ids.map((genreId, index) => (
+                        <span className="show__genre-item" key={genreId}>
+                          &nbsp; {genreIdToName[genreId]}
+                          {index < selectedItem.genre_ids.length - 1 && ", "}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="show__vote-details">
+                      <span className="show__vote">
+                        <img
+                          className="show__icon "
+                          src={star}
+                          alt="icon-details"
+                        />
+                        {selectedItem.vote_average}
+                      </span>
+                      <span className="show__vote">
+                        <img
+                          className="show__icon "
+                          src={count}
+                          alt="icon-details"
+                        />
+                        {selectedItem.vote_count}
+                      </span>
+                      <span className="show__vote">
+                        <img
+                          className="show__icon "
+                          src={calendar}
+                          alt="icon-details"
+                        />
+                        {formatFullDate(selectedItem.first_air_date)}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="show__button-container">
+                    <Button
+                      onClick={() => handleAddToWL(selectedItem)}
+                      type="view"
+                      icon={addIcon}
+                      children={
+                        isInWatchlist
+                          ? "Remove from Watchlist"
+                          : "Add to Watchlist"
+                      }
+                    />
+                    <Button
+                      type="view"
+                      icon={videoPlay}
+                      children="Watch Trailer"
+                      onClick={handleWatchTrailer}
+                    />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-        )}
-      </div>
-      <div className="shows__title-overlay">
-        {selectedItem && (
-          <h2 className="shows__selected-title">{selectedItem.name}</h2>
-        )}
-      </div>
-      <div className="shows__slider-container">
-        <Slider
-          slides={filteredItems}
-          visibleItemsNumber={4}
-          selectedSlide={selectedItem}
-          onSelectItem={handleSliderSelect}
-        >
-          {(tvShow: TVShow) => (
-            <div key={tvShow.id} className="shows__tv-show-item">
-              <img
-                src={`https://image.tmdb.org/t/p/w300${tvShow.poster_path}`}
-                alt={tvShow.name}
-                className={`shows__img ${
-                  selectedItem === tvShow ? "shows__selected" : ""
-                }`}
-                onClick={() => setSelectedItem(tvShow)}
-                loading="lazy"
-              />
-            </div>
+        </div>
+        <div className="show__slider-container">
+          {windowWidth < 712 && selectedItem && selectedItem.backdrop_path && (
+            <img
+              className="show__background-responsive"
+              src={`https://image.tmdb.org/t/p/original${selectedItem.backdrop_path}`}
+              alt={selectedItem.name as string}
+            />
           )}
-        </Slider>
+          <Slider
+            slides={filteredItems}
+            visibleItemsNumber={windowWidth < 712 ? 1 : isGrid ? 20 : 5}
+            selectedSlide={selectedItem}
+            onSelectItem={handleSliderSelect}
+            isGrid={isGrid}
+          >
+            {(show: TVShow) => (
+              <div key={show.id} className="show__movie-item">
+                <img
+                  src={`https://image.tmdb.org/t/p/w300${show.poster_path}`}
+                  alt={show.name}
+                  className={`show__img ${
+                    selectedItem === show ? "show__selected" : ""
+                  }`}
+                  onClick={() => setSelectedItem(show)}
+                  loading="lazy"
+                />
+              </div>
+            )}
+          </Slider>
+        </div>
       </div>
-
       {isVideoVisible && selectedItem && videoData && (
         <div ref={videoModalRef}>
           <VideoModal
@@ -268,6 +278,11 @@ const PopTVShowList = () => {
           />
         </div>
       )}
+      <div className="show__title-overlay">
+        {selectedItem && (
+          <h2 className="show__selected-title">{selectedItem.name}</h2>
+        )}
+      </div>
     </div>
   );
 };

@@ -35,7 +35,7 @@ const UpcomingMovie = () => {
     isError,
   } = useFetchUpcomingDataQuery();
   const dispatch = useDispatch();
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   const [isInWatchlist, setIsInWatchlist] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
@@ -44,6 +44,7 @@ const UpcomingMovie = () => {
     filteredItems[0] || null
   );
   const [isGrid, setIsGrid] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const watchlistItems: WatchlistItem[] = useSelector(selectWatchlistItems);
 
