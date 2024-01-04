@@ -6,7 +6,7 @@ import {
 } from "../../store/fetchDataSlice";
 import "./Home.scss";
 import Button from "../UI/Button";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import star from "../../assets/star.png";
 import pop from "../../assets/pop.png";
 import video from "../../assets/AMC Theatres. We Make Movies Better..mp4";
@@ -34,7 +34,33 @@ const Home = () => {
     error: upcomingMoviesError,
     isLoading: upcomingMoviesLoading,
   } = useFetchUpcomingDataQuery();
+  const navigate = useNavigate();
 
+  const handleMovieClick = (itemId: number, itemType: string) => {
+    let path;
+    switch (itemType) {
+      case "movie":
+        path = `/movies/details/${itemId}`;
+        break;
+      case "upcomingMovie":
+        path = `/upcoming-movies/details/${itemId}`;
+        break;
+      case "tvShow":
+        path = `/tvshows/details/${itemId}`;
+        break;
+      default:
+        path = "/";
+    }
+
+    navigate(path, { state: { referringUrl: window.location.pathname } });
+  };
+  const truncateText = (text: string, maxLength: number): string => {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return text.substring(0, maxLength - 3) + "...";
+    }
+  };
   const renderMovieList = (movies: Movie[], title: string) => {
     const slicedMovies = movies.slice(0, 4);
     return (
@@ -54,7 +80,10 @@ const Home = () => {
         </div>
         <div className="movielist__items">
           {slicedMovies.map((movie: Movie) => (
-            <div key={movie.id}>
+            <div
+              key={movie.id}
+              onClick={() => handleMovieClick(movie.id, "movie")}
+            >
               <NavLink
                 to={`/movies/details/${movie.id}`}
                 className="movie-link"
@@ -68,7 +97,7 @@ const Home = () => {
               </NavLink>
               <div className="movielist__details-box">
                 <p className="movielist__details movielist__details--title">
-                  {movie.title}
+                  {truncateText(movie.title, 20)}
                 </p>
                 <p className="movielist__details movielist__details--date">
                   {formatYear(movie.release_date)}
@@ -118,7 +147,13 @@ const Home = () => {
         </div>
         <div className="upcominglist__items">
           {slicedUpcomingMovies.map((upcomingMovie: UpcomingMovies) => (
-            <div key={upcomingMovie.id} className="upcominglist__item">
+            <div
+              key={upcomingMovie.id}
+              className="upcominglist__item"
+              onClick={() =>
+                handleMovieClick(upcomingMovie.id, "upcomingMovie")
+              }
+            >
               <NavLink
                 to={`/upcoming-movies/details/${upcomingMovie.id}`}
                 className="movie-link"
@@ -132,7 +167,7 @@ const Home = () => {
               </NavLink>
               <div className="upcominglist__details-box">
                 <p className="upcominglist__details movielist__details--title">
-                  {upcomingMovie.title}
+                  {truncateText(upcomingMovie.title, 20)}
                 </p>
                 <p className="upcominglist__details upcominglist__details--date">
                   {formatYear(upcomingMovie.release_date)}
@@ -187,7 +222,11 @@ const Home = () => {
         </div>
         <div className="tvshowlist__items">
           {slicedTVShows.map((tvShow: TVShow) => (
-            <div key={tvShow.id} className="tvshowlist__item">
+            <div
+              key={tvShow.id}
+              className="tvshowlist__item"
+              onClick={() => handleMovieClick(tvShow.id, "tvShow")}
+            >
               <NavLink
                 to={`/tvshows/details/${tvShow.id}`}
                 className="movie-link"
@@ -201,7 +240,7 @@ const Home = () => {
               </NavLink>
               <div className="tvshowlist__details-box">
                 <p className="tvshowlist__details tvshowlist__details--title">
-                  {tvShow.name}
+                  {truncateText(tvShow.name,20)}
                 </p>
                 <p className="tvshowlist__details tvshowlist__details--date">
                   {formatYear(tvShow.first_air_date)}
@@ -297,7 +336,7 @@ const Home = () => {
                 Ipsum available, but the majority have suffered alteration in
                 some injected humour.
               </p>
-              <ul className="home__serv-content">
+              <ul className="home__serv-details">
                 <li className="home__serv-item">
                   <div className="home__icon-box">
                     <img

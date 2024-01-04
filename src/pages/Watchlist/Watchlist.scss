@@ -11,11 +11,10 @@
   }
 
   &__button-title {
-    padding: 20px;
+    padding: 20px 0px;
     border-bottom: 1px solid rgb(216, 91, 83, 0.3);
     display: flex;
     flex-direction: row;
-    width: 600px;
     justify-content: space-between;
     align-items: center;
     margin: 150px 0px 100px 0px;
@@ -35,19 +34,19 @@
   }
 
   &__container {
-
     padding: 0;
     display: flex;
     flex-direction: column;
     justify-content: start;
     align-items: start;
     flex-grow: 1;
+    margin: 0px 150px;
   }
 
   &__list-container {
     width: 100%;
-    margin: 0px 150px;
   }
+
 
   &__title {
     margin: 0;
@@ -72,16 +71,16 @@
   &__list-items {
     list-style: none;
     padding: 0;
-    margin: 20px 0px;
     display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+    width: 100%;
     justify-content: center;
     align-items: center;
   }
 
   &__poster {
-    width: 200px;
+    width: 180px;
     height: auto;
     border-radius: 5%;
     transition: transform 0.3s ease;
@@ -108,16 +107,29 @@
   }
 
   @media only screen and (min-width: 1060px) and (max-width: 1680px) {
+    &__list-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+    }
+
+    &__list {
+      width: 100%;
+
+    }
+
     &__poster {
       width: 150px;
     }
 
-
     &__list-items {
-      grid-template-columns: repeat(5, 1fr);
-      gap: 30px;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      width: 100%;
+      gap: 20px;
 
     }
+
 
     &__icon {
       width: 25px;
@@ -130,9 +142,30 @@
     &__name {
       font-size: 9px;
     }
+
+    &__button-title {
+      padding: 20px 0px;
+      margin-top: 150px;
+      margin-bottom: 50px;
+
+    }
   }
 
-  @media only screen and (min-width: 481px) and (max-width: 1080px) {
+  @media only screen and (min-width: 481px) and (max-width: 713px) {
+    &__container {
+      margin: 0px 50px;
+    }
+
+    &__list-container {
+      display: flex;
+      flex-direction: column;
+
+    }
+
+    &__list {
+      width: 100%;
+
+    }
 
     &__poster {
       width: 120px;
@@ -152,25 +185,22 @@
       display: flex;
     }
 
+
     &__list-items {
-      grid-template-columns: repeat(4, 1fr);
-      gap: 30px;
-
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
-
     &__empty {
       font-size: 10px;
     }
 
     &__button-title {
-      padding: 20px;
+      padding: 20px 0px;
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
       margin-top: 150px;
       margin-bottom: 50px;
-      width: 400px;
     }
 
     &__icon {
@@ -178,16 +208,28 @@
       padding: 5px;
     }
 
-    &__container {
-      margin: 0px 0px;
-      justify-content: center;
-      align-items: center;
-    }
+
   }
 
-  @media only screen and (min-width: 280px) and (max-width: 490px) {
+  @media only screen and (min-width: 713px) and (max-width: 1060px) {
+
+    &__container {
+      margin: 0px 75px;
+    }
+
+    &__list-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__list {
+      width: 100%;
+
+    }
+
     &__poster {
-      width: 110px;
+      width: 120px;
       margin-bottom: 10px;
     }
 
@@ -196,7 +238,7 @@
     }
 
     &__name {
-      display: none;
+      font-size: 9px;
 
     }
 
@@ -204,10 +246,76 @@
       display: flex;
     }
 
-    &__list-items {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
 
+    &__list-items {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      width: 100%;
+      gap: 10px;
+
+    }
+
+    &__empty {
+      font-size: 10px;
+    }
+
+    &__button-title {
+      padding: 20px 0px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 150px;
+      margin-bottom: 50px;
+    }
+
+    &__icon {
+      width: 20px;
+      padding: 5px;
+    }
+
+
+  }
+
+  @media only screen and (min-width: 280px) and (max-width: 490px) {
+    &__poster {
+      width: 120px;
+      margin-bottom: 10px;
+    }
+
+    &__title {
+      font-size: 20px;
+
+    }
+
+    &__name {
+      display: none;
+
+    }
+
+    &__list-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+
+    &__icon-box {
+      display: flex;
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+    }
+
+    &__list {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    &__list-items {
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 10px;
     }
 
     &__empty {
@@ -220,17 +328,18 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      margin: 50px 0px;
+      margin: 100px 0px 50px 0px;
       width: 260px;
+      padding: 10px 0px;
     }
 
     &__icon {
-      width: 20px;
+      width: 15px;
       padding: 5px;
     }
 
     &__container {
-      margin: 0px 0px;
+      margin: 0px 20px;
       justify-content: center;
       align-items: center;
     }

@@ -14,24 +14,27 @@ import Footer from "./components/Footer/Footer";
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="upcoming-movies" element={<UpcomingMovie />} />
-        <Route
-          path="upcoming-movies/details/:id"
-          element={<UpMovieDetails />}
-        />
-        <Route path="movies" element={<PopMovieList />} />
-        <Route path="movies/details/:id" element={<MovieDetails />} />
-        <Route path="tvshows" element={<Shows />} />
-        <Route path="tvshows/details/:id" element={<ShowDetails />} />
-        <Route path="watchlist" element={<Watchlist />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <div>
+      <Router>
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="upcoming-movies" element={<UpcomingMovie />} />
+          <Route
+            path="upcoming-movies/details/:id"
+            element={<UpMovieDetails />}
+          />
+          <Route path="movies" element={<PopMovieList />} />
+          <Route path="movies/details/:id" element={<MovieDetails />} />
+          <Route path="tvshows" element={<Shows />} />
+          <Route path="tvshows/details/:id" element={<ShowDetails />} />
+          <Route path="watchlist" element={<Watchlist />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+        <Footer />
+      </Router>
+   
+    </div>
   );
 };
 

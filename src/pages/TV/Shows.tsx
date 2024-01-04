@@ -36,7 +36,6 @@ const PopTVShowList = () => {
   const watchlistTotalItems = useSelector(
     (state: { watchlist: { totalItems: number } }) => state.watchlist.totalItems
   );
-  
 
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   const [isInWatchlist, setIsInWatchlist] = useState(false);
@@ -68,7 +67,20 @@ const PopTVShowList = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+  const handleResizeBis = () => {
+    const newWindowWidth = window.innerWidth;
 
+    setIsGrid(newWindowWidth >= 1100);
+
+    setWindowWidth(newWindowWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", handleResizeBis);
+
+    return () => {
+      window.removeEventListener("resize", handleResizeBis);
+    };
+  }, []);
   useEffect(() => {
     if (tvShowData && tvShowData.results.length > 0) {
       const filtered = tvShowData.results.filter(
@@ -84,7 +96,7 @@ const PopTVShowList = () => {
       watchlistTotalItems > 0 && selectedItem
         ? watchlistItems.some((item) => item.id === selectedItem.id)
         : false;
-  
+
     setIsInWatchlist(isInWatchlist);
   }, [watchlistTotalItems, selectedItem, watchlistItems]);
 
@@ -95,18 +107,19 @@ const PopTVShowList = () => {
       setIsGrid(!isGrid);
     }
   };
-  const handleGenreSelect = (
-    genre: number | null,
-    firstTVShow: TVShow | null
-  ) => {
+  const handleGenreSelect = (genre: number | null) => {
     setSelectedGenre(genre);
 
     const filtered =
       tvShowData?.results.filter(
-        (tvShow) => !genre || tvShow.genre_ids.includes(genre)
+        (movie: { genre_ids: number[] }) =>
+          !genre || movie.genre_ids.includes(genre)
       ) || [];
     setFilteredItems(filtered);
-    setSelectedItem(firstTVShow || filtered[0] || null);
+
+    const selectedIndex = filtered.findIndex((item) => item === selectedItem);
+
+    setSelectedItem(filtered[selectedIndex >= 0 ? selectedIndex : 0] || null);
   };
 
   const handleAddToWL = (tvShow: TVShow) => {
@@ -125,8 +138,6 @@ const PopTVShowList = () => {
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
   };
-
-
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);

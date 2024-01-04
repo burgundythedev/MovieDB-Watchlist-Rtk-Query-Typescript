@@ -39,7 +39,7 @@ const PopMovieList = () => {
   );
   const [isGrid, setIsGrid] = useState(false);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-  
+
   const { data: videoData } = useFetchVideosQuery(selectedItem?.id || 0);
 
   const videoModalRef = useRef<HTMLDivElement | null>(null);
@@ -56,7 +56,13 @@ const PopMovieList = () => {
       setIsVideoVisible(false);
     }
   };
+  const handleResizeBis = () => {
+    const newWindowWidth = window.innerWidth;
 
+    setIsGrid(newWindowWidth >= 1100);
+
+    setWindowWidth(newWindowWidth);
+  };
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
 
@@ -65,6 +71,14 @@ const PopMovieList = () => {
     };
   }, []);
 
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResizeBis);
+
+    return () => {
+      window.removeEventListener("resize", handleResizeBis);
+    };
+  }, []);
   useEffect(() => {
     if (movieData && movieData.results.length > 0) {
       const filtered = movieData.results.filter(
@@ -90,18 +104,19 @@ const PopMovieList = () => {
     }
   };
 
-  const handleGenreSelect = (
-    genre: number | null,
-    firstMovie: Movie | null
-  ) => {
+  const handleGenreSelect = (genre: number | null) => {
     setSelectedGenre(genre);
 
     const filtered =
       movieData?.results.filter(
-        (movie) => !genre || movie.genre_ids.includes(genre)
+        (movie: { genre_ids: number[] }) =>
+          !genre || movie.genre_ids.includes(genre)
       ) || [];
     setFilteredItems(filtered);
-    setSelectedItem(firstMovie || filtered[0] || null);
+
+    const selectedIndex = filtered.findIndex((item) => item === selectedItem);
+
+    setSelectedItem(filtered[selectedIndex >= 0 ? selectedIndex : 0] || null);
   };
 
   const handleAddToWL = (movie: Movie) => {
@@ -116,8 +131,6 @@ const PopMovieList = () => {
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
   };
-
-
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);

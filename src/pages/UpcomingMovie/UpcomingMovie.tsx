@@ -35,7 +35,7 @@ const UpcomingMovie = () => {
     isError,
   } = useFetchUpcomingDataQuery();
   const dispatch = useDispatch();
-  
+
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   const [isInWatchlist, setIsInWatchlist] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
@@ -73,6 +73,21 @@ const UpcomingMovie = () => {
     };
   }, []);
 
+  const handleResizeBis = () => {
+    const newWindowWidth = window.innerWidth;
+
+    setIsGrid(newWindowWidth >= 1100);
+
+    setWindowWidth(newWindowWidth);
+  };
+  useEffect(() => {
+    window.addEventListener("resize", handleResizeBis);
+
+    return () => {
+      window.removeEventListener("resize", handleResizeBis);
+    };
+  }, []);
+  
   useEffect(() => {
     if (upcomingData && upcomingData.results.length > 0) {
       const filtered = upcomingData.results.filter(

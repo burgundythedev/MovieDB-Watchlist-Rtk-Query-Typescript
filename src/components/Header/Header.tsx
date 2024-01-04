@@ -10,6 +10,7 @@ const Header = () => {
   const totalItems = useSelector(selectWatchlistTotalItems);
   const [selectedLink, setSelectedLink] = useState("");
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const handleLinkClick = (link: string) => {
     setSelectedLink(link);
@@ -18,17 +19,22 @@ const Header = () => {
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
   };
+  const handleScroll = () => {
 
+    setIsScrolled(window.scrollY > 300);
+  };
   useEffect(() => {
     window.addEventListener("resize", handleResize);
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
   return (
-    <div className="header">
+    <div className={`header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="header__logo-container">
         <NavLink className="header__link header__link--logo" to="/">
           <img className="header__logo" src={logo} alt="logo-pic" />
