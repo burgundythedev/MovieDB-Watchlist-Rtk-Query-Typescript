@@ -7,7 +7,6 @@ Visit EyeForAScreen: [https://eyeforascreen.onrender.com](https://eyeforascreen.
 
 ## Features
 
-- **RTX for State Management:** Utilizing RTX for efficient and powerful state management.
 - **Redux Toolkit:** Employing Redux Toolkit for streamlined state handling.
 - **SASS with BEM Methodology:** Using SASS with BEM methodology for maintainable and scalable styling.
 - **MovieDB API Integration:** Seamless integration with the MovieDB API for real-time movie information.
