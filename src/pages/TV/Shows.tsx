@@ -35,6 +35,7 @@ const PopTVShowList = () => {
   const watchlistTotalItems = useSelector(
     (state: { watchlist: { totalItems: number } }) => state.watchlist.totalItems
   );
+  const [windowResize, setWindowResize] = useState<number>(window.innerWidth);
 
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   const [isInWatchlist, setIsInWatchlist] = useState(false);
@@ -44,11 +45,11 @@ const PopTVShowList = () => {
     filteredItems[0] || null
   );
   const [isGrid, setIsGrid] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const { data: tvShowData, isLoading, isError } = useFetchTVShowDataQuery();
   const { data: videoData } = useFetchVideosQuery(selectedItem?.id || 0);
 
   const videoModalRef = useRef<HTMLDivElement | null>(null);
+
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -64,14 +65,15 @@ const PopTVShowList = () => {
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      videoModalRef.current = null;
     };
-  }, []);
+  }, [videoModalRef]);
   const handleResizeBis = () => {
     const newWindowWidth = window.innerWidth;
 
     setIsGrid(newWindowWidth >= 1100);
 
-    setWindowWidth(newWindowWidth);
+    setWindowResize(newWindowWidth);
   };
   useEffect(() => {
     window.addEventListener("resize", handleResizeBis);
@@ -79,7 +81,7 @@ const PopTVShowList = () => {
     return () => {
       window.removeEventListener("resize", handleResizeBis);
     };
-  }, []);
+  }, [windowResize]);
   useEffect(() => {
     if (tvShowData && tvShowData.results.length > 0) {
       const filtered = tvShowData.results.filter(
@@ -103,7 +105,9 @@ const PopTVShowList = () => {
     if (index >= 0) {
       setSelectedItem(filteredItems[index] || null);
     } else {
-      setIsGrid(!isGrid);
+      if (isGrid !== !isGrid) {
+        setIsGrid(!isGrid);
+      }
     }
   };
   const handleGenreSelect = (genre: number | null) => {
@@ -135,7 +139,7 @@ const PopTVShowList = () => {
     setIsVideoVisible(!isVideoVisible);
   };
   const handleResize = () => {
-    setWindowWidth(window.innerWidth);
+    setWindowResize(window.innerWidth);
   };
 
   useEffect(() => {
@@ -144,7 +148,7 @@ const PopTVShowList = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [windowResize]);
   if (isLoading || !tvShowData) {
     return <div>Loading</div>;
   }
@@ -159,7 +163,7 @@ const PopTVShowList = () => {
 
   return (
     <div className="show">
-      {windowWidth >= 712 && selectedItem && selectedItem.backdrop_path && (
+      {windowResize >= 712 && selectedItem && selectedItem.backdrop_path && (
         <img
           className="show__background"
           src={`https://image.tmdb.org/t/p/original${selectedItem.backdrop_path}`}
@@ -250,7 +254,7 @@ const PopTVShowList = () => {
           </div>
         </div>
         <div className="show__slider-container">
-          {windowWidth < 712 && selectedItem && selectedItem.backdrop_path && (
+          {windowResize < 712 && selectedItem && selectedItem.backdrop_path && (
             <img
               className="show__background-responsive"
               src={`https://image.tmdb.org/t/p/original${selectedItem.backdrop_path}`}
@@ -259,7 +263,7 @@ const PopTVShowList = () => {
           )}
           <Slider
             slides={filteredItems}
-            visibleItemsNumber={windowWidth < 712 ? 1 : isGrid ? 20 : 5}
+            visibleItemsNumber={windowResize < 712 ? 1 : isGrid ? 20 : 5}
             selectedSlide={selectedItem}
             onSelectItem={handleSliderSelect}
             isGrid={isGrid}

@@ -37,7 +37,7 @@ const PopMovieList = () => {
     filteredItems[0] || null
   );
   const [isGrid, setIsGrid] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowResize, setWindowResize] = useState<number>(window.innerWidth);
 
   const { data: videoData } = useFetchVideosQuery(selectedItem?.id || 0);
 
@@ -47,6 +47,9 @@ const PopMovieList = () => {
   const watchlistTotalItems = useSelector(
     (state: { watchlist: { totalItems: number } }) => state.watchlist.totalItems
   );
+
+
+
   const handleClickOutside = (event: MouseEvent) => {
     if (
       videoModalRef.current &&
@@ -55,29 +58,29 @@ const PopMovieList = () => {
       setIsVideoVisible(false);
     }
   };
-  const handleResizeBis = () => {
-    const newWindowWidth = window.innerWidth;
 
-    setIsGrid(newWindowWidth >= 1100);
-
-    setWindowWidth(newWindowWidth);
-  };
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      videoModalRef.current = null;
     };
-  }, []);
+  }, [videoModalRef]);
+  const handleResizeBis = () => {
+    const newWindowWidth = window.innerWidth;
 
+    setIsGrid(newWindowWidth >= 1100);
 
+    setWindowResize(newWindowWidth);
+  };
   useEffect(() => {
     window.addEventListener("resize", handleResizeBis);
 
     return () => {
       window.removeEventListener("resize", handleResizeBis);
     };
-  }, []);
+  }, [windowResize]);
   useEffect(() => {
     if (movieData && movieData.results.length > 0) {
       const filtered = movieData.results.filter(
@@ -99,7 +102,9 @@ const PopMovieList = () => {
     if (index >= 0) {
       setSelectedItem(filteredItems[index] || null);
     } else {
-      setIsGrid(!isGrid);
+      if (isGrid !== !isGrid) {
+        setIsGrid(!isGrid);
+      }
     }
   };
 
@@ -128,7 +133,7 @@ const PopMovieList = () => {
   };
 
   const handleResize = () => {
-    setWindowWidth(window.innerWidth);
+    setWindowResize(window.innerWidth);
   };
 
   useEffect(() => {
@@ -137,7 +142,7 @@ const PopMovieList = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [windowResize]);
   const handleWatchTrailer = () => {
     setIsVideoVisible(!isVideoVisible);
   };
@@ -156,7 +161,7 @@ const PopMovieList = () => {
 
   return (
     <div className="popular">
-      {windowWidth >= 712 && selectedItem && selectedItem.backdrop_path && (
+      {windowResize >= 712 && selectedItem && selectedItem.backdrop_path && (
         <img
           className="popular__background"
           src={`https://image.tmdb.org/t/p/original${selectedItem.backdrop_path}`}
@@ -247,7 +252,7 @@ const PopMovieList = () => {
           </div>
         </div>
         <div className="popular__slider-container">
-          {windowWidth < 712 && selectedItem && selectedItem.backdrop_path && (
+          {windowResize < 712 && selectedItem && selectedItem.backdrop_path && (
             <img
               className="popular__background-responsive"
               src={`https://image.tmdb.org/t/p/original${selectedItem.backdrop_path}`}
@@ -256,7 +261,7 @@ const PopMovieList = () => {
           )}
           <Slider
             slides={filteredItems}
-            visibleItemsNumber={windowWidth < 712 ? 1 : isGrid ? 20 : 5}
+            visibleItemsNumber={windowResize < 712 ? 1 : isGrid ? 20 : 5}
             selectedSlide={selectedItem}
             onSelectItem={handleSliderSelect}
             isGrid={isGrid}

@@ -71,6 +71,18 @@ const UpcomingMovie = () => {
     };
   }, [videoModalRef]);
 
+  const handleResize = () => {
+    setWindowResize(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [windowResize]);
+  
   const handleResizeBis = () => {
     const newWindowWidth = window.innerWidth;
 
@@ -84,7 +96,7 @@ const UpcomingMovie = () => {
     return () => {
       window.removeEventListener("resize", handleResizeBis);
     };
-  }, []);
+  }, [windowResize]);
 
   useEffect(() => {
     if (upcomingData && upcomingData.results.length > 0) {
@@ -101,13 +113,11 @@ const UpcomingMovie = () => {
     if (index >= 0) {
       setSelectedItem(filteredItems[index] || null);
     } else {
-
       if (isGrid !== !isGrid) {
         setIsGrid(!isGrid);
       }
     }
   };
-  
 
   useEffect(() => {
     const isInWatchlist =
@@ -146,17 +156,6 @@ const UpcomingMovie = () => {
     setIsVideoVisible(!isVideoVisible);
   };
 
-  const handleResize = () => {
-    setWindowResize(window.innerWidth);
-  };
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
   if (isLoading || !upcomingData) {
     return <div>Loading</div>;
   }
