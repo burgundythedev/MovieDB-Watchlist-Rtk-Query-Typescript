@@ -101,9 +101,13 @@ const UpcomingMovie = () => {
     if (index >= 0) {
       setSelectedItem(filteredItems[index] || null);
     } else {
-      setIsGrid(!isGrid);
+
+      if (isGrid !== !isGrid) {
+        setIsGrid(!isGrid);
+      }
     }
   };
+  
 
   useEffect(() => {
     const isInWatchlist =
