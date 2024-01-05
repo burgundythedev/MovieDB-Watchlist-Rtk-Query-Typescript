@@ -27,7 +27,6 @@ import genre from "../../assets/genre.png";
 import star from "../../assets/star.png";
 import calendar from "../../assets/calendar.png";
 
-
 const UpcomingMovie = () => {
   const {
     data: upcomingData,
@@ -35,7 +34,8 @@ const UpcomingMovie = () => {
     isError,
   } = useFetchUpcomingDataQuery();
   const dispatch = useDispatch();
-
+  const [windowResize, setWindowResize] = useState<number>(window.innerWidth);
+  const videoModalRef = useRef<HTMLDivElement | null>(null);
   const [isVideoVisible, setIsVideoVisible] = useState(false);
   const [isInWatchlist, setIsInWatchlist] = useState(false);
   const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
@@ -44,7 +44,6 @@ const UpcomingMovie = () => {
     filteredItems[0] || null
   );
   const [isGrid, setIsGrid] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const watchlistItems: WatchlistItem[] = useSelector(selectWatchlistItems);
 
@@ -53,8 +52,6 @@ const UpcomingMovie = () => {
   );
 
   const { data: videoData } = useFetchVideosQuery(selectedItem?.id || 0);
-
-  const videoModalRef = useRef<HTMLDivElement | null>(null);
 
   const handleClickOutside = (event: MouseEvent) => {
     if (
@@ -70,15 +67,16 @@ const UpcomingMovie = () => {
 
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      videoModalRef.current = null;
     };
-  }, []);
+  }, [videoModalRef]);
 
   const handleResizeBis = () => {
     const newWindowWidth = window.innerWidth;
 
     setIsGrid(newWindowWidth >= 1100);
 
-    setWindowWidth(newWindowWidth);
+    setWindowResize(newWindowWidth);
   };
   useEffect(() => {
     window.addEventListener("resize", handleResizeBis);
@@ -87,7 +85,7 @@ const UpcomingMovie = () => {
       window.removeEventListener("resize", handleResizeBis);
     };
   }, []);
-  
+
   useEffect(() => {
     if (upcomingData && upcomingData.results.length > 0) {
       const filtered = upcomingData.results.filter(
@@ -145,7 +143,7 @@ const UpcomingMovie = () => {
   };
 
   const handleResize = () => {
-    setWindowWidth(window.innerWidth);
+    setWindowResize(window.innerWidth);
   };
 
   useEffect(() => {
@@ -169,7 +167,7 @@ const UpcomingMovie = () => {
 
   return (
     <div className="upcoming">
-      {windowWidth >= 712 && selectedItem && selectedItem.backdrop_path && (
+      {windowResize >= 712 && selectedItem && selectedItem.backdrop_path && (
         <img
           className="upcoming__background"
           src={`https://image.tmdb.org/t/p/original${selectedItem.backdrop_path}`}
@@ -260,7 +258,7 @@ const UpcomingMovie = () => {
           </div>
         </div>
         <div className="upcoming__slider-container">
-          {windowWidth < 712 && selectedItem && selectedItem.backdrop_path && (
+          {windowResize < 712 && selectedItem && selectedItem.backdrop_path && (
             <img
               className="upcoming__background-responsive"
               src={`https://image.tmdb.org/t/p/original${selectedItem.backdrop_path}`}
@@ -269,7 +267,7 @@ const UpcomingMovie = () => {
           )}
           <Slider
             slides={filteredItems}
-            visibleItemsNumber={windowWidth < 712 ? 1 : isGrid ? 20 : 5}
+            visibleItemsNumber={windowResize < 712 ? 1 : isGrid ? 20 : 5}
             selectedSlide={selectedItem}
             onSelectItem={handleSliderSelect}
             isGrid={isGrid}
