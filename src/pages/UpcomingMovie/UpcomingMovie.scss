@@ -212,7 +212,7 @@
           rgb(0, 0, 0, 0.5) 75%,
           rgb(0, 0, 0, 0.4) 80%,
           transparent 100%);
-      margin-bottom: 50px;
+      margin-top: 20px;
     }
 
     &__f-d-box {
@@ -220,6 +220,8 @@
     }
 
     &__button-container {
+      display: flex;
+      flex-direction: column;
       width: 100%;
       margin-top: 10px;
 

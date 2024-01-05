@@ -141,7 +141,31 @@
   }
 
 
-  @media only screen and (min-width: 280px) and (max-width: 480px) {
+  @media only screen and (min-width: 280px) and (max-width: 500px) {
+    &--view {
+      background-color: #d85b53;
+      width: 110px;
+      height: 20px;
+      font-size: 8px;
+      color: #fff;
+      margin-top: 10px;
+
+    &:focus {
+      width: 175px;
+      background-color: rgba(216, 91, 83, 0.7);
+    }
+
+    &:hover {
+      color: white;
+
+      box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
+    }
+
+    &:active {
+      color: black;
+      fill: black;
+    }
+    }
     &--remove {
       width: 110px;
       height: auto;
@@ -183,19 +207,7 @@
       }
     }
 
-    &--view {
-      background-color: #d85b53;
-      width: 110px;
-      height: 20px;
-      font-size: 8px;
-      color: #fff;
-      margin-right: 0px;
-
-      &:focus {
-        width: 115px;
-        background-color: rgba(216, 91, 83, 0.7);
-      }
-    }
+  
 
     &__icon {
       width: 10px;
