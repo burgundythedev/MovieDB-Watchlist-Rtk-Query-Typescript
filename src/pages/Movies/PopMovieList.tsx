@@ -20,7 +20,6 @@ import count from "../../assets/vote-count.png";
 import genre from "../../assets/genre.png";
 import star from "../../assets/star.png";
 import calendar from "../../assets/calendar.png";
-import Loader from "../../components/UI/Loader";
 import FilterGenre from "../../components/Filter/FilterGenre";
 
 const PopMovieList = () => {
@@ -144,7 +143,7 @@ const PopMovieList = () => {
   };
 
   if (isLoading || !movieData) {
-    return <Loader />;
+    return <div>Loading</div>;
   }
 
   if (isError) {
