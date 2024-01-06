@@ -48,8 +48,6 @@ const PopMovieList = () => {
     (state: { watchlist: { totalItems: number } }) => state.watchlist.totalItems
   );
 
-
-
   const handleClickOutside = (event: MouseEvent) => {
     if (
       videoModalRef.current &&
@@ -147,6 +145,14 @@ const PopMovieList = () => {
     setIsVideoVisible(!isVideoVisible);
   };
 
+  const truncateText = (text: string, maxLength: number): string => {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return text.substring(0, maxLength - 3) + "...";
+    }
+  };
+
   if (isLoading || !movieData) {
     return <div>Loading</div>;
   }
@@ -186,7 +192,9 @@ const PopMovieList = () => {
                       ({formatYear(selectedItem.release_date)})
                     </span>
                   </h2>
-                  <p className="popular__overview">{selectedItem.overview}</p>
+                  <p className="popular__overview">
+                    {truncateText(selectedItem.overview, 500)}
+                  </p>
                   <div className="popular__details-divers">
                     <div className="popular__genres">
                       <img

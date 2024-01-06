@@ -82,7 +82,7 @@ const UpcomingMovie = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [windowResize]);
-  
+
   const handleResizeBis = () => {
     const newWindowWidth = window.innerWidth;
 
@@ -155,7 +155,13 @@ const UpcomingMovie = () => {
   const handleWatchTrailer = () => {
     setIsVideoVisible(!isVideoVisible);
   };
-
+  const truncateText = (text: string, maxLength: number): string => {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return text.substring(0, maxLength - 3) + "...";
+    }
+  };
   if (isLoading || !upcomingData) {
     return <div>Loading</div>;
   }
@@ -195,7 +201,9 @@ const UpcomingMovie = () => {
                       ({formatYear(selectedItem.release_date)})
                     </span>
                   </h2>
-                  <p className="upcoming__overview">{selectedItem.overview}</p>
+                  <p className="upcoming__overview">
+                    {truncateText(selectedItem.overview, 500)}
+                  </p>
                   <div className="upcoming__details-divers">
                     <div className="upcoming__genres">
                       <img

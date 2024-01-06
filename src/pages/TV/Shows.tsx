@@ -50,7 +50,6 @@ const PopTVShowList = () => {
 
   const videoModalRef = useRef<HTMLDivElement | null>(null);
 
-
   const handleClickOutside = (event: MouseEvent) => {
     if (
       videoModalRef.current &&
@@ -149,6 +148,14 @@ const PopTVShowList = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, [windowResize]);
+
+  const truncateText = (text: string, maxLength: number): string => {
+    if (text.length <= maxLength) {
+      return text;
+    } else {
+      return text.substring(0, maxLength - 3) + "...";
+    }
+  };
   if (isLoading || !tvShowData) {
     return <div>Loading</div>;
   }
@@ -188,7 +195,9 @@ const PopTVShowList = () => {
                       ({formatYear(selectedItem.first_air_date)})
                     </span>
                   </h2>
-                  <p className="show__overview">{selectedItem.overview}</p>
+                  <p className="show__overview">
+                    {truncateText(selectedItem.overview, 500)}
+                  </p>
                   <div className="show__details-divers">
                     <div className="show__genres">
                       <img
