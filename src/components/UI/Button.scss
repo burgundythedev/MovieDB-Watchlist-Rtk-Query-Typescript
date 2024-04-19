@@ -28,154 +28,33 @@
     color: #fff;
   }
 
-  &--remove {
-    color: #fff;
-    background-color: rgba(216, 91, 83, 0.7);
-    font-size: 13px;
-    width: 180px;
-    height: auto;
-    padding: 10px 0px;
-   
 
-    &:focus {
-      width: 210px;
-
-    }
-
-    &:hover {
-      color: white;
-      background-color: rgba(216, 91, 83, 0.9);
-      box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
-    }
-
-    &:active {
-      color: black;
-      fill: black;
-    }
-  }
-
-  &--view-all {
-    color: #fff;
-    background: rgba(66, 65, 65, 0.2);
-    font-size: 15px;
-    width: 170px;
-    height: 60px;
-    border: 1px dashed rgb(216, 91, 83);
-    padding: 12px 26px;
-    border-radius: 50px;
-
-    &:focus {
-      width: 175px;
-      background-color: rgb(51, 152, 219, 0.5)
-    }
-
-    &:hover {
+  &--get-started {
+    cursor: none;
 
 
-      box-shadow: 6px 0px 0px rgb(216, 91, 83, 0.5);
-    }
 
-    &:active {
-      color: black;
-      fill: black;
-    }
-  }
-
-  &--view {
-    background-color: #d85b53;
-    width: 170px;
-    height: 40px;
-    font-size: 12px;
-    background-color: rgba(216, 91, 83, 0.9);
-    border: 0;
-    color: #fff;
-    margin-right: 40px;
-
-    &:focus {
-      width: 175px;
-      background-color: rgba(216, 91, 83, 0.7);
-    }
-
-    &:hover {
-      color: white;
-
-      box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
-    }
-
-    &:active {
-      color: black;
-      fill: black;
-    }
-  }
-
-  &--back {
-    background-color: rgb(51, 152, 219, 0.6);
-    width: 170px;
-    height: 40px;
-    font-size: 15px;
-    background: linear-gradient(45deg, rgba(216, 91, 83) 5%);
-    border-radius: 15px;
-    color: #fff;
-
-
-    &:focus {
-      width: 175px;
-
-    }
-
-    &:hover {
-      color: white;
-      background-color: rgb(51, 152, 219, 0.9);
-      box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
-    }
-
-    &:active {
-      color: black;
-      fill: black;
-    }
-  }
-
-  &__icon {
-    width: 30px;
-    margin-right: 10px;
   }
 
 
-  @media only screen and (min-width: 280px) and (max-width: 500px) {
-    
     &--remove {
-      width: 110px;
+      color: #fff;
+      background-color: rgba(216, 91, 83, 0.7);
+      font-size: 13px;
+      width: 180px;
       height: auto;
-      padding: 5px 5px;
-      font-size: 10px;
-      border-radius: 5px;
-    }
+      padding: 10px 0px;
 
-    &--get-started {
-      width: 70px;
-      height: 30px;
-      font-size: 9px;
-      margin-top: 10px;
-    }
-
-    &--view-all {
-      margin-top: 20px;
-      font-size: 10px;
-      width: 100px;
-      height: 30px;
-      padding: 8px 13px;
-      border-radius: 50px;
-      
 
       &:focus {
-        width: 65px;
-        background-color: rgb(51, 152, 219, 0.5)
+        width: 210px;
+
       }
 
       &:hover {
-
-
-        box-shadow: 6px 0px 0px rgb(216, 91, 83, 0.5);
+        color: white;
+        background-color: rgba(216, 91, 83, 0.9);
+        box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
       }
 
       &:active {
@@ -184,32 +63,25 @@
       }
     }
 
-  
-
-    &__icon {
-      width: 10px;
-      margin-right: 5px;
-    }
-
-    &--back {
-      background: rgba(66, 65, 65, 0.7);
-      width: 110px;
-      height: 30px;
-      font-size: 10px;
-      background: linear-gradient(45deg, rgba(216, 91, 83) 5%);
-      border-radius: 15px;
+    &--view-all {
       color: #fff;
-
+      background: rgba(66, 65, 65, 0.2);
+      font-size: 15px;
+      width: 170px;
+      height: 60px;
+      border: 1px dashed rgb(216, 91, 83);
+      padding: 12px 26px;
+      border-radius: 50px;
 
       &:focus {
-        width: 115px;
+        width: 175px;
         background-color: rgb(51, 152, 219, 0.5)
       }
 
       &:hover {
-        color: white;
 
-        box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
+
+        box-shadow: 6px 0px 0px rgb(216, 91, 83, 0.5);
       }
 
       &:active {
@@ -220,79 +92,23 @@
 
     &--view {
       background-color: #d85b53;
-      width: auto;
-      height: 25px;
-      font-size: 10px;
+      width: 170px;
+      height: 40px;
+      font-size: 12px;
       background-color: rgba(216, 91, 83, 0.9);
       border: 0;
       color: #fff;
-      margin-right: 15px;
-      margin-top: 10px;
-  
+      margin-right: 40px;
+
       &:focus {
-        width: auto;
+        width: 175px;
         background-color: rgba(216, 91, 83, 0.7);
       }
-  
+
       &:hover {
         color: white;
-  
+
         box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
-      }
-  
-      &:active {
-        color: black;
-        fill: black;
-      }
-    }
-  }
-
-
-  @media screen and (min-width: 481px) and (max-width: 1080px) {
-    &--remove {
-      width: 120px;
-      height: auto;
-      padding: 7px 2px;
-      font-size: 10px;
-    }
-
-    &--view {
-
-      width: 150px;
-      height: 35px;
-      font-size: 10px;
-
-      color: #fff;
-      margin-right: 20px;
-
-      &:focus {
-        width: 145px;
-        background-color: rgba(216, 91, 83, 0.7);
-      }
-    }
-
-    &__icon {
-      width: 20px;
-
-    }
-
-    &--view-all {
-      margin-top: 10px;
-      font-size: 10px;
-      width: 130px;
-      height: 40px;
-      padding: 8px 13px;
-      border-radius: 50px;
-
-      &:focus {
-        width: 65px;
-        background-color: rgb(51, 152, 219, 0.5)
-      }
-
-      &:hover {
-
-
-        box-shadow: 6px 0px 0px rgb(216, 91, 83, 0.5);
       }
 
       &:active {
@@ -302,23 +118,23 @@
     }
 
     &--back {
-      background: rgba(66, 65, 65, 0.7);
-      width: 110px;
-      height: 30px;
-      font-size: 10px;
+      background-color: rgb(51, 152, 219, 0.6);
+      width: 170px;
+      height: 40px;
+      font-size: 15px;
       background: linear-gradient(45deg, rgba(216, 91, 83) 5%);
       border-radius: 15px;
       color: #fff;
 
 
       &:focus {
-        width: 115px;
-        background-color: rgb(51, 152, 219, 0.5)
+        width: 175px;
+
       }
 
       &:hover {
         color: white;
-
+        background-color: rgb(51, 152, 219, 0.9);
         box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
       }
 
@@ -328,35 +144,228 @@
       }
     }
 
-  }
-
-
-  @media only screen and (min-width: 1081px) and (max-width: 1680px) {
-    &--remove {
-      width: 150px;
-      height: auto;
-      padding: 5px 5px;
+    &__icon {
+      width: 30px;
+      margin-right: 10px;
     }
 
 
-    &--view {
+    @media only screen and (min-width: 280px) and (max-width: 500px) {
 
-      width: 125px;
-      height: 35px;
-      font-size: 10px;
+      &--remove {
+        width: 110px;
+        height: auto;
+        padding: 5px 5px;
+        font-size: 10px;
+        border-radius: 5px;
+      }
 
-      color: #fff;
-      margin-right: 20px;
+      &--get-started {
+        width: 70px;
+        height: 30px;
+        font-size: 9px;
+        margin-top: 10px;
+      }
 
-      &:focus {
-        width: 130px;
-        background-color: rgba(216, 91, 83, 0.7);
+      &--view-all {
+        margin-top: 20px;
+        font-size: 10px;
+        width: 100px;
+        height: 30px;
+        padding: 8px 13px;
+        border-radius: 50px;
+
+
+        &:focus {
+          width: 65px;
+          background-color: rgb(51, 152, 219, 0.5)
+        }
+
+        &:hover {
+
+
+          box-shadow: 6px 0px 0px rgb(216, 91, 83, 0.5);
+        }
+
+        &:active {
+          color: black;
+          fill: black;
+        }
+      }
+
+
+
+      &__icon {
+        width: 10px;
+        margin-right: 5px;
+      }
+
+      &--back {
+        background: rgba(66, 65, 65, 0.7);
+        width: 110px;
+        height: 30px;
+        font-size: 10px;
+        background: linear-gradient(45deg, rgba(216, 91, 83) 5%);
+        border-radius: 15px;
+        color: #fff;
+
+
+        &:focus {
+          width: 115px;
+          background-color: rgb(51, 152, 219, 0.5)
+        }
+
+        &:hover {
+          color: white;
+
+          box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
+        }
+
+        &:active {
+          color: black;
+          fill: black;
+        }
+      }
+
+      &--view {
+        background-color: #d85b53;
+        width: auto;
+        height: 25px;
+        font-size: 10px;
+        background-color: rgba(216, 91, 83, 0.9);
+        border: 0;
+        color: #fff;
+        margin-right: 15px;
+        margin-top: 10px;
+
+        &:focus {
+          width: auto;
+          background-color: rgba(216, 91, 83, 0.7);
+        }
+
+        &:hover {
+          color: white;
+
+          box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
+        }
+
+        &:active {
+          color: black;
+          fill: black;
+        }
       }
     }
 
-    &__icon {
-      width: 20px;
+
+    @media screen and (min-width: 481px) and (max-width: 1080px) {
+      &--remove {
+        width: 120px;
+        height: auto;
+        padding: 7px 2px;
+        font-size: 10px;
+      }
+
+      &--view {
+
+        width: 150px;
+        height: 35px;
+        font-size: 10px;
+
+        color: #fff;
+        margin-right: 20px;
+
+        &:focus {
+          width: 145px;
+          background-color: rgba(216, 91, 83, 0.7);
+        }
+      }
+
+      &__icon {
+        width: 20px;
+
+      }
+
+      &--view-all {
+        margin-top: 10px;
+        font-size: 10px;
+        width: 130px;
+        height: 40px;
+        padding: 8px 13px;
+        border-radius: 50px;
+
+        &:focus {
+          width: 65px;
+          background-color: rgb(51, 152, 219, 0.5)
+        }
+
+        &:hover {
+
+
+          box-shadow: 6px 0px 0px rgb(216, 91, 83, 0.5);
+        }
+
+        &:active {
+          color: black;
+          fill: black;
+        }
+      }
+
+      &--back {
+        background: rgba(66, 65, 65, 0.7);
+        width: 110px;
+        height: 30px;
+        font-size: 10px;
+        background: linear-gradient(45deg, rgba(216, 91, 83) 5%);
+        border-radius: 15px;
+        color: #fff;
+
+
+        &:focus {
+          width: 115px;
+          background-color: rgb(51, 152, 219, 0.5)
+        }
+
+        &:hover {
+          color: white;
+
+          box-shadow: 6px 0px 0px rgb(255, 255, 255, 0.2);
+        }
+
+        &:active {
+          color: black;
+          fill: black;
+        }
+      }
 
     }
+
+
+    @media only screen and (min-width: 1081px) and (max-width: 1680px) {
+      &--remove {
+        width: 150px;
+        height: auto;
+        padding: 5px 5px;
+      }
+
+
+      &--view {
+
+        width: 125px;
+        height: 35px;
+        font-size: 10px;
+
+        color: #fff;
+        margin-right: 20px;
+
+        &:focus {
+          width: 130px;
+          background-color: rgba(216, 91, 83, 0.7);
+        }
+      }
+
+      &__icon {
+        width: 20px;
+
+      }
+    }
   }
-}

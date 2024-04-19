@@ -6,12 +6,12 @@ import {
 } from "../../store/fetchDataSlice";
 import "./Home.scss";
 import Button from "../UI/Button";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import star from "../../assets/star.png";
 import pop from "../../assets/pop.png";
 import video from "../../assets/AMC Theatres. We Make Movies Better..mp4";
 import service from "../../assets/service-banner.jpg";
-import download from "../../assets/download.png";
+
 import camera from "../../assets/camera.png";
 import screen from "../../assets/screen.png";
 import started from "../../assets/wallpaper-trial.jpg";
@@ -240,7 +240,7 @@ const Home = () => {
               </NavLink>
               <div className="tvshowlist__details-box">
                 <p className="tvshowlist__details tvshowlist__details--title">
-                  {truncateText(tvShow.name,20)}
+                  {truncateText(tvShow.name, 20)}
                 </p>
                 <p className="tvshowlist__details tvshowlist__details--date">
                   {formatYear(tvShow.first_air_date)}
@@ -313,14 +313,9 @@ const Home = () => {
           <div className="home__serv-container">
             <div className="home__picture-box">
               <img src={service} alt="image-serv" className="home__serv-img" />
-              <Link className="home__download" to={"/"}>
-                <p className="home__text home__text--download">DOWNLOAD</p>
-                <img
-                  src={download}
-                  alt="icon-dl"
-                  className="home__serv-icon  home__serv-icon--dl"
-                />
-              </Link>
+              <div className="home__download">
+                <p className="home__text home__text--download">4K STREAM</p>
+              </div>
             </div>
             <div className="home__serv-content">
               <p className="home__serv-title home__serv-title--service"></p>
@@ -397,6 +392,7 @@ const Home = () => {
 
             <form action="" className="home__trial-form">
               <input
+                disabled
                 type="email"
                 name="email"
                 required

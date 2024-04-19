@@ -21,5 +21,5 @@ const Button = ({ className, type, children, onClick, icon }: ButtonProps) => {
     </button>
   );
 };
-
+    
 export default Button;

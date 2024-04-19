@@ -48,17 +48,13 @@
 
     &__bubble {
         width: 100px;
-        background-color: rgb(216, 91, 83, 0.4);
+        background-color: rgb(216, 91, 83, 0.8);
         padding: 10px;
         text-align: center;
         border-radius: 15px;
         font-family: "Aboreto", sans-serif;
         font-size: 10px;
 
-        &:hover {
-            cursor: pointer;
-            background-color: rgb(216, 91, 83, 0.2);
-        }
     }
 
     &__title {
@@ -115,6 +111,7 @@
         letter-spacing: 5px;
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 5px;
         transform: rotate(0.25turn);
         padding: 28px 35px;
@@ -150,6 +147,7 @@
         padding-left: 50px;
         margin-bottom: 10px;
     }
+
     &__serv-details {
         position: relative;
         color: white;
@@ -158,8 +156,9 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         margin-bottom: 10px;
-        padding: 0 ;
+        padding: 0;
     }
+
     &__serv-title {
         position: relative;
 
@@ -204,7 +203,7 @@
         display: flex;
         flex-direction: row;
         align-items: center;
-    
+
     }
 
     &__icon-box {
@@ -214,14 +213,11 @@
         display: grid;
         place-items: center;
         border-radius: 50%;
-        outline: 1px dashed #d85b53;
+        outline: 1px dashed white;
         outline-offset: 5px;
         transition: var(--transition-2);
-        cursor: pointer;
+        background-color: #d85b53;
 
-        &:hover {
-            background-color: #d85b53;
-        }
     }
 
     &__list {
@@ -765,7 +761,7 @@
             flex-direction: row;
             align-items: center;
             padding: 10px;
-    
+
         }
 
         &__icon-box {
@@ -1315,6 +1311,7 @@
 
         }
     }
+
     @media screen and (min-width: 712px) and (max-width: 889px) {
         display: flex;
         flex-direction: column;
@@ -1405,6 +1402,7 @@
 
         }
     }
+
     @media screen and (min-width: 890px) and (max-width: 1060px) {
         display: flex;
         flex-direction: column;
@@ -1535,6 +1533,7 @@
         }
     }
 }
+
 .tvshowlist {
     display: flex;
     flex-direction: column;
@@ -1808,6 +1807,7 @@
 
         }
     }
+
     @media screen and (min-width: 712px) and (max-width: 889px) {
         display: flex;
         flex-direction: column;
@@ -1898,6 +1898,7 @@
 
         }
     }
+
     @media screen and (min-width: 890px) and (max-width: 1060px) {
         display: flex;
         flex-direction: column;
@@ -2028,6 +2029,7 @@
         }
     }
 }
+
 .movielist {
     display: flex;
     flex-direction: column;
@@ -2301,6 +2303,7 @@
 
         }
     }
+
     @media screen and (min-width: 712px) and (max-width: 889px) {
         display: flex;
         flex-direction: column;
@@ -2391,6 +2394,7 @@
 
         }
     }
+
     @media screen and (min-width: 890px) and (max-width: 1060px) {
         display: flex;
         flex-direction: column;
